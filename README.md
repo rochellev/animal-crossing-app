@@ -22,3 +22,5 @@ I am a Software Engineer with a passion for creating apps and actively seeking e
 This project was crated with [Expo](https://reactnative.dev/docs/0.60/getting-started).
 
 [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) for their turnip price calculating/predicting algorithm.
+
+[react-native-slider](https://github.com/react-native-community/react-native-slider)
