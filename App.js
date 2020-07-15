@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView,
+  StyleSheet,
+  View,
+  Button,
+  Text } from 'react-native';
 
 export default function App() {
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app! THis is a</Text>
+      <Text>Turnip Stonk</Text>
       <StatusBar style="auto" />
     </View>
   );
