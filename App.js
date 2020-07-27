@@ -6,7 +6,7 @@ import { SafeAreaView,
   Button,
   Text } from 'react-native';
 
-import TurnipView  from './src/features/turnip/TurnipView';
+import TurnipView  from './src/features/turnips/TurnipView';
 
 const App = () => {
 
