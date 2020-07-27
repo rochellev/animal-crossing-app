@@ -6,11 +6,13 @@ import { SafeAreaView,
   Button,
   Text } from 'react-native';
 
-export default function App() {
+import { TurnipView }  from './src/features/turnips/TurnipView';
+
+const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Turnip Stonk!!!!!!</Text>
+      <TurnipView />
       <StatusBar style="auto" />
     </View>
   );
@@ -24,3 +26,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
