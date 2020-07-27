@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Turnip Stonk</Text>
+      <Text>Turnip Stonk!!!!!!</Text>
       <StatusBar style="auto" />
     </View>
   );
