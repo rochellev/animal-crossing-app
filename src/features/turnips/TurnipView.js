@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 
-const TurnipView = () => {
+export const TurnipView = () => {
   return(
   
       <View>
@@ -10,5 +10,3 @@ const TurnipView = () => {
     </View>
   )
 };
-
-export default TurnipView;
