@@ -4,6 +4,9 @@
 ## Description
 Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
 
+Your path to a Bellionaire starts now!
+![Stonk Meme](./stonk_meme.jpg)
+
 ## Features
 * Input fields for morning and evening turnip prices
 * Submit button to calculate predicted turnip values
