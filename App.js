@@ -5,17 +5,18 @@ import { SafeAreaView,
   View,
   Button,
   Text } from 'react-native';
-
+import Constants from 'expo-constants';
+import { Colors } from './src/features/turnips/commonStyles';
 import { TurnipView }  from './src/features/turnips/TurnipView';
 
 const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View >
+     
       <TurnipView />
       <StatusBar style="auto" />
-    </View>
+
     </SafeAreaView>
   );
 }
@@ -23,9 +24,12 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    marginTop: Constants.statusBarHeight,
+    backgroundColor: Colors.spaceCadet,
     alignItems: 'center',
     justifyContent: 'center',
+   
+
   },
 });
 
