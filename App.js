@@ -11,10 +11,12 @@ import { TurnipView }  from './src/features/turnips/TurnipView';
 const App = () => {
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <View >
       <TurnipView />
       <StatusBar style="auto" />
     </View>
+    </SafeAreaView>
   );
 }
 
