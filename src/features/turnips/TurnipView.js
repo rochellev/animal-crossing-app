@@ -1,29 +1,42 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Colors } from './commonStyles';
-import { SundayPrice } from './SundayPrice';
-import {PriceInputCard} from './PriceInputCard';
+import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { Colors } from "./commonStyles";
+import { SundayPrice } from "./SundayPrice";
+import { PriceInputCard } from "./PriceInputCard";
 
 export const TurnipView = () => {
-  return(
-  
-      <View style={styles.container}>
-      <Image source={require('../../../images/Turnips_Icon.png')}/>
+  const Header = () => {
+    return(
+      <View >
+      <Image source={require("../../../images/Turnips_Icon.png")} />
       <Text>Hi</Text>
       <Text>This is Turnip view</Text>
+      </View>
+    )
+  }
+  return (
+    <View style={ styles.container}>
+      <Header style={styles.header}/>
+      <View style={styles.inputSection}>
       <SundayPrice />
       <PriceInputCard />
+      </View>
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     backgroundColor: Colors.teaGreen,
-    width: '100%',
-    alignItems: 'center',
- 
+    alignItems: "center",
+  },
+  header: {
+    flex: 1
+  },
+  inputSection: {
+    flex:2,
   }
 
 });
