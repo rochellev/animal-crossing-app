@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { SundayPrice } from './SundayPrice'
-import { Colors } from './commonStyles'
+import { Colors } from './commonStyles';
+import { SundayPrice } from './SundayPrice';
+import {PriceInputCard} from './PriceInputCard';
 
 export const TurnipView = () => {
   return(
@@ -11,6 +12,7 @@ export const TurnipView = () => {
       <Text>Hi</Text>
       <Text>This is Turnip view</Text>
       <SundayPrice />
+      <PriceInputCard />
     </View>
   )
 };
