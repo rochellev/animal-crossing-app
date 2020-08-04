@@ -23,6 +23,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     marginTop: Constants.statusBarHeight,
     backgroundColor: Colors.spaceCadet,
