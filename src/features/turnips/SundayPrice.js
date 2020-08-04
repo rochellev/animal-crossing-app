@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-
+import { Colors } from './commonStyles';
+import Slider from '@react-native-community/slider';
 
 export const SundayPrice = () => {
-  const [price, setPrice] = useState('Bells per turnip')
+  const [price, setPrice] = useState('0');
+  var initNumber = parseInt(price);
   return(
       <View style={styles.container}>
-      <Text>Sunday</Text>
-      <TextInput
-        style={styles.sunday} 
-        value={price} 
-        onChangeText={price => setPrice(price)}
+      <Text>Sunday</Text><Text>{price}</Text>
+      <Slider
+        style={styles.slider}
+        minimumValue={1}
+        maximumValue={400}
+        step={1}
+        onValueChange={value => setPrice(value)}
+      
       />
     </View>
   )
@@ -20,8 +25,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: Colors.oldLace
   },
-  sunday: {
-    backgroundColor: 'red'
+  slider: {
+    width: 150,
   }
 });
