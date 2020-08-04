@@ -6,20 +6,20 @@ import { PriceInputCard } from "./PriceInputCard";
 
 export const TurnipView = () => {
   const Header = () => {
-    return(
-      <View >
-      <Image source={require("../../../images/Turnips_Icon.png")} />
-      <Text>Hi</Text>
-      <Text>This is Turnip view</Text>
+    return (
+      <View>
+        <Image source={require("../../../images/Turnips_Icon.png")} />
+        <Text>Hi</Text>
+        <Text>This is Turnip view</Text>
       </View>
-    )
-  }
+    );
+  };
   return (
-    <View style={ styles.container}>
-      <Header style={styles.header}/>
+    <View style={styles.container}>
+      <Header style={styles.header} />
       <View style={styles.inputSection}>
-      <SundayPrice />
-      <PriceInputCard />
+        <SundayPrice />
+        <PriceInputCard />
       </View>
     </View>
   );
@@ -28,15 +28,14 @@ export const TurnipView = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
+    flexDirection: "column",
     backgroundColor: Colors.teaGreen,
-    alignItems: "center",
+    alignItems: "center"
   },
   header: {
     flex: 1
   },
   inputSection: {
-    flex:2,
+    flex: 2
   }
-
 });

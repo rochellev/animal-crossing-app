@@ -10,7 +10,7 @@ export const PriceInputCard = () => {
   // }
   
   return(
-    <View>
+    <View style={styles.container}>
         <Slider
     style={{width: 200, height: 40, backgroundColor: Colors.lavenderGrey}}
     minimumValue={0}
@@ -21,3 +21,11 @@ export const PriceInputCard = () => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+ 
+});
