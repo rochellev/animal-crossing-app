@@ -4,15 +4,16 @@ import { Colors } from './commonStyles';
 import Slider from '@react-native-community/slider';
 
 export const SundayPrice = () => {
-  const [price, setPrice] = useState('0')
+  const [price, setPrice] = useState('0');
+  var initNumber = parseInt(price);
   return(
       <View style={styles.container}>
       <Text>Sunday</Text><Text>{price}</Text>
-      <Slider 
-        minimumValue={0}
+      <Slider
+        style={styles.slider}
+        minimumValue={1}
         maximumValue={400}
         step={1}
-        style={styles.slider}
         onValueChange={value => setPrice(value)}
       
       />
@@ -24,11 +25,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-  },
-  sunday: {
-    backgroundColor: 'red'
+    backgroundColor: Colors.oldLace
   },
   slider: {
-    width: 250,
+    width: 150,
   }
 });
