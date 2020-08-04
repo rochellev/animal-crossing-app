@@ -11,6 +11,7 @@ export const PriceInputCard = () => {
   
   return(
     <View style={styles.container}>
+      <Text>Monday</Text>
         <Slider
     style={{width: 200, height: 40, backgroundColor: Colors.lavenderGrey}}
     minimumValue={0}
