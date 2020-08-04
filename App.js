@@ -27,8 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Constants.statusBarHeight,
     backgroundColor: Colors.spaceCadet,
-    alignItems: 'center',
-    justifyContent: 'center',
+ 
    
 
   },
