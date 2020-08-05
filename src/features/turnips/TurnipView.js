@@ -1,12 +1,12 @@
 import React from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
 import { SundayPrice } from "./SundayPrice";
 import { PriceInputCard } from "./PriceInputCard";
 
 export const TurnipView = () => {
-  const turnips = useSelector(state => state.turnips)
+  const turnips = useSelector(state => state.turnips);
 
   return (
     <View style={styles.container}>
@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.platinum
   },
   inputSection: {
-    flex: 4
+    flex: 1
   }
 });
