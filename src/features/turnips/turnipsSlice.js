@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { statement } from '@babel/template';
 
 
 const initialState = [
@@ -36,6 +37,11 @@ const turnipsSlice = createSlice({
   name: 'turnips',
   initialState,
   reducers: {
-    
+    selectDay: (sate, action) => {
+      
+
+    }
   }
 })
+
+export default turnipsSlice.reducer
