@@ -33,7 +33,7 @@ const initialState = [
 ]
 
 const turnipsSlice = createSlice({
-  name: 'posts',
+  name: 'turnips',
   initialState,
   reducers: {
     
