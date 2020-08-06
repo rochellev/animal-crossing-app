@@ -13,7 +13,7 @@ export const TurnipView = () => {
       <View style={styles.header}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
         <Text>Turnip Stonk</Text>
-        <Text>The Sunday init price is {turnips.sunday}</Text>
+        <Text>The Sunday init price is {turnips[0].sunday}</Text>
       </View>
       <View style={styles.inputSection}>
         <SundayPrice />
