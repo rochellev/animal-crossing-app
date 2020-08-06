@@ -14,9 +14,15 @@ export const TurnipInputForm = () => {
     const days = Object.keys(turnips);
     const cards = [];
     cards.push(<SundayPrice key={"sunday"} price={turnips.sunday} />);
-    days.pop();
+    days.shift();
     for (const day in days) {
-      cards.push(<PriceInputCard key={day} day={day} />);
+      cards.push(
+        <PriceInputCard
+          key={day}
+          day={days[day]}
+          morning={turnips[days[day]].morning}
+        />
+      );
     }
     return cards;
   }
