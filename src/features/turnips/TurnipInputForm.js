@@ -33,7 +33,6 @@ export const TurnipInputForm = () => {
   return (
     <ScrollView>
       <View style={{ flex: 1, backgroundColor: Colors.blanchedAlmond }}>
-        <Text>This is TurnipInputForm</Text>
         {inputCardList}
       </View>
     </ScrollView>
