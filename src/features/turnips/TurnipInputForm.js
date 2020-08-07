@@ -21,6 +21,7 @@ export const TurnipInputForm = () => {
           key={day}
           day={days[day]}
           morning={turnips[days[day]].morning}
+          afternoon={turnips[days[day]].afternoon}
         />
       );
     }
