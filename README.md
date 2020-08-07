@@ -1,27 +1,33 @@
 # Turnip Stonk
+
 ### Rochelle Crain
 
 ## Description
+
 Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
 
 Your path to a Bellionaire starts now!
 ![Stonk Meme](./stonk_meme.jpg)
 
 ## Features
-* Input fields for morning and evening turnip prices
-* Submit button to calculate predicted turnip values
-* Users can use this information to make more Bells!
+
+- Input fields for morning and evening turnip prices
+- Submit button to calculate predicted turnip values
+- Users can use this information to make more Bells!
 
 ## Technologies Used
-* JavaScript
-* React Native
-* Expo
+
+- JavaScript
+- React Native
+- Redux, Redux Toolkit
+- Expo
 
 ## About Me
+
 I am a Software Engineer with a passion for creating apps and actively seeking employment. Check out my [LinkedIn](https://www.linkedin.com/in/rochelle-roberts) and visit [rochellecrain.com](https://www.rochellecrain.com/) to see my To Do Web App in action.
 
-
 ## Credits
+
 This project was crated with [Expo](https://reactnative.dev/docs/0.60/getting-started).
 
 [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) for their turnip price calculating/predicting algorithm.
