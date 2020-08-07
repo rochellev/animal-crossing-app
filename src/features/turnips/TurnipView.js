@@ -12,11 +12,8 @@ export const TurnipView = () => {
       <View style={styles.header}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
         <Text>Turnip Stonk</Text>
-        <Text>The Sunday init price is {turnips.sunday}</Text>
       </View>
-      <View style={styles.inputSection}>
-        <TurnipInputForm />
-      </View>
+      <TurnipInputForm />
     </View>
   );
 };
@@ -25,13 +22,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: Colors.teaGreen,
-    justifyContent: "flex-start"
+    backgroundColor: Colors.teaGreen
   },
   header: {
     flex: 1,
     alignItems: "center",
     paddingTop: 5,
+    paddingBottom: 15,
     backgroundColor: Colors.platinum
   },
   inputSection: {
