@@ -11,7 +11,6 @@ export const TurnipView = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
-        <Text>Turnip Stonk</Text>
       </View>
       <TurnipInputForm />
     </View>
