@@ -6,6 +6,7 @@ import { Colors } from "./commonStyles";
 import { SundayPrice } from "./SundayPrice";
 import { PriceInputCard } from "./PriceInputCard";
 import { ScrollView } from "react-native-gesture-handler";
+import { Button } from "react-native-elements";
 
 export const TurnipInputForm = () => {
   const turnips = useSelector(state => state.turnips);
@@ -31,10 +32,14 @@ export const TurnipInputForm = () => {
   const inputCardList = populateCards();
 
   return (
-    <ScrollView>
-      <View style={{ flex: 1, backgroundColor: Colors.blanchedAlmond }}>
-        {inputCardList}
-      </View>
-    </ScrollView>
+    <View style={{ flex: 1, backgroundColor: Colors.blanchedAlmond }}>
+      {inputCardList}
+      <Button
+        title="Predict Stonks!"
+        type="solid"
+        raised={true}
+        buttonStyle={{ width: 300 }}
+      />
+    </View>
   );
 };
