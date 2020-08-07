@@ -19,7 +19,7 @@ export const TurnipInputForm = () => {
       cards.push(
         <PriceInputCard
           key={day}
-          day={day}
+          day={turnips[day].day}
           morning={turnips[day].morning}
           afternoon={turnips[day].afternoon}
         />
