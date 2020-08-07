@@ -1,32 +1,55 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Colors } from './commonStyles';
-import Slider from '@react-native-community/slider';
+import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { Colors } from "./commonStyles";
+import Slider from "@react-native-community/slider";
 
-export const PriceInputCard = () => {
-  
-  // const InputPriceSlider = {
-
-  // }
-  
-  return(
+export const PriceInputCard = ({ day, morning, afternoon }) => {
+  return (
     <View style={styles.container}>
-      <Text>Monday</Text>
-        <Slider
-    style={{width: 200, height: 40, backgroundColor: Colors.lavenderGrey}}
-    minimumValue={0}
-    maximumValue={1}
-    minimumTrackTintColor="#FFFFFF"
-    maximumTrackTintColor="#000000"
-  />
+      <Text>{day}</Text>
+      <View style={styles.cards}>
+        <View style={styles.cardInput}>
+          <Text>AM.....{morning}</Text>
+          <Slider
+            style={styles.slider}
+            value={morning}
+            minimumValue={0}
+            maximumValue={850}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+        </View>
+        <View style={styles.cardInput}>
+          <Text>PM.....{afternoon}</Text>
+          <Slider
+            style={styles.slider}
+            value={afternoon}
+            minimumValue={0}
+            maximumValue={850}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
+          />
+        </View>
+      </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center"
   },
- 
+  cards: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  cardInput: {
+    padding: 5
+  },
+  slider: {
+    width: 150,
+    height: 30,
+    backgroundColor: Colors.lavenderGrey
+  }
 });

@@ -1,12 +1,44 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { nanoid } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = []
-
+const initialState = {
+  sunday: 90,
+  monday: {
+    day: "Monday",
+    morning: 40,
+    afternoon: 400
+  },
+  tuesday: {
+    day: "Tuesday",
+    morning: 50,
+    afternoon: 500
+  },
+  wednesday: {
+    day: "Wednesday",
+    morning: 60,
+    afternoon: 650
+  },
+  thursday: {
+    day: "Thursday",
+    morning: 80,
+    afternoon: 80
+  },
+  friday: {
+    day: "Friday",
+    morning: 90,
+    afternoon: 200
+  },
+  saturday: {
+    day: "Saturday",
+    morning: 100,
+    afternoon: 800
+  }
+};
 const turnipsSlice = createSlice({
-  name: 'posts',
+  name: "turnips",
   initialState,
   reducers: {
-    
+    selectDay: (sate, action) => {}
   }
-})
+});
+
+export default turnipsSlice.reducer;
