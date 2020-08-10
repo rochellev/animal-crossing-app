@@ -29,17 +29,25 @@ export const TurnipInputForm = () => {
     return cards;
   }
 
-  const inputCardList = populateCards();
+  const renderedComponents = populateCards();
 
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.blanchedAlmond }}>
-      {inputCardList}
+    <View style={styles.form}>
+      {renderedComponents}
       <Button
-        title="Predict Stonks!"
-        type="solid"
-        raised={true}
-        buttonStyle={{ width: 300 }}
+        title="Predict Best Day to Sell!"
+        type="outline"
+        raised
+        containerStyle={{ width: 200, alignSelf: "center" }}
+        buttonStyle={{ width: "100%" }}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  form: {
+    flex: 1,
+    backgroundColor: Colors.blanchedAlmond
+  }
+});
