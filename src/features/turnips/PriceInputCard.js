@@ -3,18 +3,18 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
 import { TurnipSlider } from "./TurnipSlider";
 
-export const PriceInputCard = ({ day, morning, afternoon }) => {
+export const PriceInputCard = ({ ...props }) => {
   return (
     <View style={styles.container}>
-      <Text>{day}</Text>
+      <Text>{props.day}</Text>
       <View style={styles.cards}>
         <View style={styles.cardInput}>
-          <Text>AM.....{morning}</Text>
-          <TurnipSlider value={morning} />
+          <Text>AM.....{props.morning}</Text>
+          <TurnipSlider value={props.morning} />
         </View>
         <View style={styles.cardInput}>
-          <Text>PM.....{afternoon}</Text>
-          <TurnipSlider value={morning} />
+          <Text>PM.....{props.afternoon}</Text>
+          <TurnipSlider value={props.morning} />
         </View>
       </View>
     </View>
