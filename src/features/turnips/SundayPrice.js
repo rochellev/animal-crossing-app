@@ -2,21 +2,32 @@ import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "./commonStyles";
-import { TurnipSlider } from "./TurnipSlider";
-
-// onValueChange={value => setPrice(value)}
+import Slider from "@react-native-community/slider";
+import { sundayPriceUpdated } from "./turnipsSlice";
 
 export const SundayPrice = () => {
   const sundayPrice = useSelector(state => state.turnips.sunday);
-  const [input, setInput] = useState("");
+  const [value, setValue] = useState(sundayPrice);
 
   const dispatch = useDispatch();
-
+  const handleSlideComplete = value => {
+    if (value) {
+      dispatch(sundayPriceUpdated({ price: value }));
+    }
+  };
   return (
     <View style={styles.container}>
       <Text>Sunday</Text>
-      <Text>{sundayPrice}</Text>
-      <TurnipSlider value={sundayPrice} />
+      <Text>{value}</Text>
+      <Slider
+        style={styles.slider}
+        value={value}
+        minimumValue={1}
+        maximumValue={850}
+        step={1}
+        onValueChange={value => setValue(value)}
+        onSlidingComplete={value => handleSlideComplete(value)}
+      />
     </View>
   );
 };
@@ -25,7 +36,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: Colors.oldLace
+    backgroundColor: Colors.oldLace,
+    paddingVertical: 10
   },
   slider: {
     width: 150
