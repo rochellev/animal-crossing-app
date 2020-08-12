@@ -37,8 +37,12 @@ const turnipsSlice = createSlice({
   name: "turnips",
   initialState,
   reducers: {
-    selectDay: (sate, action) => {}
+    sundayPriceUpdated(state, action) {
+      const { price } = action.payload;
+      state.sunday = price;
+    }
   }
 });
 
+export const { sundayPriceUpdated } = turnipsSlice.actions;
 export default turnipsSlice.reducer;
