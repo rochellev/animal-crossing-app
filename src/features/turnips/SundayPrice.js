@@ -6,7 +6,8 @@ import { TurnipSlider } from "./TurnipSlider";
 
 // onValueChange={value => setPrice(value)}
 
-export const SundayPrice = ({ ...props }) => {
+export const SundayPrice = () => {
+  const sundayPrice = useSelector(state => state.turnips.sunday);
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
@@ -14,8 +15,8 @@ export const SundayPrice = ({ ...props }) => {
   return (
     <View style={styles.container}>
       <Text>Sunday</Text>
-      <Text>{props.price}</Text>
-      <TurnipSlider value={props.price} />
+      <Text>{sundayPrice}</Text>
+      <TurnipSlider value={sundayPrice} />
     </View>
   );
 };
