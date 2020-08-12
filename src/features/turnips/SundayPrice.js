@@ -5,12 +5,12 @@ import { TurnipSlider } from "./TurnipSlider";
 
 // onValueChange={value => setPrice(value)}
 
-export const SundayPrice = ({ price }) => {
+export const SundayPrice = ({ ...props }) => {
   return (
     <View style={styles.container}>
       <Text>Sunday</Text>
-      <Text>{price}</Text>
-      <TurnipSlider value={price} />
+      <Text>{props.price}</Text>
+      <TurnipSlider value={props.price} />
     </View>
   );
 };
