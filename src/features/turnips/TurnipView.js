@@ -9,11 +9,13 @@ export const TurnipView = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={require("../../../images/Turnips_Icon.png")} />
-        <Text>Turnip Stonk</Text>
+      <Image
+        source={require("../../../images/Turnips_Icon.png")}
+        style={styles.turnip}
+      />
+      <View style={styles.inputSection}>
+        <TurnipInputForm />
       </View>
-      <TurnipInputForm />
     </View>
   );
 };
@@ -23,6 +25,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.teaGreen
+  },
+  turnip: {
+    alignSelf: "center"
   },
   header: {
     flex: 1,

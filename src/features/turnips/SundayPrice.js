@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
-import Slider from "@react-native-community/slider";
+import { TurnipSlider } from "./TurnipSlider";
 
 // onValueChange={value => setPrice(value)}
 
@@ -10,13 +10,7 @@ export const SundayPrice = ({ price }) => {
     <View style={styles.container}>
       <Text>Sunday</Text>
       <Text>{price}</Text>
-      <Slider
-        style={styles.slider}
-        value={price}
-        minimumValue={1}
-        maximumValue={400}
-        step={1}
-      />
+      <TurnipSlider value={price} />
     </View>
   );
 };

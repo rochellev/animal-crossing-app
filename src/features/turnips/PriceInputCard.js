@@ -1,34 +1,20 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
-import Slider from "@react-native-community/slider";
+import { TurnipSlider } from "./TurnipSlider";
 
-export const PriceInputCard = ({ day, morning, afternoon }) => {
+export const PriceInputCard = ({ ...props }) => {
   return (
     <View style={styles.container}>
-      <Text>{day}</Text>
+      <Text>{props.day}</Text>
       <View style={styles.cards}>
         <View style={styles.cardInput}>
-          <Text>AM.....{morning}</Text>
-          <Slider
-            style={styles.slider}
-            value={morning}
-            minimumValue={0}
-            maximumValue={850}
-            minimumTrackTintColor="#FFFFFF"
-            maximumTrackTintColor="#000000"
-          />
+          <Text>AM.....{props.morning}</Text>
+          <TurnipSlider value={props.morning} />
         </View>
         <View style={styles.cardInput}>
-          <Text>PM.....{afternoon}</Text>
-          <Slider
-            style={styles.slider}
-            value={afternoon}
-            minimumValue={0}
-            maximumValue={850}
-            minimumTrackTintColor="#FFFFFF"
-            maximumTrackTintColor="#000000"
-          />
+          <Text>PM.....{props.afternoon}</Text>
+          <TurnipSlider value={props.morning} />
         </View>
       </View>
     </View>

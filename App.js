@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Button, Text } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Button,
+  Text
+} from "react-native";
 import Constants from "expo-constants";
 import { Colors } from "./src/features/turnips/commonStyles";
 import { TurnipView } from "./src/features/turnips/TurnipView";
@@ -12,8 +19,9 @@ const App = () => {
   return (
     <Provider store={getStore()}>
       <SafeAreaView style={styles.container}>
-        <TurnipView />
-        <StatusBar style="auto" />
+        <ScrollView>
+          <TurnipView />
+        </ScrollView>
       </SafeAreaView>
     </Provider>
   );
