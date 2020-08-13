@@ -2,16 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
-// import { TurnipSlider } from "./TurnipSlider";
-
-// <View style={styles.cardInput}>
-//         <Text>AM.....{morningPrice}</Text>
-//         <TurnipSlider value={props.morning} />
-//       </View>
-//       <View style={styles.cardInput}>
-//         <Text>PM.....{props.afternoon}</Text>
-//         <TurnipSlider value={props.morning} />
-//       </View>
+import Slider from "@react-native-community/slider";
 
 export const PriceInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
@@ -25,8 +16,28 @@ export const PriceInputCard = ({ day }) => {
     <View style={styles.container}>
       <Text>{name}</Text>
       <View style={styles.cards}>
-        <Text>Morning.......{morningPrice}</Text>
-        <Text>Afternoon.....{afternoonPrice}</Text>
+        <View style={styles.cardInput}>
+          <Text>Morning.......{morningPrice}</Text>
+          <Slider
+            style={styles.slider}
+            value={morningPrice}
+            minimumValue={1}
+            maximumValue={850}
+            step={1}
+            onValueChange={value => setMorningPrice(value)}
+          />
+        </View>
+        <View style={styles.cardInput}>
+          <Text>Afternoon.....{afternoonPrice}</Text>
+          <Slider
+            style={styles.slider}
+            value={afternoonPrice}
+            minimumValue={1}
+            maximumValue={850}
+            step={1}
+            onValueChange={value => setAfternoonPrice(value)}
+          />
+        </View>
       </View>
     </View>
   );
