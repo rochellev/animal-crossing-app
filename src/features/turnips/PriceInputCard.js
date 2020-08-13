@@ -1,20 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
-import { TurnipSlider } from "./TurnipSlider";
-
-export const PriceInputCard = ({ ...props }) => {
+import Slider from "@react-native-community/slider";
+import { morningPriceUpdated } from "./turnipsSlice";
+export const PriceInputCard = ({ day }) => {
+  const [name, morning, afternoon] = useSelector(state =>
+    Object.values(state.turnips[day])
+  );
+  const [morningPrice, setMorningPrice] = useState(morning);
+  const [afternoonPrice, setAfternoonPrice] = useState(afternoon);
+  const dispatch = useDispatch();
+  const handleMorningSlideComplete = value => {
+    if (value) {
+      dispatch(morningPriceUpdated({ day, value }));
+    }
+  };
   return (
     <View style={styles.container}>
-      <Text>{props.day}</Text>
+      <Text>{name}</Text>
       <View style={styles.cards}>
         <View style={styles.cardInput}>
-          <Text>AM.....{props.morning}</Text>
-          <TurnipSlider value={props.morning} />
+          <Text>Morning.......{morningPrice}</Text>
+          <Slider
+            style={styles.slider}
+            value={morningPrice}
+            minimumValue={1}
+            maximumValue={850}
+            step={1}
+            onValueChange={value => setMorningPrice(value)}
+            onSlidingComplete={value => handleMorningSlideComplete(value)}
+          />
         </View>
         <View style={styles.cardInput}>
-          <Text>PM.....{props.afternoon}</Text>
-          <TurnipSlider value={props.morning} />
+          <Text>Afternoon.....{afternoonPrice}</Text>
+          <Slider
+            style={styles.slider}
+            value={afternoonPrice}
+            minimumValue={1}
+            maximumValue={850}
+            step={1}
+            onValueChange={value => setAfternoonPrice(value)}
+          />
         </View>
       </View>
     </View>
