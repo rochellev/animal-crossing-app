@@ -40,9 +40,13 @@ const turnipsSlice = createSlice({
     sundayPriceUpdated(state, action) {
       const { price } = action.payload;
       state.sunday = price;
+    },
+    morningPriceUpdated(state, action) {
+      const { day, value } = action.payload;
+      state[day].morning = value;
     }
   }
 });
 
-export const { sundayPriceUpdated } = turnipsSlice.actions;
+export const { sundayPriceUpdated, morningPriceUpdated } = turnipsSlice.actions;
 export default turnipsSlice.reducer;

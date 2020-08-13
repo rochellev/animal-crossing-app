@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
 import Slider from "@react-native-community/slider";
-
+import { morningPriceUpdated } from "./turnipsSlice";
 export const PriceInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
     Object.values(state.turnips[day])
@@ -11,7 +11,11 @@ export const PriceInputCard = ({ day }) => {
   const [morningPrice, setMorningPrice] = useState(morning);
   const [afternoonPrice, setAfternoonPrice] = useState(afternoon);
   const dispatch = useDispatch();
-
+  const handleMorningSlideComplete = value => {
+    if (value) {
+      dispatch(morningPriceUpdated({ day, value }));
+    }
+  };
   return (
     <View style={styles.container}>
       <Text>{name}</Text>
@@ -25,6 +29,7 @@ export const PriceInputCard = ({ day }) => {
             maximumValue={850}
             step={1}
             onValueChange={value => setMorningPrice(value)}
+            onSlidingComplete={value => handleMorningSlideComplete(value)}
           />
         </View>
         <View style={styles.cardInput}>
