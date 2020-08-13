@@ -17,14 +17,7 @@ export const TurnipInputForm = () => {
     cards.push(<SundayPrice key={"sunday"} />);
     days.shift();
     for (const day of days) {
-      cards.push(
-        <PriceInputCard
-          key={day}
-          day={turnips[day].day}
-          morning={turnips[day].morning}
-          afternoon={turnips[day].afternoon}
-        />
-      );
+      cards.push(<PriceInputCard key={day} day={day} />);
     }
     return cards;
   }

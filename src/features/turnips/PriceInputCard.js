@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
-import { TurnipSlider } from "./TurnipSlider";
+// import { TurnipSlider } from "./TurnipSlider";
 
-export const PriceInputCard = ({ ...props }) => {
+// <View style={styles.cardInput}>
+//         <Text>AM.....{morningPrice}</Text>
+//         <TurnipSlider value={props.morning} />
+//       </View>
+//       <View style={styles.cardInput}>
+//         <Text>PM.....{props.afternoon}</Text>
+//         <TurnipSlider value={props.morning} />
+//       </View>
+
+export const PriceInputCard = ({ day }) => {
+  const [name, morning, afternoon] = useSelector(state =>
+    Object.values(state.turnips[day])
+  );
+  const [morningPrice, setMorningPrice] = useState(morning);
+  const [afternoonPrice, setAfternoonPrice] = useState(afternoon);
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
-      <Text>{props.day}</Text>
+      <Text>{name}</Text>
       <View style={styles.cards}>
-        <View style={styles.cardInput}>
-          <Text>AM.....{props.morning}</Text>
-          <TurnipSlider value={props.morning} />
-        </View>
-        <View style={styles.cardInput}>
-          <Text>PM.....{props.afternoon}</Text>
-          <TurnipSlider value={props.morning} />
-        </View>
+        <Text>Morning.......{morningPrice}</Text>
+        <Text>Afternoon.....{afternoonPrice}</Text>
       </View>
     </View>
   );
