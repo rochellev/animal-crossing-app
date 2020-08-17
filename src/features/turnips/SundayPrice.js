@@ -22,7 +22,7 @@ export const SundayPrice = () => {
       <Slider
         style={styles.slider}
         value={value}
-        minimumValue={1}
+        minimumValue={25}
         maximumValue={850}
         step={1}
         onValueChange={value => setValue(value)}

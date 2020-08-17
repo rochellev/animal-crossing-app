@@ -4,6 +4,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
 import Slider from "@react-native-community/slider";
 import { morningPriceUpdated } from "./turnipsSlice";
+
 export const PriceInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
     Object.values(state.turnips[day])
@@ -25,7 +26,7 @@ export const PriceInputCard = ({ day }) => {
           <Slider
             style={styles.slider}
             value={morningPrice}
-            minimumValue={1}
+            minimumValue={25}
             maximumValue={850}
             step={1}
             onValueChange={value => setMorningPrice(value)}
