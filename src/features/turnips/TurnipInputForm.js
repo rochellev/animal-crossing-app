@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
 
-import { SundayPrice } from "./SundayPrice";
+import { SundayInputCard } from "./SundayInputCard";
 import { PriceInputCard } from "./PriceInputCard";
 import { ScrollView } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
@@ -14,7 +14,7 @@ export const TurnipInputForm = () => {
   function populateCards() {
     const days = Object.keys(turnips);
     const cards = [];
-    cards.push(<SundayPrice key={"sunday"} />);
+    cards.push(<SundayInputCard key={"sunday"} />);
     days.shift();
     for (const day of days) {
       cards.push(<PriceInputCard key={day} day={day} />);
