@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
-import { TurnipInputForm } from "./TurnipInputForm";
+import { InputCardList } from "./InputCardList";
 
 export const TurnipView = () => {
   const turnips = useSelector(state => state.turnips);
@@ -14,7 +14,7 @@ export const TurnipView = () => {
         style={styles.turnip}
       />
       <View style={styles.inputSection}>
-        <TurnipInputForm />
+        <InputCardList />
       </View>
     </View>
   );

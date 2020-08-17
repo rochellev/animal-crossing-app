@@ -8,7 +8,7 @@ import { PriceInputCard } from "./PriceInputCard";
 import { ScrollView } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
 
-export const TurnipInputForm = () => {
+export const InputCardList = () => {
   const turnips = useSelector(state => state.turnips);
 
   function populateCards() {
