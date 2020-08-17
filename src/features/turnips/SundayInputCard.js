@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Colors } from "./commonStyles";
+import { Colors, SliderStyle } from "./commonStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated } from "./turnipsSlice";
 
-export const SundayPrice = () => {
+export const SundayInputCard = () => {
   const sundayPrice = useSelector(state => state.turnips.sunday);
   const [value, setValue] = useState(sundayPrice);
 
@@ -20,9 +20,9 @@ export const SundayPrice = () => {
       <Text>Sunday</Text>
       <Text>{value}</Text>
       <Slider
-        style={styles.slider}
+        style={SliderStyle}
         value={value}
-        minimumValue={1}
+        minimumValue={25}
         maximumValue={850}
         step={1}
         onValueChange={value => setValue(value)}
@@ -38,8 +38,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.oldLace,
     paddingVertical: 10
-  },
-  slider: {
-    width: 150
   }
 });
