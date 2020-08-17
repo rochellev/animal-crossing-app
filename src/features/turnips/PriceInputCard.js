@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Colors } from "./commonStyles";
+import { Colors, SliderStyle } from "./commonStyles";
 import Slider from "@react-native-community/slider";
 import { morningPriceUpdated } from "./turnipsSlice";
 
@@ -24,7 +24,7 @@ export const PriceInputCard = ({ day }) => {
         <View style={styles.cardInput}>
           <Text>Morning.......{morningPrice}</Text>
           <Slider
-            style={styles.slider}
+            style={SliderStyle}
             value={morningPrice}
             minimumValue={25}
             maximumValue={850}
@@ -36,9 +36,9 @@ export const PriceInputCard = ({ day }) => {
         <View style={styles.cardInput}>
           <Text>Afternoon.....{afternoonPrice}</Text>
           <Slider
-            style={styles.slider}
+            style={SliderStyle}
             value={afternoonPrice}
-            minimumValue={1}
+            minimumValue={25}
             maximumValue={850}
             step={1}
             onValueChange={value => setAfternoonPrice(value)}
@@ -60,10 +60,5 @@ const styles = StyleSheet.create({
   },
   cardInput: {
     padding: 5
-  },
-  slider: {
-    width: 150,
-    height: 30,
-    backgroundColor: Colors.lavenderGrey
   }
 });
