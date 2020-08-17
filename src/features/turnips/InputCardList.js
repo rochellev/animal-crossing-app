@@ -4,7 +4,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "./commonStyles";
 
 import { SundayInputCard } from "./SundayInputCard";
-import { PriceInputCard } from "./PriceInputCard";
+import { DailyInputCard } from "./DailyInputCard";
 import { ScrollView } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
 
@@ -17,7 +17,7 @@ export const InputCardList = () => {
     cards.push(<SundayInputCard key={"sunday"} />);
     days.shift();
     for (const day of days) {
-      cards.push(<PriceInputCard key={day} day={day} />);
+      cards.push(<DailyInputCard key={day} day={day} />);
     }
     return cards;
   }

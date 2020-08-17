@@ -5,7 +5,7 @@ import { Colors, SliderStyle } from "./commonStyles";
 import Slider from "@react-native-community/slider";
 import { morningPriceUpdated } from "./turnipsSlice";
 
-export const PriceInputCard = ({ day }) => {
+export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
     Object.values(state.turnips[day])
   );
