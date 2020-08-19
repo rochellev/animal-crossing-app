@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import AsyncStorage from "@react-native-community/async-storage";
+import { useAsyncStorage } from "@react-native-community/async-storage";
+const { getItem, setItem } = useAsyncStorage("@data");
 // state = {turnips, status, error}
 const initialState = {
   data: {
@@ -68,3 +70,21 @@ export const getDayData = (state, day) =>
   Object.values(state.turnips.data[day]);
 
 export const getSundayData = state => state.turnips.data.sunday;
+
+export const storeData = async value => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem("@storage_Key", jsonValue);
+  } catch (e) {
+    // saving error
+  }
+};
+
+export const getData = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem("@storage_Key");
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    // error reading value
+  }
+};
