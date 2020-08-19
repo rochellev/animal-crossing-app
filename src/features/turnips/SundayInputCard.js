@@ -8,11 +8,11 @@ import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
 export const SundayInputCard = () => {
   const sundayPrice = useSelector(state => getSundayData(state));
   const [value, setValue] = useState(sundayPrice);
-
   const dispatch = useDispatch();
+
   const handleSlideComplete = value => {
     if (value) {
-      dispatch(sundayPriceUpdated({ price: value }));
+      dispatch(sundayPriceUpdated({ value }));
     }
   };
   return (

@@ -43,12 +43,12 @@ const turnipsSlice = createSlice({
   initialState,
   reducers: {
     sundayPriceUpdated(state, action) {
-      const { price } = action.payload;
-      state.turnips.data.sunday = price;
+      const { value } = action.payload;
+      state.data.sunday = value;
     },
     morningPriceUpdated(state, action) {
       const { day, value } = action.payload;
-      state.turnips.data[day].morning = value;
+      state.data[day].morning = value;
     }
   }
 });
