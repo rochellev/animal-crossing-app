@@ -1,37 +1,38 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+// state = {turnips, status, error}
 const initialState = {
-  turnips: {
+  data: {
     sunday: 90,
     monday: {
       day: "Monday",
-      morning: 40,
-      afternoon: 400
+      morning: 30,
+      afternoon: 40
     },
     tuesday: {
       day: "Tuesday",
       morning: 50,
-      afternoon: 500
+      afternoon: 60
     },
     wednesday: {
       day: "Wednesday",
       morning: 60,
-      afternoon: 650
+      afternoon: 65
     },
     thursday: {
       day: "Thursday",
-      morning: 80,
-      afternoon: 80
+      morning: 70,
+      afternoon: 90
     },
     friday: {
       day: "Friday",
-      morning: 90,
+      morning: 99,
       afternoon: 200
     },
     saturday: {
       day: "Saturday",
       morning: 100,
-      afternoon: 800
+      afternoon: 69
     }
   },
   status: "idle",
@@ -43,14 +44,19 @@ const turnipsSlice = createSlice({
   reducers: {
     sundayPriceUpdated(state, action) {
       const { price } = action.payload;
-      state.sunday = price;
+      state.turnips.data.sunday = price;
     },
     morningPriceUpdated(state, action) {
       const { day, value } = action.payload;
-      state[day].morning = value;
+      state.turnips.data[day].morning = value;
     }
   }
 });
 
 export const { sundayPriceUpdated, morningPriceUpdated } = turnipsSlice.actions;
 export default turnipsSlice.reducer;
+
+export const getDayData = (state, day) =>
+  Object.values(state.turnips.data[day]);
+
+export const getSundayData = state => state.turnips.data.sunday;

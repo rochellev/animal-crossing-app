@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors, SliderStyle } from "./commonStyles";
 import Slider from "@react-native-community/slider";
-import { morningPriceUpdated } from "./turnipsSlice";
+import { morningPriceUpdated, getDayData } from "./turnipsSlice";
+// const [name, morning, afternoon] = useSelector(state =>
+//   Object.values(state.turnips.data[day])
+// );
 
 export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
-    Object.values(state.turnips[day])
+    getDayData(state, day)
   );
   const [morningPrice, setMorningPrice] = useState(morning);
   const [afternoonPrice, setAfternoonPrice] = useState(afternoon);
