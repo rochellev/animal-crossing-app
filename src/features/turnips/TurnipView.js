@@ -5,8 +5,6 @@ import { Colors } from "./commonStyles";
 import { InputCardList } from "./InputCardList";
 
 export const TurnipView = () => {
-  const turnips = useSelector(state => state.turnips);
-
   return (
     <View style={styles.container}>
       <Image
