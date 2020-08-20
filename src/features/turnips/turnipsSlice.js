@@ -88,3 +88,16 @@ export const getData = async () => {
     // error reading value
   }
 };
+
+export const getAllKeys = async () => {
+  let keys = [];
+  try {
+    keys = await AsyncStorage.getAllKeys();
+  } catch (e) {
+    // read key error
+  }
+
+  console.log(keys);
+  // example console.log result:
+  // ['@MyApp_user', '@MyApp_key']
+};
