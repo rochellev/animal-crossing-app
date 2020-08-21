@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet } from "react-native";
-import { Colors, SliderStyle } from "../styles/commonStyles";
+import { View, Text, StyleSheet } from "react-native";
+import { CommonStyles } from "../styles/commonStyles";
 import Slider from "@react-native-community/slider";
 import {
   getDayData,
@@ -38,7 +38,7 @@ export const DailyInputCard = ({ day }) => {
         <View style={styles.cardInput}>
           <Text>Morning.......{morningPrice}</Text>
           <Slider
-            style={SliderStyle}
+            style={CommonStyles.sliderStyle}
             value={morningPrice}
             minimumValue={25}
             maximumValue={850}
@@ -50,7 +50,7 @@ export const DailyInputCard = ({ day }) => {
         <View style={styles.cardInput}>
           <Text>Afternoon.....{afternoonPrice}</Text>
           <Slider
-            style={SliderStyle}
+            style={CommonStyles.sliderStyle}
             value={afternoonPrice}
             minimumValue={25}
             maximumValue={850}
