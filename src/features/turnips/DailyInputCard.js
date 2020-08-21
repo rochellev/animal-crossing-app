@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Colors, SliderStyle } from "./commonStyles";
+import { Colors, SliderStyle } from "../styles/commonStyles";
 import Slider from "@react-native-community/slider";
 import {
   getDayData,

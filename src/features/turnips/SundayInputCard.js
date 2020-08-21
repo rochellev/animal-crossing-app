@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Colors, SliderStyle } from "./commonStyles";
+import { Colors, SliderStyle } from "../styles/commonStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
 
