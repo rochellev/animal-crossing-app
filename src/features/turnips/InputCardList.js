@@ -9,14 +9,19 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Button } from "react-native-elements";
 
 export const InputCardList = () => {
-  const turnips = useSelector(state => state.turnips);
+  const sellingDays = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ];
 
   function populateCards() {
-    const days = Object.keys(turnips);
     const cards = [];
     cards.push(<SundayInputCard key={"sunday"} />);
-    days.shift();
-    for (const day of days) {
+    for (const day of sellingDays) {
       cards.push(<DailyInputCard key={day} day={day} />);
     }
     return cards;

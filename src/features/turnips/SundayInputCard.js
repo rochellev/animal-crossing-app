@@ -3,16 +3,16 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors, SliderStyle } from "./commonStyles";
 import Slider from "@react-native-community/slider";
-import { sundayPriceUpdated } from "./turnipsSlice";
+import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
 
 export const SundayInputCard = () => {
-  const sundayPrice = useSelector(state => state.turnips.sunday);
+  const sundayPrice = useSelector(state => getSundayData(state));
   const [value, setValue] = useState(sundayPrice);
-
   const dispatch = useDispatch();
+
   const handleSlideComplete = value => {
     if (value) {
-      dispatch(sundayPriceUpdated({ price: value }));
+      dispatch(sundayPriceUpdated({ value }));
     }
   };
   return (
