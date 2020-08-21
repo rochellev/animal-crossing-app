@@ -10,8 +10,14 @@ export const Colors = {
   lavenderGrey: "#c6c6d2"
 };
 
-export const SliderStyle = {
-  width: 150,
-  height: 30,
-  backgroundColor: Colors.lavenderGrey
-};
+export const CommonStyles = StyleSheet.create({
+  sliderStyle: {
+    width: 150,
+    height: 30,
+    backgroundColor: Colors.lavenderGrey
+  },
+  textStyle: {
+    fontSize: 30,
+    color: Colors.spaceCadet
+  }
+});
