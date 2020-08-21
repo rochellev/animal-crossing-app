@@ -18,7 +18,7 @@ export const SundayInputCard = () => {
   return (
     <View style={styles.container}>
       <Text style={CommonStyles.textStyle}>Sunday</Text>
-      <Text>{value}</Text>
+      <Text style={CommonStyles.textStyle}>{value}</Text>
       <Slider
         style={CommonStyles.sliderStyle}
         value={value}

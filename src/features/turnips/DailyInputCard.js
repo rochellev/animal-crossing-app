@@ -33,10 +33,12 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={styles.container}>
-      <Text>{name}</Text>
+      <Text style={CommonStyles.textStyle}>{name}</Text>
       <View style={styles.cards}>
         <View style={styles.cardInput}>
-          <Text>Morning.......{morningPrice}</Text>
+          <Text style={CommonStyles.textStyle}>
+            Morning.......{morningPrice}
+          </Text>
           <Slider
             style={CommonStyles.sliderStyle}
             value={morningPrice}
@@ -48,7 +50,9 @@ export const DailyInputCard = ({ day }) => {
           />
         </View>
         <View style={styles.cardInput}>
-          <Text>Afternoon.....{afternoonPrice}</Text>
+          <Text style={CommonStyles.textStyle}>
+            Afternoon.....{afternoonPrice}
+          </Text>
           <Slider
             style={CommonStyles.sliderStyle}
             value={afternoonPrice}

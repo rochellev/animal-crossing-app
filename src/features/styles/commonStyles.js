@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Text, View } from "react-native";
 
 export const Colors = {
   spaceCadet: "#2B2D42",
@@ -17,7 +19,20 @@ export const CommonStyles = StyleSheet.create({
     backgroundColor: Colors.lavenderGrey
   },
   textStyle: {
-    fontSize: 30,
-    color: Colors.spaceCadet
+    fontSize: 18,
+    color: Colors.spaceCadet,
+    fontFamily: "sans-serif-light"
   }
 });
+
+export const TurnipText = ({ text }) => {
+  return (
+    <View>
+      <Text style={CommonStyles.textStyle}>{text}</Text>
+    </View>
+  );
+};
+
+// <View>
+// <Text style={CommonStyles.textStyle}>{text}</Text>
+// </View>
