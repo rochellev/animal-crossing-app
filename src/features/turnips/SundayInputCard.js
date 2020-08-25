@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: Colors.oldLace,
     paddingVertical: 10,
-    width: 300
+    width: "100%"
   },
   priceSlider:{
     alignSelf: 'flex-end'

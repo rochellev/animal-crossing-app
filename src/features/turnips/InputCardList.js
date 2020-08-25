@@ -18,20 +18,22 @@ export const InputCardList = () => {
     "saturday"
   ];
 
-  function populateCards() {
+  function populateSellingDays() {
     const cards = [];
-    cards.push(<SundayInputCard key={"sunday"} />);
     for (const day of sellingDays) {
       cards.push(<DailyInputCard key={day} day={day} />);
     }
     return cards;
   }
-
-  const renderedComponents = populateCards();
-
+  const sellingDaysComponents = populateSellingDays();
+  
   return (
     <View style={styles.form}>
-      {renderedComponents}
+      <View style={{width: "80%", justifyContent: 'center'}}>
+
+      <SundayInputCard key={"sunday"} />
+      {sellingDaysComponents}
+      </View>
       <Button
         title="Predict Best Day to Sell!"
         type="outline"
@@ -46,6 +48,20 @@ export const InputCardList = () => {
 const styles = StyleSheet.create({
   form: {
     flex: 1,
+    flexDirection: 'column',
+ 
     backgroundColor: Colors.blanchedAlmond
   }
 });
+
+
+// <View style={styles.form}>
+//       {renderedComponents}
+//       <Button
+//         title="Predict Best Day to Sell!"
+//         type="outline"
+//         raised
+//         containerStyle={{ width: 200, alignSelf: "center" }}
+//         buttonStyle={{ width: "100%" }}
+//       />
+//     </View>

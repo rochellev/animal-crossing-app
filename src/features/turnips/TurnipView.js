@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
+    justifyContent: 'center',
     backgroundColor: Colors.teaGreen
   },
   turnip: {
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.platinum
   },
   inputSection: {
-    flex: 1
+    flex: 1,
+    
   }
 });
