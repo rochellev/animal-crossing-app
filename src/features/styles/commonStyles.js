@@ -23,7 +23,7 @@ export const CommonStyles = StyleSheet.create({
   textStyle: {
     fontSize: 18,
     color: Colors.spaceCadet,
-    fontFamily: "sans-serif-light"
+    fontFamily: "Inter_900Black"
   }
 });
 

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,16 +15,26 @@ import { TurnipView } from "./src/features/turnips/TurnipView";
 import { Provider } from "react-redux";
 import { getStore } from "./src/app/store";
 
+import { AppLoading } from "expo";
+import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
+
 const App = () => {
-  return (
-    <Provider store={getStore()}>
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <TurnipView />
-        </ScrollView>
-      </SafeAreaView>
-    </Provider>
-  );
+  let [fontsLoaded] = useFonts({
+    Inter_900Black
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <Provider store={getStore()}>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <TurnipView />
+          </ScrollView>
+        </SafeAreaView>
+      </Provider>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -32,7 +42,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     marginTop: Constants.statusBarHeight,
-    backgroundColor: Colors.spaceCadet
+    backgroundColor: Colors.spaceCadet,
+    fontFamily: "Inter_900Black"
   }
 });
 
