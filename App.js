@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,22 +9,33 @@ import {
   Text
 } from "react-native";
 import Constants from "expo-constants";
-import { Colors } from "./src/features/turnips/commonStyles";
+import { Colors } from "./src/features/styles/commonStyles";
 import { TurnipView } from "./src/features/turnips/TurnipView";
 // import { Provider } from "react-redux";
 import { Provider } from "react-redux";
 import { getStore } from "./src/app/store";
 
+import { AppLoading } from "expo";
+import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
+import { Inter_900Black } from "@expo-google-fonts/inter";
 const App = () => {
-  return (
-    <Provider store={getStore()}>
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <TurnipView />
-        </ScrollView>
-      </SafeAreaView>
-    </Provider>
-  );
+  let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    Inter_900Black
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <Provider store={getStore()}>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <TurnipView />
+          </ScrollView>
+        </SafeAreaView>
+      </Provider>
+    );
+  }
 };
 
 const styles = StyleSheet.create({

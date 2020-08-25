@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Colors, SliderStyle } from "./commonStyles";
+import { Colors, CommonStyles } from "../styles/commonStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
 
@@ -17,10 +17,10 @@ export const SundayInputCard = () => {
   };
   return (
     <View style={styles.container}>
-      <Text>Sunday</Text>
-      <Text>{value}</Text>
+      <Text style={CommonStyles.textStyle}>Sunday</Text>
+      <Text style={CommonStyles.textStyle}>{value}</Text>
       <Slider
-        style={SliderStyle}
+        style={CommonStyles.sliderStyle}
         value={value}
         minimumValue={25}
         maximumValue={850}
