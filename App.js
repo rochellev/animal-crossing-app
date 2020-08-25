@@ -16,11 +16,11 @@ import { Provider } from "react-redux";
 import { getStore } from "./src/app/store";
 
 import { AppLoading } from "expo";
-import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
+import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
 
 const App = () => {
   let [fontsLoaded] = useFonts({
-    Inter_900Black
+    Montserrat_400Regular
   });
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -42,8 +42,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     marginTop: Constants.statusBarHeight,
-    backgroundColor: Colors.spaceCadet,
-    fontFamily: "Inter_900Black"
+    backgroundColor: Colors.spaceCadet
   }
 });
 
