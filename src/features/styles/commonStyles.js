@@ -2,6 +2,8 @@ import { StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { Text, View } from "react-native";
 
+// fontFamily: "sans-serif-light"
+
 export const Colors = {
   spaceCadet: "#2B2D42",
   teaGreen: "#D4E3B5",
