@@ -15,26 +15,26 @@ export const Colors = {
   lavenderGrey: "#c6c6d2"
 };
 
-export const CommonStyles = StyleSheet.create({
-  sliderStyle: {
+export const AppStyles = StyleSheet.create({
+  slider: {
     width: 150,
     height: 30,
     backgroundColor: Colors.lavenderGrey
   },
-  textStyle: {
+  dayName: {
     fontSize: 18,
     color: Colors.spaceCadet,
     fontFamily: "Montserrat_400Regular"
   }
 });
 
-export const TurnipText = ({ text }) => {
-  return (
-    <View>
-      <Text style={CommonStyles.textStyle}>{text}</Text>
-    </View>
-  );
-};
+// export const TurnipText = ({ text }) => {
+//   return (
+//     <View>
+//       <Text style={AppStyles.textStyle}>{text}</Text>
+//     </View>
+//   );
+// };
 
 // <View>
 // <Text style={CommonStyles.textStyle}>{text}</Text>

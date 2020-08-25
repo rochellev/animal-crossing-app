@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Colors, CommonStyles } from "../styles/commonStyles";
+import { Colors, AppStyles } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
 
@@ -17,17 +17,19 @@ export const SundayInputCard = () => {
   };
   return (
     <View style={styles.container}>
-      <Text style={CommonStyles.textStyle}>Sunday</Text>
-      <Text style={CommonStyles.textStyle}>{value}</Text>
+      <Text style={AppStyles.dayName}>Sunday</Text>
+      <View style={styles.priceSlider}>
+      <Text style={AppStyles.dayName}>{value}</Text>
       <Slider
-        style={CommonStyles.sliderStyle}
+        style={AppStyles.slider}
         value={value}
-        minimumValue={25}
-        maximumValue={850}
+        minimumValue={1}
+        maximumValue={1000}
         step={1}
         onValueChange={value => setValue(value)}
         onSlidingComplete={value => handleSlideComplete(value)}
       />
+      </View>
     </View>
   );
 };
@@ -35,8 +37,28 @@ export const SundayInputCard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    justifyContent: 'center',
+    flexDirection: 'row',
     backgroundColor: Colors.oldLace,
-    paddingVertical: 10
+    paddingVertical: 10,
+    width: 300
+  },
+  priceSlider:{
+    alignSelf: 'flex-end'
   }
 });
+
+
+// <View style={styles.container}>
+// <Text style={CommonStyles.textStyle}>Sunday</Text>
+// <Text style={CommonStyles.textStyle}>{value}</Text>
+// <Slider
+//   style={CommonStyles.sliderStyle}
+//   value={value}
+//   minimumValue={25}
+//   maximumValue={850}
+//   step={100}
+//   onValueChange={value => setValue(value)}
+//   onSlidingComplete={value => handleSlideComplete(value)}
+// />
+// </View>

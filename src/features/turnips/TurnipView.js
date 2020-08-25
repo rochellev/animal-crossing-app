@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Colors } from "../styles/commonStyles";
+import { Colors } from "../styles/AppStyles";
 import { InputCardList } from "./InputCardList";
 
 export const TurnipView = () => {
