@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 
 // fontFamily: "sans-serif-light"
+// Inter_900Black
 
 export const Colors = {
   spaceCadet: "#2B2D42",

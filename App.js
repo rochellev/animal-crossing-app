@@ -17,10 +17,11 @@ import { getStore } from "./src/app/store";
 
 import { AppLoading } from "expo";
 import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
-
+import { Inter_900Black } from "@expo-google-fonts/inter";
 const App = () => {
   let [fontsLoaded] = useFonts({
-    Montserrat_400Regular
+    Montserrat_400Regular,
+    Inter_900Black
   });
   if (!fontsLoaded) {
     return <AppLoading />;
