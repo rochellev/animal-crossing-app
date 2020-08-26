@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
-import { AppStyles } from "../styles/AppStyles";
+import { AppStyles, Colors } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import {
   getDayData,
@@ -71,7 +71,9 @@ export const DailyInputCard = ({ day }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: Colors.oldLace,
+    marginBottom: 10
   },
   cards: {
     flexDirection: "row",
