@@ -18,20 +18,13 @@ export const InputCardList = () => {
     "saturday"
   ];
 
-  function populateSellingDays() {
-    const cards = [];
-    for (const day of sellingDays) {
-      cards.push(<DailyInputCard key={day} day={day} />);
-    }
-    return cards;
-  }
-  const sellingDaysComponents = populateSellingDays();
+  const renderedDailyInputCards = sellingDays.map((day) => <DailyInputCard key={day} day={day} />)
   
   return (
     <View style={styles.form}>
-      <View style={{width: "100%", justifyContent: 'center'}}>
+      <View style={{ justifyContent: 'center'}}>
       <SundayInputCard key={"sunday"} />
-      {sellingDaysComponents}
+      {renderedDailyInputCards}
       </View>
       <Button
         title="Predict Best Day to Sell!"
