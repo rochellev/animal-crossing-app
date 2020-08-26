@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
   },
   inputSection: {
     flex: 1,
+    alignSelf: 'center',
+    width: '92%'
     
   }
 });

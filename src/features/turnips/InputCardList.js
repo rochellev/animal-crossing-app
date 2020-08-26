@@ -29,8 +29,7 @@ export const InputCardList = () => {
   
   return (
     <View style={styles.form}>
-      <View style={{width: "80%", justifyContent: 'center'}}>
-
+      <View style={{width: "100%", justifyContent: 'center'}}>
       <SundayInputCard key={"sunday"} />
       {sellingDaysComponents}
       </View>
