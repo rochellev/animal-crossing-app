@@ -33,9 +33,13 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.day}>
       <Text style={AppStyles.dayName}>{name}</Text>
-      <View style={styles.cards}>
-        <View style={styles.cardInput}>
+      </View>
+      
+      <View style={styles.inputSection}>
+        <View style={ [{marginBottom: 5},styles.cardInput]}>
+          <View>
           <Text style={AppStyles.dayName}>
             Morning.......{morningPrice}
           </Text>
@@ -48,6 +52,8 @@ export const DailyInputCard = ({ day }) => {
             onValueChange={value => setMorningPrice(value)}
             onSlidingComplete={value => handleMorningSlideComplete(value)}
           />
+          </View>
+          
         </View>
         <View style={styles.cardInput}>
           <Text style={AppStyles.dayName}>
@@ -72,14 +78,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: Colors.oldLace,
+    justifyContent: "space-between",
+    flexDirection: 'row',
     marginBottom: 10
   },
-  cards: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+  inputSection: {
+    flexDirection: "column",
+    flex: 2,
+    
+    alignItems: 'center',
+    marginRight: 5,
+    
   },
   cardInput: {
-    padding: 5
+    padding: 5,
+    backgroundColor: Colors.oldLace,
+    borderRadius: 10,
+  },
+  day: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.oldLace,
+    marginHorizontal: 5,
+    paddingBottom: 10,
+    borderRadius: 10,
   }
 });

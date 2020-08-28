@@ -32,7 +32,7 @@ export const SundayInputCard = () => {
         </Text>
       </View>
       <View style={styles.priceSlider}>
-        <Text style={({ alignSelf: "center" }, AppStyles.dayName)}>
+        <Text style={[{ alignSelf: "center" }, AppStyles.dayName]}>
           {value}
         </Text>
         <Slider
