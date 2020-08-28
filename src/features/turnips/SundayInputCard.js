@@ -17,7 +17,7 @@ export const SundayInputCard = () => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.day}>
+      <View style={[AppStyles.shadows,styles.day]}>
         <Text
           style={{
             fontFamily: "Montserrat_400Regular",
@@ -31,7 +31,7 @@ export const SundayInputCard = () => {
           Selling Price
         </Text>
       </View>
-      <View style={styles.priceSlider}>
+      <View style={[AppStyles.shadows, styles.priceSlider]}>
         <Text style={[{ alignSelf: "center" }, AppStyles.dayName]}>
           {value}
         </Text>
@@ -54,8 +54,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     flexDirection: "row",
+
+    padding: 5,
+    marginBottom: 10,
     
-    margin: 10
     
   },
   priceSlider: {

@@ -33,12 +33,12 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.day}>
+      <View style={[styles.day, AppStyles.shadows]}>
       <Text style={AppStyles.dayName}>{name}</Text>
       </View>
       
       <View style={styles.inputSection}>
-        <View style={ [{marginBottom: 5},styles.cardInput]}>
+        <View style={ [{marginRight: 6},AppStyles.shadows,styles.cardInput]}>
           <View>
           <Text style={AppStyles.dayName}>
             Morning.......{morningPrice}
@@ -55,15 +55,15 @@ export const DailyInputCard = ({ day }) => {
           </View>
           
         </View>
-        <View style={styles.cardInput}>
+        <View style={ [AppStyles.shadows,styles.cardInput]}>
           <Text style={AppStyles.dayName}>
             Afternoon.....{afternoonPrice}
           </Text>
           <Slider
             style={AppStyles.slider}
             value={afternoonPrice}
-            minimumValue={25}
-            maximumValue={850}
+            minimumValue={1}
+            maximumValue={1000}
             step={1}
             onValueChange={value => setAfternoonPrice(value)}
             onSlidingComplete={value => handleAfternoonSlideComplete(value)}
@@ -74,16 +74,20 @@ export const DailyInputCard = ({ day }) => {
   );
 };
 
+// backgroundColor: Colors.blanchedAlmond,
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection: 'row',
-    marginBottom: 10
+    flexDirection: 'column',
+    
+    padding: 5,
+    marginBottom: 15
   },
   inputSection: {
-    flexDirection: "column",
+    flexDirection: "row",
     flex: 2,
     
     alignItems: 'center',
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
     
   },
   cardInput: {
-    padding: 5,
+    padding: 15,
     backgroundColor: Colors.oldLace,
     borderRadius: 10,
   },
@@ -100,8 +104,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.oldLace,
-    marginHorizontal: 5,
-    paddingBottom: 10,
+    padding: 10,
     borderRadius: 10,
-  }
+    marginBottom: 10
+    
+  },
+  
 });
