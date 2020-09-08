@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { Colors } from "../styles/commonStyles";
+import { Colors } from "../styles/AppStyles";
 
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
@@ -18,20 +18,14 @@ export const InputCardList = () => {
     "saturday"
   ];
 
-  function populateCards() {
-    const cards = [];
-    cards.push(<SundayInputCard key={"sunday"} />);
-    for (const day of sellingDays) {
-      cards.push(<DailyInputCard key={day} day={day} />);
-    }
-    return cards;
-  }
-
-  const renderedComponents = populateCards();
-
+  const renderedDailyInputCards = sellingDays.map((day) => <DailyInputCard key={day} day={day} />)
+  
   return (
     <View style={styles.form}>
-      {renderedComponents}
+      <View style={{ justifyContent: 'center'}}>
+      <SundayInputCard key={"sunday"} />
+      {renderedDailyInputCards}
+      </View>
       <Button
         title="Predict Best Day to Sell!"
         type="outline"
@@ -46,6 +40,20 @@ export const InputCardList = () => {
 const styles = StyleSheet.create({
   form: {
     flex: 1,
-    backgroundColor: Colors.blanchedAlmond
+    flexDirection: 'column',
+ 
+    
   }
 });
+
+
+// <View style={styles.form}>
+//       {renderedComponents}
+//       <Button
+//         title="Predict Best Day to Sell!"
+//         type="outline"
+//         raised
+//         containerStyle={{ width: 200, alignSelf: "center" }}
+//         buttonStyle={{ width: "100%" }}
+//       />
+//     </View>

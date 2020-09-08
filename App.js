@@ -9,7 +9,7 @@ import {
   Text
 } from "react-native";
 import Constants from "expo-constants";
-import { Colors } from "./src/features/styles/commonStyles";
+import { Colors } from "./src/features/styles/AppStyles";
 import { TurnipView } from "./src/features/turnips/TurnipView";
 // import { Provider } from "react-redux";
 import { Provider } from "react-redux";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
-import { CommonStyles } from "../styles/commonStyles";
+import { AppStyles, Colors } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import {
   getDayData,
@@ -33,31 +33,37 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={CommonStyles.textStyle}>{name}</Text>
-      <View style={styles.cards}>
-        <View style={styles.cardInput}>
-          <Text style={CommonStyles.textStyle}>
+      <View style={[styles.day, AppStyles.shadows]}>
+      <Text style={AppStyles.dayName}>{name}</Text>
+      </View>
+      
+      <View style={styles.inputSection}>
+        <View style={ [{marginRight: 6},AppStyles.shadows,styles.cardInput]}>
+          <View>
+          <Text style={AppStyles.dayName}>
             Morning.......{morningPrice}
           </Text>
           <Slider
-            style={CommonStyles.sliderStyle}
+            style={AppStyles.slider}
             value={morningPrice}
-            minimumValue={25}
-            maximumValue={850}
+            minimumValue={1}
+            maximumValue={1000}
             step={1}
             onValueChange={value => setMorningPrice(value)}
             onSlidingComplete={value => handleMorningSlideComplete(value)}
           />
+          </View>
+          
         </View>
-        <View style={styles.cardInput}>
-          <Text style={CommonStyles.textStyle}>
+        <View style={ [AppStyles.shadows,styles.cardInput]}>
+          <Text style={AppStyles.dayName}>
             Afternoon.....{afternoonPrice}
           </Text>
           <Slider
-            style={CommonStyles.sliderStyle}
+            style={AppStyles.slider}
             value={afternoonPrice}
-            minimumValue={25}
-            maximumValue={850}
+            minimumValue={1}
+            maximumValue={1000}
             step={1}
             onValueChange={value => setAfternoonPrice(value)}
             onSlidingComplete={value => handleAfternoonSlideComplete(value)}
@@ -68,16 +74,40 @@ export const DailyInputCard = ({ day }) => {
   );
 };
 
+// backgroundColor: Colors.blanchedAlmond,
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: 'column',
+    
+    padding: 5,
+    marginBottom: 15
   },
-  cards: {
+  inputSection: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    flex: 2,
+    
+    alignItems: 'center',
+    marginRight: 5,
+    
   },
   cardInput: {
-    padding: 5
-  }
+    padding: 15,
+    backgroundColor: Colors.oldLace,
+    borderRadius: 10,
+  },
+  day: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.oldLace,
+    padding: 10,
+    borderRadius: 10,
+    marginBottom: 10
+    
+  },
+  
 });
