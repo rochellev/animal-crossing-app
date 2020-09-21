@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection: 'column',
+    flexDirection: 'row',
     
     padding: 5,
     marginBottom: 15
