@@ -34,14 +34,14 @@ export const DailyInputCard = ({ day }) => {
   return (
     <View style={styles.container}>
       <View style={[styles.day, AppStyles.shadows]}>
-      <Text style={AppStyles.dayName}>{name}</Text>
+        <Text style={AppStyles.dayName}>{name}</Text>
       </View>
-      
+
       <View style={styles.inputSection}>
-        <View style={ [{marginRight: 6},AppStyles.shadows,styles.cardInput]}>
-          <View>
+        <View style={[{ marginRight: 5 }, AppStyles.shadows, styles.cardInput]}>
           <Text style={AppStyles.dayName}>
-            Morning.......{morningPrice}
+            <Text>AM </Text>
+            <Text>{morningPrice}</Text>
           </Text>
           <Slider
             style={AppStyles.slider}
@@ -52,12 +52,11 @@ export const DailyInputCard = ({ day }) => {
             onValueChange={value => setMorningPrice(value)}
             onSlidingComplete={value => handleMorningSlideComplete(value)}
           />
-          </View>
-          
         </View>
-        <View style={ [AppStyles.shadows,styles.cardInput]}>
+        <View style={[AppStyles.shadows, styles.cardInput]}>
           <Text style={AppStyles.dayName}>
-            Afternoon.....{afternoonPrice}
+            <Text>PM </Text>
+            <Text>{afternoonPrice}</Text>
           </Text>
           <Slider
             style={AppStyles.slider}
@@ -80,34 +79,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: 'row',
-    
-    padding: 5,
-    marginBottom: 15
-  },
-  inputSection: {
+    alignSelf: "center",
     flexDirection: "row",
-    flex: 2,
-    
-    alignItems: 'center',
-    marginRight: 5,
-    
-  },
-  cardInput: {
-    padding: 15,
-    backgroundColor: Colors.oldLace,
-    borderRadius: 10,
+    width: "100%",
+
+    marginBottom: 15
   },
   day: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.oldLace,
-    padding: 10,
+    paddingVertical: 5,
+    marginRight: 1,
     borderRadius: 10,
-    marginBottom: 10
     
   },
-  
+  inputSection: {
+    flexDirection: "row",
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginRight: 5
+  },
+  cardInput: {
+    padding: 10,
+    backgroundColor: Colors.oldLace,
+    borderRadius: 10
+  }
 });

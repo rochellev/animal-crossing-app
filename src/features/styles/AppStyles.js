@@ -17,7 +17,7 @@ export const Colors = {
 
 export const AppStyles = StyleSheet.create({
   slider: {
-    width: 120,
+    width: 110,
     height: 20,
     backgroundColor: Colors.lavenderGrey
   },

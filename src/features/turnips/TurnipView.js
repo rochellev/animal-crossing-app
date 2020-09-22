@@ -5,6 +5,7 @@ import { Colors } from "../styles/AppStyles";
 import { InputCardList } from "./InputCardList";
 
 export const TurnipView = () => {
+  
   return (
     <View style={styles.container}>
       <Image
@@ -37,8 +38,8 @@ const styles = StyleSheet.create({
   },
   inputSection: {
     flex: 1,
-    alignSelf: 'center',
-    width:395
+    justifyContent: 'center',
+    
     
   }
 });

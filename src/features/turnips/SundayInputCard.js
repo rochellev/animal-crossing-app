@@ -52,9 +52,9 @@ export const SundayInputCard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     flexDirection: "row",
-
+    width: '100%',
     padding: 5,
     marginBottom: 10,
     
