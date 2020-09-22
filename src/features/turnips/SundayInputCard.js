@@ -17,6 +17,7 @@ export const SundayInputCard = () => {
   };
   return (
     <View style={styles.container}>
+   
       <View style={[AppStyles.shadows,styles.day]}>
         <Text
           style={{
@@ -55,8 +56,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     flexDirection: "row",
     width: '100%',
-    padding: 5,
+    padding: 15,
     marginBottom: 10,
+    marginHorizontal: 5,
     
     
   },
@@ -64,17 +66,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.oldLace,
     alignItems: 'center',
-    marginRight: 5,
+    marginRight: 12 ,
     borderRadius: 10,
+    
   },
   day: {
     flex: 1,
-    
+    marginRight: 12,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.oldLace,
-    marginHorizontal: 5,
-    paddingBottom: 10,
+    
+    paddingBottom: 5,
     borderRadius: 10,
   }
 });

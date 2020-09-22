@@ -30,14 +30,14 @@ export const TurnipView = () => {
           <SundayInputCard key={"sunday"} />
         </View>
 
-        <View style={{ flex: 1 }} >{renderedDailyInputCards}</View>
+        <View style={{ flex: 1 }}>{renderedDailyInputCards}</View>
       </View>
       <Button
         title="Predict Best Day to Sell!"
         type="outline"
         raised
-        containerStyle={{flex: 1, width: 200, alignSelf: "center" }}
-        buttonStyle={{  width: "100%" }}
+        containerStyle={{ flex: 1, width: 200, alignSelf: "center" }}
+        buttonStyle={{ width: "100%" }}
       />
     </View>
   );
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.teaGreen
+    backgroundColor: Colors.teaGreen,
+    paddingBottom: 10
   },
   turnip: {
     alignSelf: "center",

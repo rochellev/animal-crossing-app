@@ -40,7 +40,7 @@ export const DailyInputCard = ({ day }) => {
       <View style={styles.inputSection}>
         <View style={[{ marginRight: 5 }, AppStyles.shadows, styles.cardInput]}>
           <Text style={AppStyles.dayName}>
-            <Text>AM </Text>
+            <Text>AM     </Text>
             <Text>{morningPrice}</Text>
           </Text>
           <Slider
@@ -55,7 +55,7 @@ export const DailyInputCard = ({ day }) => {
         </View>
         <View style={[AppStyles.shadows, styles.cardInput]}>
           <Text style={AppStyles.dayName}>
-            <Text>PM </Text>
+            <Text>PM     </Text>
             <Text>{afternoonPrice}</Text>
           </Text>
           <Slider
@@ -90,6 +90,8 @@ marginHorizontal: 5,
     justifyContent: "center",
     backgroundColor: Colors.oldLace,
     paddingVertical: 5,
+    height: '80%',
+    width: '10%',
     paddingHorizontal: 0,
     borderRadius: 10,
     marginLeft: 5,
