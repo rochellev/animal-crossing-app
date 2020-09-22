@@ -3,8 +3,22 @@ import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Colors } from "../styles/AppStyles";
 import { InputCardList } from "./InputCardList";
+import { SundayInputCard } from "./SundayInputCard";
+import { DailyInputCard } from "./DailyInputCard";
 
 export const TurnipView = () => {
+  const sellingDays = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ];
+
+  const renderedDailyInputCards = sellingDays.map(day => (
+    <DailyInputCard key={day} day={day} />
+  ));
   
   return (
     <View style={styles.container}>
@@ -12,9 +26,9 @@ export const TurnipView = () => {
         source={require("../../../images/Turnips_Icon.png")}
         style={styles.turnip}
       />
-      <View style={styles.inputSection}>
-        <InputCardList />
-      </View>
+
+
+    
     </View>
   );
 };
@@ -43,3 +57,7 @@ const styles = StyleSheet.create({
     
   }
 });
+
+// <View style={styles.inputSection}>
+// <InputCardList />
+// </View>
