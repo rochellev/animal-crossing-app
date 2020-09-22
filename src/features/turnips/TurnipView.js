@@ -19,13 +19,15 @@ export const TurnipView = () => {
   const renderedDailyInputCards = sellingDays.map(day => (
     <DailyInputCard key={day} day={day} />
   ));
-  
+
   return (
     <View style={styles.container}>
+      <View style={styles.turnip}>
       <Image
         source={require("../../../images/Turnips_Icon.png")}
-        style={styles.turnip}
       />
+      </View>
+      
 
 
     
