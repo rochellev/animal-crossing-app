@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
 import { Colors } from "../styles/AppStyles";
-import { InputCardList } from "./InputCardList";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
 
@@ -23,14 +23,22 @@ export const TurnipView = () => {
   return (
     <View style={styles.container}>
       <View style={styles.turnip}>
-      <Image
-        source={require("../../../images/Turnips_Icon.png")}
-      />
+        <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
-      
+      <View style={styles.inputSection}>
+        <View>
+          <SundayInputCard key={"sunday"} />
+        </View>
 
-
-    
+        <View>{renderedDailyInputCards}</View>
+      </View>
+      <Button
+        title="Predict Best Day to Sell!"
+        type="outline"
+        raised
+        containerStyle={{ width: 200, alignSelf: "center" }}
+        buttonStyle={{ width: "100%" }}
+      />
     </View>
   );
 };
@@ -39,24 +47,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: 'center',
+    justifyContent: "center",
     backgroundColor: Colors.teaGreen
   },
   turnip: {
     alignSelf: "center"
   },
-  header: {
-    flex: 1,
-    alignItems: "center",
-    paddingTop: 5,
-    paddingBottom: 15,
-    backgroundColor: Colors.platinum
-  },
   inputSection: {
     flex: 1,
-    justifyContent: 'center',
-    
-    
+    justifyContent: "center"
   }
 });
 
