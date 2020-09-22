@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   },
   day: {
     flex: 1,
+    
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.oldLace,

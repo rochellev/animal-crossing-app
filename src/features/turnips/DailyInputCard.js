@@ -81,28 +81,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     flexDirection: "row",
-    width: "100%",
-
+marginHorizontal: 5,
     marginBottom: 15
   },
   day: {
     flex: 1,
-    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
     backgroundColor: Colors.oldLace,
     paddingVertical: 5,
-    marginRight: 1,
+    paddingHorizontal: 0,
     borderRadius: 10,
-    
+    marginLeft: 5,
+    marginRight: 5,
   },
   inputSection: {
     flexDirection: "row",
-    flex: 3,
+    flex: 2,
     alignItems: "center",
     justifyContent: "space-evenly",
     marginRight: 5
   },
   cardInput: {
-    padding: 10,
+    padding: 8,
     backgroundColor: Colors.oldLace,
     borderRadius: 10
   }

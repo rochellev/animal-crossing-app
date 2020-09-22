@@ -23,6 +23,7 @@ export const AppStyles = StyleSheet.create({
   },
   dayName: {
     fontSize: 18,
+    padding: 0,
     color: Colors.spaceCadet,
     fontFamily: "Montserrat_400Regular"
   },
