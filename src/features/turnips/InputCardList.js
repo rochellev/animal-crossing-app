@@ -18,13 +18,15 @@ export const InputCardList = () => {
     "saturday"
   ];
 
-  const renderedDailyInputCards = sellingDays.map((day) => <DailyInputCard key={day} day={day} />)
-  
+  const renderedDailyInputCards = sellingDays.map(day => (
+    <DailyInputCard key={day} day={day} />
+  ));
+
   return (
     <View style={styles.form}>
-      <View style={{ justifyContent: 'center'}}>
-      <SundayInputCard key={"sunday"} />
-      {renderedDailyInputCards}
+      <View style={{ justifyContent: "space-evenly" }}>
+        <SundayInputCard key={"sunday"} />
+        {renderedDailyInputCards}
       </View>
       <Button
         title="Predict Best Day to Sell!"
@@ -40,12 +42,11 @@ export const InputCardList = () => {
 const styles = StyleSheet.create({
   form: {
     flex: 1,
-    flexDirection: 'column',
- 
-    
+    flexDirection: "column",
+
+    width: "100%"
   }
 });
-
 
 // <View style={styles.form}>
 //       {renderedComponents}

@@ -17,12 +17,14 @@ export const Colors = {
 
 export const AppStyles = StyleSheet.create({
   slider: {
-    width: 120,
+    width: 110,
     height: 20,
     backgroundColor: Colors.lavenderGrey
   },
   dayName: {
     fontSize: 18,
+    padding: 0,
+    alignSelf: 'center',
     color: Colors.spaceCadet,
     fontFamily: "Montserrat_400Regular"
   },
