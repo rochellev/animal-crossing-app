@@ -26,18 +26,18 @@ export const TurnipView = () => {
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
       <View style={styles.inputSection}>
-        <View>
+        <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>
 
-        <View>{renderedDailyInputCards}</View>
+        <View style={{ flex: 1 }} >{renderedDailyInputCards}</View>
       </View>
       <Button
         title="Predict Best Day to Sell!"
         type="outline"
         raised
-        containerStyle={{ width: 200, alignSelf: "center" }}
-        buttonStyle={{ width: "100%" }}
+        containerStyle={{flex: 1, width: 200, alignSelf: "center" }}
+        buttonStyle={{  width: "100%" }}
       />
     </View>
   );
@@ -48,10 +48,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
     backgroundColor: Colors.teaGreen
   },
   turnip: {
-    alignSelf: "center"
+    alignSelf: "center",
+    flex: 1
   },
   inputSection: {
     flex: 1,
