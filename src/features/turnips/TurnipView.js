@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
 
 export const TurnipView = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const sellingDays = [
     "monday",
     "tuesday",
@@ -24,6 +26,16 @@ export const TurnipView = () => {
     <View style={styles.container}>
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
+      </View>
+      <View>
+        <Text>First Time buyer?</Text>
+        <Switch
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
       </View>
       <View style={styles.inputSection}>
         <View style={{ flex: 1 }}>

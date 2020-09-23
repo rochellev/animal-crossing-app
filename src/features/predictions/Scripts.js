@@ -289,6 +289,7 @@ const calculateOutput = function (data, first_buy, previous_pattern) {
   }
   let pat_desc = {0:"fluctuating", 1:"large-spike", 2:"decreasing", 3:"small-spike", 4:"all"};
   let output_possibilities = "";
+  // instantiate a predictor object
   let predictor = new Predictor(data, first_buy, previous_pattern);
   let analyzed_possibilities = predictor.analyze_possibilities();
   let buy_price = parseInt(buy_input.val());

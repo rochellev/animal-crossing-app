@@ -52,3 +52,6 @@ const predictionsSlice = createSlice({
 export default predictionsSlice.reducer;
 
 export const getData = (state) => Object.values(state.predictions.data)
+
+
+// sell prices array [Sun, MondayAM, MondayPM, TuesdayAM, ...]

@@ -993,6 +993,8 @@ class Predictor {
       weekGuaranteedMinimum: Math.min(...generated_possibilities.map(poss => poss.weekGuaranteedMinimum)),
       weekMax: Math.max(...generated_possibilities.map(poss => poss.weekMax))
     });
+  
+    
 
     return generated_possibilities;
   }
