@@ -34,24 +34,40 @@ const initialState = {
         monday: {
           guaranteedMin: 20,
           potentialMax: 899
-        },
+        }
       }
     }
   },
   status: "idle",
-  error: null,
-
+  error: null
 };
 
 const predictionsSlice = createSlice({
   name: "predictions",
   initialState,
-  reducers: {}
+  reducers: {
+    firstTimeBuyerUpdated(state, action) {
+      const { buyerStatus } = action.payload;
+      state.data.firstTimeBuyer = buyerStatus;
+    },
+    previousPatternUpdated(state, action) {
+      const { patternInput } = action.payload;
+      state.data.previousPattern = patternInput;
+    }
+  }
 });
 
 export default predictionsSlice.reducer;
 
-export const getData = (state) => Object.values(state.predictions.data)
+export const {
+  firstTimeBuyerUpdated,
+  previousPatternUpdated
+} = predictionsSlice.actions;
 
+export const getData = state => Object.values(state.predictions.data);
 
 // sell prices array [Sun, MondayAM, MondayPM, TuesdayAM, ...]
+
+// export const calculatePrediction = () = {
+
+// }
