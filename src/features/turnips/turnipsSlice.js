@@ -82,7 +82,7 @@ export const getDayData = (state, day) =>
   Object.values(state.turnips.data[day]);
 
 export const getBuyerStatus = state =>
-  Object.values(state.turnips.data.buyerStatus);
+  Object.values(state.turnips.data.firstTimeBuyer);
 
 export const getSundayData = state => state.turnips.data.sunday;
 
