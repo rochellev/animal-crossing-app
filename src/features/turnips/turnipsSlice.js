@@ -5,6 +5,8 @@ const { getItem, setItem } = useAsyncStorage("@data");
 // state = {turnips, status, error}
 const initialState = {
   data: {
+    firstTimeBuyer: true,
+    previousPattern: "large_spike",
     sunday: 90,
     monday: {
       day: "Monday",
@@ -44,6 +46,14 @@ const turnipsSlice = createSlice({
   name: "turnips",
   initialState,
   reducers: {
+    firstTimeBuyerUpdated(state, action) {
+      const { buyerStatus } = action.payload;
+      state.data.firstTimeBuyer = buyerStatus;
+    },
+    previousPatternUpdated(state, action) {
+      const { patternInput } = action.payload;
+      state.data.previousPattern = patternInput;
+    },
     sundayPriceUpdated(state, action) {
       const { value } = action.payload;
       state.data.sunday = value;
@@ -60,6 +70,8 @@ const turnipsSlice = createSlice({
 });
 
 export const {
+  firstTimeBuyerUpdated,
+  previousPatternUpdated,
   sundayPriceUpdated,
   morningPriceUpdated,
   afternoonPriceUpdated
@@ -68,6 +80,9 @@ export default turnipsSlice.reducer;
 
 export const getDayData = (state, day) =>
   Object.values(state.turnips.data[day]);
+
+export const getBuyerStatus = state =>
+  Object.values(state.turnips.data.buyerStatus);
 
 export const getSundayData = state => state.turnips.data.sunday;
 
