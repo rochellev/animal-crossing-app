@@ -1,14 +1,24 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
+import { getBuyerStatus, firstTimeBuyerUpdated } from "./turnipsSlice";
 
 export const TurnipView = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const [firstTimeBuyer] = useSelector(state => getBuyerStatus(state));
+
+  const [isFirstTimeBuyer, setIsFirstTimeBuyer] = useState(firstTimeBuyer);
+  const dispatch = useDispatch();
+
+  const toggleBuyerStatus = () =>
+    setIsFirstTimeBuyer(previousState => !previousState);
+
+  const handleToggle = () => {
+    dispatch(firstTimeBuyerUpdated({ value }));
+  };
   const sellingDays = [
     "monday",
     "tuesday",
@@ -29,12 +39,13 @@ export const TurnipView = () => {
       </View>
       <View>
         <Text>First Time buyer?</Text>
+        <Text>{firstTimeBuyer}</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={isFirstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
+          onValueChange={toggleBuyerStatus}
+          value={isFirstTimeBuyer}
         />
       </View>
       <View style={styles.inputSection}>
