@@ -29,7 +29,7 @@ export const SundayInputCard = () => {
           Sunday
         </Text>
         <Text style={{ fontFamily: "Montserrat_400Regular", fontSize: 15 }}>
-          Selling Price
+          Selling Price {sundayPrice.toString()}
         </Text>
       </View>
       <View style={[AppStyles.shadows, styles.priceSlider]}>

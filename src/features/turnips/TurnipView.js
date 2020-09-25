@@ -5,19 +5,16 @@ import { Button } from "react-native-elements";
 import { Colors } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
-import { getBuyerStatus, firstTimeBuyerUpdated } from "./turnipsSlice";
+import { getBuyerStatus, firstTimeBuyerUpdated, getSundayData } from "./turnipsSlice";
 
 export const TurnipView = () => {
-  const [firstTimeBuyer] = useSelector(state => getBuyerStatus(state));
-
-  const [isFirstTimeBuyer, setIsFirstTimeBuyer] = useState(firstTimeBuyer);
+  const buyerStatus = useSelector(state => getBuyerStatus(state));
+  // const sundayBoy = useSelector(state => getSundayData(state));
+  const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
   const dispatch = useDispatch();
 
-  const toggleBuyerStatus = () =>
-    setIsFirstTimeBuyer(previousState => !previousState);
-
   const handleToggle = () => {
-    dispatch(firstTimeBuyerUpdated({ value }));
+    dispatch(firstTimeBuyerUpdated({ isFirstTimeBuyer }));
   };
   const sellingDays = [
     "monday",
@@ -27,6 +24,11 @@ export const TurnipView = () => {
     "friday",
     "saturday"
   ];
+
+  const [isEnabled, setIsEnabled] = useState(buyerStatus);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+
 
   const renderedDailyInputCards = sellingDays.map(day => (
     <DailyInputCard key={day} day={day} />
@@ -38,15 +40,18 @@ export const TurnipView = () => {
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
       <View>
-        <Text>First Time buyer?</Text>
-        <Text>{firstTimeBuyer}</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isFirstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleBuyerStatus}
-          value={isFirstTimeBuyer}
-        />
+        <View style={{backgroundColor: 'white'}}>
+        <Text>{buyerStatus.toString()}</Text>
+        <Text>{isEnabled.toString()}</Text>
+        </View>
+        
+      <Switch
+        trackColor={{ false: "red", true: "green" }}
+        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
       </View>
       <View style={styles.inputSection}>
         <View style={{ flex: 1 }}>
@@ -88,3 +93,15 @@ const styles = StyleSheet.create({
 // <View style={styles.inputSection}>
 // <InputCardList />
 // </View>
+
+
+  // <Text>First Time buyer? {firstTimeBuyer}</Text>
+  //       <Text>{firstTimeBuyer}</Text>
+  //       <Switch
+  //         trackColor={{ false: "red", true: "green" }}
+  //         thumbColor={isFirstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
+  //         ios_backgroundColor="#3e3e3e"
+  //         onChange = {value => setIsFirstTimeBuyer(value)}
+  //         onValueChange={handleToggle}
+          
+  //       />
