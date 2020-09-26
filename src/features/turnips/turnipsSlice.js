@@ -47,8 +47,8 @@ const turnipsSlice = createSlice({
   initialState,
   reducers: {
     firstTimeBuyerUpdated(state, action) {
-      const { isFirstTimeBuyer } = action.payload;
-      state.data.firstTimeBuyer = isFirstTimeBuyer;
+      const { firstTimeBuyer } = action.payload;
+      state.data.firstTimeBuyer = firstTimeBuyer;
     },
     previousPatternUpdated(state, action) {
       const { patternInput } = action.payload;
@@ -81,8 +81,7 @@ export default turnipsSlice.reducer;
 export const getDayData = (state, day) =>
   Object.values(state.turnips.data[day]);
 
-export const getBuyerStatus = state =>
-state.turnips.data.firstTimeBuyer;
+export const getBuyerStatus = state => state.turnips.data.firstTimeBuyer;
 
 export const getSundayData = state => state.turnips.data.sunday;
 
