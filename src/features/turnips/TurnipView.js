@@ -11,6 +11,7 @@ import {
   firstTimeBuyerUpdated,
   getPreviousPattern
 } from "./turnipsSlice";
+import {Picker} from '@react-native-community/picker';
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
