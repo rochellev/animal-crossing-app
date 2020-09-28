@@ -21,7 +21,28 @@ export const TurnipView = () => {
   const handleToggle = value => {
     dispatch(firstTimeBuyerUpdated({ value }));
   };
-
+  const options = [
+    {
+      key: 'idk',
+      text: 'Not sure'
+    },
+    {
+      key: 'fluctuating',
+      text: 'Fluctuating'
+    },
+    {
+      key: 'small-spike',
+      text: 'Small Spike'
+    },
+    {
+      key: 'large-spike',
+      text: 'Large Spike'
+    },
+    {
+      key: 'decreasing',
+      text: 'Decreasing'
+    }
+  ]
   const sellingDays = [
     "monday",
     "tuesday",
