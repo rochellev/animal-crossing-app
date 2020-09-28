@@ -47,8 +47,8 @@ const turnipsSlice = createSlice({
   initialState,
   reducers: {
     firstTimeBuyerUpdated(state, action) {
-      const { firstTimeBuyer } = action.payload;
-      state.data.firstTimeBuyer = firstTimeBuyer;
+      const { value } = action.payload;
+      state.data.firstTimeBuyer = value;
     },
     previousPatternUpdated(state, action) {
       const { patternInput } = action.payload;

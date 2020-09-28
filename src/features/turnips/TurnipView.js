@@ -13,14 +13,13 @@ import {
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
-  // const sundayBoy = useSelector(state => getSundayData(state));
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
   const dispatch = useDispatch();
 
-  const handleToggle = () => {
-    setFirstTimeBuyer(prev => !prev)
-    dispatch(firstTimeBuyerUpdated({ firstTimeBuyer }));
+  const handleToggle = value => {
+    dispatch(firstTimeBuyerUpdated({ value }));
   };
+
   const sellingDays = [
     "monday",
     "tuesday",
@@ -41,7 +40,7 @@ export const TurnipView = () => {
       </View>
       <View>
         <View style={{ backgroundColor: "white" }}>
-          <Text>{buyerStatus.toString()}</Text>
+          <Text>The store's buyerStatus: {buyerStatus.toString()}</Text>
         </View>
         <Text>First Time buyer? </Text>
         <Text>{firstTimeBuyer.toString()}</Text>
@@ -49,8 +48,8 @@ export const TurnipView = () => {
           trackColor={{ false: "red", true: "green" }}
           thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
-          onValueChange={() => handleToggle()}
-        
+          onChange={() => setFirstTimeBuyer(previous => !previous)}
+          onValueChange={value => handleToggle(value)}
           value={firstTimeBuyer}
         />
       </View>
