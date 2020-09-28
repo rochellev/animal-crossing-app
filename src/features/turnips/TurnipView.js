@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
-import { Colors } from "../styles/AppStyles";
+import { Colors, AppStyles } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
 import { RadioButton } from "./RadioButton";
@@ -66,14 +66,12 @@ export const TurnipView = () => {
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
-      <View style={{ alignSelf:'center', backgroundColor: "white" }}>
-            <Text>redux previousPattern: {previousPattern}</Text>
-          </View>
+      <View style={{ alignSelf: "center", backgroundColor: "white" }}>
+        <Text style={AppStyles.dayName}>redux previousPattern: {previousPattern}</Text>
+      </View>
       <View style={styles.inputSection}>
-
         <View style={styles.buyerStatusContainer}>
-        
-          <Text>First Time buyer? </Text>
+          <Text style={AppStyles.dayName}>First Time buyer? </Text>
           <Switch
             trackColor={{ false: "red", true: "green" }}
             thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
@@ -81,9 +79,10 @@ export const TurnipView = () => {
             onChange={() => setFirstTimeBuyer(previous => !previous)}
             onValueChange={value => handleToggle(value)}
             value={firstTimeBuyer}
+            style={{ alignSelf: "center" }}
           />
         </View>
-        <View style={{ flex: 1 }}>{renderedPatternOptions}</View>
+        <View style={styles.patternsContainer}>{renderedPatternOptions}</View>
         <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>
@@ -119,7 +118,14 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   buyerStatusContainer: {
-
+    flex: 1,
+    alignSelf: "center",
+    flexDirection: "row"
+  },
+  patternsContainer: {
+    flex: 1,
+    flexDirection: "row",
+    marginHorizontal: 5
   }
 });
 
