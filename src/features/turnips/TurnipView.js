@@ -13,8 +13,9 @@ import {
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
+  const previousPattern = useSelector(state => getPreviousPattern(state));
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
-  const [previousPattern, setPreviousPattern] = useState("");
+  const [pattern, setPattern] = useState(previousPattern);
   const dispatch = useDispatch();
 
   const handleToggle = value => {
@@ -41,10 +42,9 @@ export const TurnipView = () => {
       </View>
       <View>
         <View style={{ backgroundColor: "white" }}>
-          <Text>The store's buyerStatus: {buyerStatus.toString()}</Text>
+          <Text>redux previousPattern: {previousPattern}</Text>
         </View>
         <Text>First Time buyer? </Text>
-        <Text>{firstTimeBuyer.toString()}</Text>
         <Switch
           trackColor={{ false: "red", true: "green" }}
           thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
