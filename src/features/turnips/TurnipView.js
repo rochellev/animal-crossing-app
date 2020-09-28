@@ -8,12 +8,13 @@ import { DailyInputCard } from "./DailyInputCard";
 import {
   getBuyerStatus,
   firstTimeBuyerUpdated,
-  getSundayData
+  getPreviousPattern
 } from "./turnipsSlice";
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
+  const [previousPattern, setPreviousPattern] = useState("");
   const dispatch = useDispatch();
 
   const handleToggle = value => {
