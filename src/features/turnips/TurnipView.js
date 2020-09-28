@@ -5,6 +5,7 @@ import { Button } from "react-native-elements";
 import { Colors } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
+import { RadioButton } from "./RadioButton";
 import {
   getBuyerStatus,
   firstTimeBuyerUpdated,
@@ -21,28 +22,28 @@ export const TurnipView = () => {
   const handleToggle = value => {
     dispatch(firstTimeBuyerUpdated({ value }));
   };
-  const options = [
+  const patternOptions = [
     {
-      key: 'idk',
-      text: 'Not sure'
+      key: "idk",
+      text: "Not sure"
     },
     {
-      key: 'fluctuating',
-      text: 'Fluctuating'
+      key: "fluctuating",
+      text: "Fluctuating"
     },
     {
-      key: 'small-spike',
-      text: 'Small Spike'
+      key: "small-spike",
+      text: "Small Spike"
     },
     {
-      key: 'large-spike',
-      text: 'Large Spike'
+      key: "large-spike",
+      text: "Large Spike"
     },
     {
-      key: 'decreasing',
-      text: 'Decreasing'
+      key: "decreasing",
+      text: "Decreasing"
     }
-  ]
+  ];
   const sellingDays = [
     "monday",
     "tuesday",
@@ -56,26 +57,33 @@ export const TurnipView = () => {
     <DailyInputCard key={day} day={day} />
   ));
 
+  const renderedPatternOptions = patternOptions.map(option => (
+    <RadioButton key={option.key} text={option.text} />
+  ));
+
   return (
     <View style={styles.container}>
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
-      <View>
-        <View style={{ backgroundColor: "white" }}>
-          <Text>redux previousPattern: {previousPattern}</Text>
-        </View>
-        <Text>First Time buyer? </Text>
-        <Switch
-          trackColor={{ false: "red", true: "green" }}
-          thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onChange={() => setFirstTimeBuyer(previous => !previous)}
-          onValueChange={value => handleToggle(value)}
-          value={firstTimeBuyer}
-        />
-      </View>
+      <View style={{ alignSelf:'center', backgroundColor: "white" }}>
+            <Text>redux previousPattern: {previousPattern}</Text>
+          </View>
       <View style={styles.inputSection}>
+
+        <View style={styles.buyerStatusContainer}>
+        
+          <Text>First Time buyer? </Text>
+          <Switch
+            trackColor={{ false: "red", true: "green" }}
+            thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onChange={() => setFirstTimeBuyer(previous => !previous)}
+            onValueChange={value => handleToggle(value)}
+            value={firstTimeBuyer}
+          />
+        </View>
+        <View style={{ flex: 1 }}>{renderedPatternOptions}</View>
         <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>
@@ -109,6 +117,9 @@ const styles = StyleSheet.create({
   inputSection: {
     flex: 1,
     justifyContent: "center"
+  },
+  buyerStatusContainer: {
+
   }
 });
 
