@@ -23,7 +23,12 @@ export const TurnipView = () => {
   const [pattern, setPattern] = useState(previousPattern);
   const dispatch = useDispatch();
 
-  const handleToggle = value => {
+  // const handleToggle = value => {
+  //   dispatch(firstTimeBuyerUpdated({ value }));
+  // };
+
+  const handleBuyerStatus = value => {
+    setFirstTimeBuyer(value);
     dispatch(firstTimeBuyerUpdated({ value }));
   };
 
@@ -77,17 +82,23 @@ export const TurnipView = () => {
       </View>
 
       <View style={styles.inputSection}>
+        <Text>redux buyer state: {buyerStatus.toString()}</Text>
         <View style={styles.buyerStatusContainer}>
           <Text style={AppStyles.dayName}>First Time buyer? </Text>
-          <Switch
-            trackColor={{ false: "red", true: "green" }}
-            thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onChange={() => setFirstTimeBuyer(previous => !previous)}
-            onValueChange={value => handleToggle(value)}
-            value={firstTimeBuyer}
-            style={{ alignSelf: "center" }}
-          />
+
+          <View style={styles.patternsContainer}>
+            <Picker
+              default
+              selectedValue={firstTimeBuyer}
+              style={styles.pickerBox}
+              itemStyle={styles.pickerItem}
+              onValueChange={itemValue => handleBuyerStatus(itemValue)}
+              mode="dropdown"
+            >
+              <Picker.Item label="Yes!" value={true} />
+              <Picker.Item label="No" value={false} />
+            </Picker>
+          </View>
         </View>
 
         <View style={styles.optionsContainer}>
@@ -95,10 +106,12 @@ export const TurnipView = () => {
             <Text style={[AppStyles.text, { fontSize: 18 }]}>
               Previous Pattern
             </Text>
-            <Text style={[AppStyles.text, { fontSize: 14 }]}>
-              (Last week's pattern 
+            {/* <Text style={[AppStyles.text, { fontSize: 14 }]}>
+              (Last week's pattern
             </Text>
-            <Text style={[AppStyles.text, { fontSize: 14 }]}>affects your predictions)</Text>
+            <Text style={[AppStyles.text, { fontSize: 14 }]}>
+              affects your predictions)
+            </Text> */}
           </View>
           <View style={styles.patternsContainer}>
             <Picker
@@ -150,16 +163,19 @@ const styles = StyleSheet.create({
   },
   buyerStatusContainer: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    width: "70%",
+    marginBottom: 5
+    
   },
   patternsContainer: {
     flex: 1,
     marginHorizontal: 5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.platinum,
+    backgroundColor: Colors.oldLace,
     height: 50,
-    width: 160,
+    width: 130,
     borderRadius: 10
   },
   pickerBox: {
@@ -172,26 +188,12 @@ const styles = StyleSheet.create({
   },
   optionsContainer: {
     flex: 1,
-    flexDirection: 'row',
-    width: '90%'
+    flexDirection: "row",
+    width: "75%"
   },
   patternText: {
-    alignSelf: 'center',
-    justifyContent: 'center'
+    alignSelf: "center",
+    justifyContent: "center"
   }
 });
 
-// <View style={styles.patternsContainer}>
-// <Text>Previous Pattern</Text>
-// <Text>(Last week's pattern affects your predictions)</Text>
-// <Picker
-//   default
-//   selectedValue={pattern}
-//   style={styles.pickerBox}
-//   itemStyle={styles.pickerItem}
-//   onValueChange={itemValue => handlePatternOptions(itemValue)}
-//   mode="dropdown"
-// >
-//   {pickerItems}
-// </Picker>
-// </View>
