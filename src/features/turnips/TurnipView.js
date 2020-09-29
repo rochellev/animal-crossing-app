@@ -9,7 +9,8 @@ import { RadioButton } from "./RadioButton";
 import {
   getBuyerStatus,
   firstTimeBuyerUpdated,
-  getPreviousPattern
+  getPreviousPattern,
+  previousPatternUpdated
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
 
@@ -22,10 +23,16 @@ export const TurnipView = () => {
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
   const [pattern, setPattern] = useState(previousPattern);
   const dispatch = useDispatch();
-  const [hand, setHand] = useState("right");
 
   const handleToggle = value => {
+    
     dispatch(firstTimeBuyerUpdated({ value }));
+    
+  };
+
+  const handlePatternOptions = value => {
+    setPattern(value)
+    dispatch(previousPatternUpdated({value}));
   };
   const patternOptions = [
     {
@@ -66,6 +73,10 @@ export const TurnipView = () => {
     <RadioButton key={option.key} text={option.text} />
   ));
 
+  const pickerItems = patternOptions.map(option => (
+    <Picker.Item key={option.key} label={option.text} value={option.key} />
+  ));
+
   return (
     <View style={styles.container}>
       <View style={styles.turnip}>
@@ -95,11 +106,14 @@ export const TurnipView = () => {
             selectedValue={pattern}
             style={styles.pickerBox}
             itemStyle={styles.pickerItem}
-            onValueChange={itemValue => setPattern(itemValue)}
+            onValueChange={itemValue => handlePatternOptions(itemValue)}
             mode="dropdown"
+            
           >
-            <Picker.Item label="Not Sure" value="idk" />
-            <Picker.Item label="Large Spike" value="large-spike" />
+            {pickerItems}
+
+            {/* <Picker.Item label="Not Sure" value="idk" />
+            <Picker.Item label="Large Spike" value="large-spike" /> */}
           </Picker>
         </View>
 
