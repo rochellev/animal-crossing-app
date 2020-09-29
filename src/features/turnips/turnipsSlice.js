@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-community/async-storage";
 import { useAsyncStorage } from "@react-native-community/async-storage";
+import { exp } from "react-native-reanimated";
 const { getItem, setItem } = useAsyncStorage("@data");
 // state = {turnips, status, error}
 const initialState = {
   data: {
+    firstTimeBuyer: true,
+    previousPattern: "large-spike",
     sunday: 90,
     monday: {
       day: "Monday",
@@ -44,6 +47,14 @@ const turnipsSlice = createSlice({
   name: "turnips",
   initialState,
   reducers: {
+    firstTimeBuyerUpdated(state, action) {
+      const { value } = action.payload;
+      state.data.firstTimeBuyer = value;
+    },
+    previousPatternUpdated(state, action) {
+      const { value } = action.payload;
+      state.data.previousPattern = value;
+    },
     sundayPriceUpdated(state, action) {
       const { value } = action.payload;
       state.data.sunday = value;
@@ -60,6 +71,8 @@ const turnipsSlice = createSlice({
 });
 
 export const {
+  firstTimeBuyerUpdated,
+  previousPatternUpdated,
   sundayPriceUpdated,
   morningPriceUpdated,
   afternoonPriceUpdated
@@ -69,6 +82,9 @@ export default turnipsSlice.reducer;
 export const getDayData = (state, day) =>
   Object.values(state.turnips.data[day]);
 
+export const getBuyerStatus = state => state.turnips.data.firstTimeBuyer;
+
+export const getPreviousPattern = state => state.turnips.data.previousPattern;
 export const getSundayData = state => state.turnips.data.sunday;
 
 export const storeData = async value => {

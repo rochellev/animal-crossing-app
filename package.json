@@ -15,8 +15,9 @@
   "dependencies": {
     "@expo-google-fonts/inter": "^0.1.0",
     "@expo-google-fonts/montserrat": "^0.1.0",
-    "@react-native-community/async-storage": "^1.12.0",
-    "@react-native-community/slider": "^3.0.3",
+    "@react-native-community/async-storage": "~1.11.0",
+    "@react-native-community/picker": "1.6.0",
+    "@react-native-community/slider": "3.0.0",
     "@reduxjs/toolkit": "^1.4.0",
     "expo": "~38.0.1",
     "expo-font": "~8.2.1",
