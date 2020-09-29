@@ -86,7 +86,7 @@ export const TurnipView = () => {
         <View style={styles.buyerStatusContainer}>
           <Text style={AppStyles.dayName}>First Time buyer? </Text>
 
-          <View style={styles.patternsContainer}>
+          <View style={[styles.pickerContainer, AppStyles.shadows] }>
             <Picker
               default
               selectedValue={firstTimeBuyer}
@@ -113,7 +113,7 @@ export const TurnipView = () => {
               affects your predictions)
             </Text> */}
           </View>
-          <View style={styles.patternsContainer}>
+          <View style={[styles.pickerContainer, AppStyles.shadows] }>
             <Picker
               default
               selectedValue={pattern}
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     marginBottom: 5
     
   },
-  patternsContainer: {
+  pickerContainer: {
     flex: 1,
     marginHorizontal: 5,
     justifyContent: "center",
