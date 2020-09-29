@@ -11,13 +11,12 @@ import {
   firstTimeBuyerUpdated,
   getPreviousPattern
 } from "./turnipsSlice";
-// import Picker from "@react-native-community/picker";
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
   const previousPattern = useSelector(state => getPreviousPattern(state));
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
-  const [pattern, setPattern] = useState("idk");
+  const [pattern, setPattern] = useState(previousPattern);
   const dispatch = useDispatch();
   const [hand, setHand] = useState("right");
 
@@ -87,25 +86,15 @@ export const TurnipView = () => {
           />
         </View>
         <View style={styles.patternsContainer}>
-          {/* <Picker 
-          default
-          selectedValue={pattern}
-          style={{height: 50, width: 100}}
-          onValueChange={(itemValue) => setPattern({itemValue})}
-          >
-            <Picker.Item label="Not Sure" value="idk"/>
-            <Picker.Item label="Large Spike" value="large-spike"/>
-           
-
-          </Picker> */}
           <Picker
-            selectedValue={hand}
-            onValueChange={value => setHand(value)}
-            style={{ width: 160 }}
+            default
+            selectedValue={pattern}
+            style={{ height: 50, width: 100 }}
+            onValueChange={itemValue => setPattern({ itemValue })}
             mode="dropdown"
           >
-            <Picker.Item label="Right Hand" value="right" />
-            <Picker.Item label="Left Hand" value="left" />
+            <Picker.Item label="Not Sure" value="idk" />
+            <Picker.Item label="Large Spike" value="large-spike" />
           </Picker>
         </View>
 
@@ -161,4 +150,16 @@ const styles = StyleSheet.create({
 
 {
   /* <View style={styles.patternsContainer}>{renderedPatternOptions}</View> */
+}
+
+{
+  /* <Picker
+            selectedValue={hand}
+            onValueChange={value => setHand(value)}
+            style={{ width: 160 }}
+            
+          >
+            <Picker.Item label="Right Hand" value="right" />
+            <Picker.Item label="Left Hand" value="left" />
+          </Picker> */
 }
