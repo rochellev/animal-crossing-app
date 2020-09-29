@@ -75,11 +75,7 @@ export const TurnipView = () => {
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
-      <View style={{ alignSelf: "center", backgroundColor: "white" }}>
-        <Text style={AppStyles.dayName}>
-          redux previousPattern: {previousPattern}
-        </Text>
-      </View>
+
       <View style={styles.inputSection}>
         <View style={styles.buyerStatusContainer}>
           <Text style={AppStyles.dayName}>First Time buyer? </Text>
@@ -93,17 +89,29 @@ export const TurnipView = () => {
             style={{ alignSelf: "center" }}
           />
         </View>
-        <View style={styles.patternsContainer}>
-          <Picker
-            default
-            selectedValue={pattern}
-            style={styles.pickerBox}
-            itemStyle={styles.pickerItem}
-            onValueChange={itemValue => handlePatternOptions(itemValue)}
-            mode="dropdown"
-          >
-            {pickerItems}
-          </Picker>
+
+        <View style={styles.optionsContainer}>
+          <View style={styles.patternText}>
+            <Text style={[AppStyles.text, { fontSize: 18 }]}>
+              Previous Pattern
+            </Text>
+            <Text style={[AppStyles.text, { fontSize: 14 }]}>
+              (Last week's pattern 
+            </Text>
+            <Text style={[AppStyles.text, { fontSize: 14 }]}>affects your predictions)</Text>
+          </View>
+          <View style={styles.patternsContainer}>
+            <Picker
+              default
+              selectedValue={pattern}
+              style={styles.pickerBox}
+              itemStyle={styles.pickerItem}
+              onValueChange={itemValue => handlePatternOptions(itemValue)}
+              mode="dropdown"
+            >
+              {pickerItems}
+            </Picker>
+          </View>
         </View>
 
         <View style={{ flex: 1 }}>
@@ -161,5 +169,29 @@ const styles = StyleSheet.create({
   pickerItem: {
     fontFamily: "Montserrat_400Regular",
     fontSize: 18
+  },
+  optionsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '90%'
+  },
+  patternText: {
+    alignSelf: 'center',
+    justifyContent: 'center'
   }
 });
+
+// <View style={styles.patternsContainer}>
+// <Text>Previous Pattern</Text>
+// <Text>(Last week's pattern affects your predictions)</Text>
+// <Picker
+//   default
+//   selectedValue={pattern}
+//   style={styles.pickerBox}
+//   itemStyle={styles.pickerItem}
+//   onValueChange={itemValue => handlePatternOptions(itemValue)}
+//   mode="dropdown"
+// >
+//   {pickerItems}
+// </Picker>
+// </View>

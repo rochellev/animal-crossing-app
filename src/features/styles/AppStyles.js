@@ -37,6 +37,10 @@ export const AppStyles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
+  },
+  text: {
+    color: Colors.spaceCadet,
+    fontFamily: "Montserrat_400Regular"
   }
 });
 
