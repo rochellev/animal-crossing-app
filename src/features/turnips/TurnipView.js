@@ -25,14 +25,12 @@ export const TurnipView = () => {
   const dispatch = useDispatch();
 
   const handleToggle = value => {
-    
     dispatch(firstTimeBuyerUpdated({ value }));
-    
   };
 
   const handlePatternOptions = value => {
-    setPattern(value)
-    dispatch(previousPatternUpdated({value}));
+    setPattern(value);
+    dispatch(previousPatternUpdated({ value }));
   };
   const patternOptions = [
     {
@@ -67,10 +65,6 @@ export const TurnipView = () => {
 
   const renderedDailyInputCards = sellingDays.map(day => (
     <DailyInputCard key={day} day={day} />
-  ));
-
-  const renderedPatternOptions = patternOptions.map(option => (
-    <RadioButton key={option.key} text={option.text} />
   ));
 
   const pickerItems = patternOptions.map(option => (
@@ -108,12 +102,8 @@ export const TurnipView = () => {
             itemStyle={styles.pickerItem}
             onValueChange={itemValue => handlePatternOptions(itemValue)}
             mode="dropdown"
-            
           >
             {pickerItems}
-
-            {/* <Picker.Item label="Not Sure" value="idk" />
-            <Picker.Item label="Large Spike" value="large-spike" /> */}
           </Picker>
         </View>
 
@@ -174,23 +164,3 @@ const styles = StyleSheet.create({
     fontSize: 18
   }
 });
-
-// <View style={styles.inputSection}>
-// <InputCardList />
-// </View>
-
-{
-  /* <View style={styles.patternsContainer}>{renderedPatternOptions}</View> */
-}
-
-{
-  /* <Picker
-            selectedValue={hand}
-            onValueChange={value => setHand(value)}
-            style={{ width: 160 }}
-            
-          >
-            <Picker.Item label="Right Hand" value="right" />
-            <Picker.Item label="Left Hand" value="left" />
-          </Picker> */
-}
