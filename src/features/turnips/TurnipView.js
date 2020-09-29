@@ -5,7 +5,6 @@ import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
 import { DailyInputCard } from "./DailyInputCard";
-import { RadioButton } from "./RadioButton";
 import {
   getBuyerStatus,
   firstTimeBuyerUpdated,
