@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, Switch, StyleSheet, Picker } from "react-native";
+import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
@@ -11,7 +11,7 @@ import {
   firstTimeBuyerUpdated,
   getPreviousPattern
 } from "./turnipsSlice";
-
+import { Picker } from "@react-native-community/picker";
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
   const previousPattern = useSelector(state => getPreviousPattern(state));
@@ -89,11 +89,16 @@ export const TurnipView = () => {
           <Picker
             default
             selectedValue={pattern}
-            style={{ height: 50, width: 100 }}
-            onValueChange={itemValue => setPattern({ itemValue })}
+            style={styles.pickerBox}
+            itemStyle={styles.pickerItem}
+            onValueChange={itemValue => setPattern(itemValue)}
             mode="dropdown"
           >
-            <Picker.Item label="Not Sure" value="idk" />
+            <Picker.Item
+              label="Not Sure"
+              value="idk"
+              style={styles.pickerItem}
+            />
             <Picker.Item label="Large Spike" value="large-spike" />
           </Picker>
         </View>
@@ -140,7 +145,17 @@ const styles = StyleSheet.create({
   patternsContainer: {
     flex: 1,
     flexDirection: "row",
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    justifyContent: "center"
+  },
+  pickerBox: {
+    height: 50,
+    width: 150
+  },
+  pickerItem: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: 18,
+    color: Colors.spaceCadet
   }
 });
 
