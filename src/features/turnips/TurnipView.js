@@ -12,6 +12,10 @@ import {
   getPreviousPattern
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
+
+// Picker itemStyle does not work for android, but can do it here
+// https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
+
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
   const previousPattern = useSelector(state => getPreviousPattern(state));
@@ -94,11 +98,7 @@ export const TurnipView = () => {
             onValueChange={itemValue => setPattern(itemValue)}
             mode="dropdown"
           >
-            <Picker.Item
-              label="Not Sure"
-              value="idk"
-              style={styles.pickerItem}
-            />
+            <Picker.Item label="Not Sure" value="idk" />
             <Picker.Item label="Large Spike" value="large-spike" />
           </Picker>
         </View>
@@ -135,27 +135,29 @@ const styles = StyleSheet.create({
   },
   inputSection: {
     flex: 1,
-    justifyContent: "center"
+    alignItems: "center"
   },
   buyerStatusContainer: {
     flex: 1,
-    alignSelf: "center",
     flexDirection: "row"
   },
   patternsContainer: {
     flex: 1,
-    flexDirection: "row",
     marginHorizontal: 5,
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.platinum,
+    height: 50,
+    width: 160,
+    borderRadius: 10
   },
   pickerBox: {
-    height: 50,
-    width: 150
+    height: "100%",
+    width: "100%"
   },
   pickerItem: {
     fontFamily: "Montserrat_400Regular",
-    fontSize: 18,
-    color: Colors.spaceCadet
+    fontSize: 18
   }
 });
 
