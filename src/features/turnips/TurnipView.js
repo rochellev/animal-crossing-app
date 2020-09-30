@@ -12,6 +12,7 @@ import {
   previousPatternUpdated
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
+import {OutputView} from '../predictions/OutputView'
 
 // Picker itemStyle does not work for android, but can do it here
 // https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
@@ -122,7 +123,7 @@ export const TurnipView = () => {
             </Picker>
           </View>
         </View>
-
+          <OutputView />
         <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>

@@ -4,8 +4,11 @@ import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 
+// goal: show predicted min/max 
 
 export const OutputView = () => {
+
+  // function using PredictionClass -- see calculate output
   return(
     <View style={styles.outputContainer}>
       <Text>This is output View</Text>
@@ -20,6 +23,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.teaGreen,
-    paddingBottom: 10
+    padding: 10
   }
 })

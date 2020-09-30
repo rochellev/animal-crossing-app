@@ -7,8 +7,6 @@ const { getItem, setItem } = useAsyncStorage("@data");
 
 const initialState = {
   data: {
-    firstTimeBuyer: false,
-    previousPattern: "LARGE_SPIKE",
     output: {
       monday: {
         guaranteedMin: 20,
