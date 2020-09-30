@@ -6,38 +6,38 @@ const { getItem, setItem } = useAsyncStorage("@data");
 // state = {turnips, status, error}
 const initialState = {
   data: {
-    firstTimeBuyer: true,
-    previousPattern: "large-spike",
-    sunday: 90,
+    firstTimeBuyer: false,
+    previousPattern: "idk",
+    sunday: null,
     monday: {
       day: "Monday",
-      morning: 30,
-      afternoon: 40
+      morning: 37,
+      afternoon: 100
     },
     tuesday: {
       day: "Tuesday",
-      morning: 50,
-      afternoon: 60
+      morning: 120,
+      afternoon: 145
     },
     wednesday: {
       day: "Wednesday",
-      morning: 60,
-      afternoon: 65
+      morning: 172,
+      afternoon: 130
     },
     thursday: {
       day: "Thursday",
-      morning: 70,
-      afternoon: 90
+      morning: 36,
+      afternoon: 34
     },
     friday: {
       day: "Friday",
-      morning: 99,
-      afternoon: 200
+      morning: null,
+      afternoon: null
     },
     saturday: {
       day: "Saturday",
-      morning: 100,
-      afternoon: 69
+      morning: null,
+      afternoon: null
     }
   },
   status: "idle",
