@@ -23,10 +23,6 @@ export const TurnipView = () => {
   const [pattern, setPattern] = useState(previousPattern);
   const dispatch = useDispatch();
 
-  // const handleToggle = value => {
-  //   dispatch(firstTimeBuyerUpdated({ value }));
-  // };
-
   const handleBuyerStatus = value => {
     setFirstTimeBuyer(value);
     dispatch(firstTimeBuyerUpdated({ value }));
