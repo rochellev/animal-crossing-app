@@ -87,6 +87,31 @@ export const getBuyerStatus = state => state.turnips.data.firstTimeBuyer;
 export const getPreviousPattern = state => state.turnips.data.previousPattern;
 export const getSundayData = state => state.turnips.data.sunday;
 
+// returns input array [sunday, mondayAM, MondayPM, ... saturdayAM, saturdayPM]
+export const getInputs = state => {
+  const sellingDays = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ];
+
+  var inputArray = [];
+  inputArray.push(state.data.sunday);
+  for (const day in sellingDays) {
+    inputArray.push(state.turnips.data[day].morning);
+    inputArray.push(state.turnips.data[day].afternoon);
+  }
+  const inputObject = {
+    sellPrices: inputArray,
+    previousPattern: state.turnips.data.previousPattern,
+    firstBuy: state.turnips.data.firstTimeBuyer
+  };
+  return inputObject;
+};
+
 export const storeData = async value => {
   try {
     const jsonValue = JSON.stringify(value);

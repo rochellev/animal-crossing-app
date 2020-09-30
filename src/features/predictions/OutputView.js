@@ -9,6 +9,9 @@ import { Colors, AppStyles } from "../styles/AppStyles";
 export const OutputView = () => {
 
   // function using PredictionClass -- see calculate output
+  // const calculateOutput = () => {
+
+  // }
   return(
     <View style={styles.outputContainer}>
       <Text>This is output View</Text>
