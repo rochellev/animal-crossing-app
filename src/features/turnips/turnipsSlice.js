@@ -99,8 +99,8 @@ export const getInputs = state => {
   ];
 
   var inputArray = [];
-  inputArray.push(state.data.sunday);
-  for (const day in sellingDays) {
+  inputArray.push(state.turnips.data.sunday);
+  for (const day of sellingDays) {
     inputArray.push(state.turnips.data[day].morning);
     inputArray.push(state.turnips.data[day].afternoon);
   }
