@@ -30,7 +30,9 @@ export const OutputView = () => {
 
   // function using PredictionClass -- see calculate output
   const calculateOutput = () => {
+    console.log(`***************************`);
     console.log(`******`);
+    console.log(`***************************`);
     console.log(`calculateOutput arguments:`);
     console.log(`prices.length: ${prices.length}`);
     console.log(`first_buy: ${first_buy}`);
@@ -45,7 +47,9 @@ export const OutputView = () => {
     );
     console.log(`analyzedPossibilities:`);
     console.log(JSON.stringify(analyzedPossibilities, null, 2));
-    console.log(`******`);
+    
+    console.log(`***************************`);
+    console.log(`***************************`);
     setPossibilities(analyzedPossibilities);
   };
 
