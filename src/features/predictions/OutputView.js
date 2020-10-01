@@ -30,27 +30,22 @@ export const OutputView = () => {
 
   // function using PredictionClass -- see calculate output
   const calculateOutput = () => {
-    // let pattern = null;
-    // if (previous_pattern == "0" || previous_pattern == "fluctuating") {
-    //   pattern = 0;
-    // } else if (previous_pattern == "1" || previous_pattern == "large-spike") {
-    //   pattern = 1;
-    // } else if (previous_pattern == "2" || previous_pattern == "decreasing") {
-    //   pattern = 2;
-    // } else if (previous_pattern == "3" || previous_pattern == "small-spike") {
-    //   pattern = 3;
-    // } else {
-    //   pattern = -1;
-    // }
-    console.log(`calculateOutput arguments:`)
-    console.log(`prices: ${JSON.stringify( prices, null, 2)}`);
+    console.log(`******`);
+    console.log(`calculateOutput arguments:`);
+    console.log(`prices.length: ${prices.length}`);
     console.log(`first_buy: ${first_buy}`);
     console.log(`previous_pattern: ${previous_pattern}`);
+    console.log(`prices: ${JSON.stringify(prices, null, 2)}`);
 
     const predictor = new Predictor(prices, first_buy, previous_pattern);
 
     const analyzedPossibilities = predictor.analyze_possibilities();
-    // console.log(JSON.stringify(analyzedPossibilities, null, 2));
+    console.log(
+      `analyzedPossibilities.length: ${analyzedPossibilities.length}`
+    );
+    console.log(`analyzedPossibilities:`);
+    console.log(JSON.stringify(analyzedPossibilities, null, 2));
+    console.log(`******`);
     setPossibilities(analyzedPossibilities);
   };
 
