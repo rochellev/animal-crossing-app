@@ -285,7 +285,7 @@ class PDF {
   }
 }
 
-class Predictor {
+export default class Predictor {
 
   constructor(prices, first_buy, previous_pattern) {
     // The reverse-engineered code is not perfectly accurate, especially as it's not
