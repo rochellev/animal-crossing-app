@@ -5,28 +5,68 @@ import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { getInputs } from "../turnips/turnipsSlice";
 import { calculatePrediction } from "./predictionsSlice";
+import Predictor from "./PredictionsClass";
 // goal: show predicted min/max
 
 export const OutputView = () => {
-  // function using PredictionClass -- see calculate output
-  // const calculateOutput = () => {
-
-  // }
-
   //  probably need to to object.values i think
   const userInputs = useSelector(state => getInputs(state));
-  const predictions = useSelector(state =>
-    calculatePrediction(
-      state,
-      userInputs.sellPrices.values,
-      userInputs.firstBuy,
-      userInputs.previousPattern
-    )
-  );
+  // const predictions = useSelector(state =>
+  //   calculatePrediction(
+  //     state,
+  //     Object.values(userInputs.sellPrices),
+  //     userInputs.firstBuy,
+  //     userInputs.previousPattern
+  //   )
+  // );
+
+  // const [sellPrices, setSellPrices] = useState(userInputs.sellPrices)
+  // const [first]
+
+  const [possibilities, setPossibilities] = useState([]);
+  const prices = userInputs.sellPrices;
+  const first_buy = userInputs.firstBuy;
+  const previous_pattern = userInputs.previousPattern;
+
+  // function using PredictionClass -- see calculate output
+  const calculateOutput = () => {
+    // let pattern = null;
+    // if (previous_pattern == "0" || previous_pattern == "fluctuating") {
+    //   pattern = 0;
+    // } else if (previous_pattern == "1" || previous_pattern == "large-spike") {
+    //   pattern = 1;
+    // } else if (previous_pattern == "2" || previous_pattern == "decreasing") {
+    //   pattern = 2;
+    // } else if (previous_pattern == "3" || previous_pattern == "small-spike") {
+    //   pattern = 3;
+    // } else {
+    //   pattern = -1;
+    // }
+    console.log(`calculateOutput arguments:`)
+    console.log(`prices: ${JSON.stringify( prices, null, 2)}`);
+    console.log(`first_buy: ${first_buy}`);
+    console.log(`previous_pattern: ${previous_pattern}`);
+
+    const predictor = new Predictor(prices, first_buy, previous_pattern);
+
+    const analyzedPossibilities = predictor.analyze_possibilities();
+    // console.log(JSON.stringify(analyzedPossibilities, null, 2));
+    setPossibilities(analyzedPossibilities);
+  };
+
   return (
     <View style={styles.outputContainer}>
       <Text>This is output View</Text>
-      {/* <Text>{JSON.stringify(userInputs, null, 2)}</Text> */}
+      <Text>{JSON.stringify(possibilities[0], null, 2)}</Text>
+      {/* <Text>{JSON.stringify(sellPrices[0])}</Text> */}
+      <Button
+        title="Predict!"
+        type="outline"
+        raised
+        containerStyle={{ flex: 1, width: 200, alignSelf: "center" }}
+        buttonStyle={{ width: "100%" }}
+        onPress={calculateOutput}
+      />
     </View>
   );
 };
