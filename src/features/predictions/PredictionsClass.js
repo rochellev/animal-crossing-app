@@ -1065,9 +1065,9 @@ export default class Predictor {
   }
 
   *generate_possibilities(sell_prices, first_buy, previous_pattern) {
-    console.log(`**********`)
-    console.log(`** in generate_possibilities() **`)
-    console.log(`sell_prices[0]: ${sell_prices[0]}`)
+    // console.log(`**********`)
+    // console.log(`** in generate_possibilities() **`)
+    // console.log(`sell_prices[0]: ${sell_prices[0]}`)
     if (first_buy || isNaN(sell_prices[0])) {
       for (var buy_price = 90; buy_price <= 110; buy_price++) {
         const temp_sell_prices = sell_prices.slice();
@@ -1089,10 +1089,10 @@ export default class Predictor {
     const sell_prices = this.prices;
     const first_buy = this.first_buy;
     const previous_pattern = this.previous_pattern;
-    console.log(`***************************`);
-    console.log(`***************************`);
-    console.log(`*** in prediction class ***`);
-    console.log(`** analyze_possibilities inputs **`);
+    // console.log(`***************************`);
+    // console.log(`***************************`);
+    // console.log(`*** in prediction class ***`);
+    // console.log(`** analyze_possibilities inputs **`);
     // console.log(`first_buy: ${first_buy}`);
     // console.log(`previous_pattern: ${previous_pattern}`);
     // console.log(`sell_prices.length: ${sell_prices.length}`);
@@ -1109,8 +1109,8 @@ export default class Predictor {
       //   break;
       // }
     }
-    console.log(`generated_possibilities`)
-    console.log(JSON.stringify(generated_possibilities,null,2))
+    // console.log(`generated_possibilities`)
+    // console.log(JSON.stringify(generated_possibilities,null,2))
 
     const total_probability = generated_possibilities.reduce(
       (acc, it) => acc + it.probability,
@@ -1168,11 +1168,11 @@ export default class Predictor {
         max: 0
       };
       for (let poss of generated_possibilities) {
-        console.log(`**** line 1164 ***********`)
-        console.log(`poss: ${JSON.stringify(poss, null, 2)}`)
-        
+        // console.log(`**** line 1164 ***********`)
+        // console.log(`poss: ${JSON.stringify(poss, null, 2)}`)
+
         if (poss.prices[day].min < prices.min) {
-          console.log(`poss.prices[day].min: ${poss.prices[day].min}`)
+          // console.log(`poss.prices[day].min: ${poss.prices[day].min}`)
           prices.min = poss.prices[day].min;
         }
         if (poss.prices[day].max > prices.max) {
@@ -1191,11 +1191,11 @@ export default class Predictor {
       weekMax: Math.max(...generated_possibilities.map(poss => poss.weekMax))
     });
 
-    console.log(`generated_possibilities:`);
-    console.log(JSON.stringify(generated_possibilities, null, 2));
-    console.log(`*** left function ***`);
-    console.log(`***************************`);
-    console.log(`***************************`);
+    // console.log(`generated_possibilities:`);
+    // console.log(JSON.stringify(generated_possibilities, null, 2));
+    // console.log(`*** left function ***`);
+    // console.log(`***************************`);
+    // console.log(`***************************`);
     return generated_possibilities;
   }
 }
