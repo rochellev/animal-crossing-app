@@ -41,15 +41,15 @@ export const OutputView = () => {
 
     const predictor = new Predictor(prices, first_buy, previous_pattern);
 
-    const analyzedPossibilities = predictor.analyze_possibilities();
-    // console.log(
-    //   `analyzedPossibilities.length: ${analyzedPossibilities.length}`
-    // );
-    // console.log(`analyzedPossibilities:`);
-    // console.log(JSON.stringify(analyzedPossibilities, null, 2));
+    const analyzedPossibilities = predictor
+    console.log(
+      `analyzedPossibilities.length: ${analyzedPossibilities.length}`
+    );
+    console.log(`analyzedPossibilities:`);
+    console.log(JSON.stringify(analyzedPossibilities, null, 2));
     
-    // console.log(`***************************`);
-    // console.log(`***************************`);
+    console.log(`***************************`);
+    console.log(`***************************`);
     setPossibilities(analyzedPossibilities);
   };
 
