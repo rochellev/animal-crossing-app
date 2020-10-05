@@ -5,9 +5,10 @@ import Predictor from "./Predictor";
 const { getItem, setItem } = useAsyncStorage("@data");
 
 // need to know turnips array for input to predictions
-// predictions: [65, 80, 90, 100, 150]
+// predictions: [65, 70, 80, 90, 95, 100, 115, 150]
 const initialState = {
   data: {
+    currentOutput: 0,
     predictions: [
       {
         pattern_number: 4,
@@ -71,6 +72,69 @@ const initialState = {
         ],
         weekGuaranteedMinimum: 56,
         weekMax: 390
+      },
+      {
+        pattern_number: 4,
+        prices: [
+          {
+            min: 70,
+            max: 70
+          },
+          {
+            min: 70,
+            max: 70
+          },
+          {
+            min: 28,
+            max: 98
+          },
+          {
+            min: 25,
+            max: 98
+          },
+          {
+            min: 21,
+            max: 140
+          },
+          {
+            min: 18,
+            max: 420
+          },
+          {
+            min: 14,
+            max: 420
+          },
+          {
+            min: 11,
+            max: 420
+          },
+          {
+            min: 7,
+            max: 420
+          },
+          {
+            min: 21,
+            max: 420
+          },
+          {
+            min: 18,
+            max: 420
+          },
+          {
+            min: 14,
+            max: 420
+          },
+          {
+            min: 11,
+            max: 140
+          },
+          {
+            min: 7,
+            max: 139
+          }
+        ],
+        weekGuaranteedMinimum: 60,
+        weekMax: 420
       },
       {
         pattern_number: 4,
@@ -202,6 +266,69 @@ const initialState = {
         pattern_number: 4,
         prices: [
           {
+            min: 95,
+            max: 95
+          },
+          {
+            min: 95,
+            max: 95
+          },
+          {
+            min: 38,
+            max: 133
+          },
+          {
+            min: 34,
+            max: 133
+          },
+          {
+            min: 29,
+            max: 190
+          },
+          {
+            min: 24,
+            max: 570
+          },
+          {
+            min: 19,
+            max: 570
+          },
+          {
+            min: 15,
+            max: 570
+          },
+          {
+            min: 10,
+            max: 570
+          },
+          {
+            min: 29,
+            max: 570
+          },
+          {
+            min: 24,
+            max: 570
+          },
+          {
+            min: 19,
+            max: 570
+          },
+          {
+            min: 15,
+            max: 190
+          },
+          {
+            min: 10,
+            max: 189
+          }
+        ],
+        weekGuaranteedMinimum: 81,
+        weekMax: 570
+      },
+      {
+        pattern_number: 4,
+        prices: [
+          {
             min: 100,
             max: 100
           },
@@ -260,6 +387,69 @@ const initialState = {
         ],
         weekGuaranteedMinimum: 85,
         weekMax: 600
+      },
+      {
+        pattern_number: 4,
+        prices: [
+          {
+            min: 115,
+            max: 115
+          },
+          {
+            min: 115,
+            max: 115
+          },
+          {
+            min: 46,
+            max: 161
+          },
+          {
+            min: 41,
+            max: 161
+          },
+          {
+            min: 35,
+            max: 230
+          },
+          {
+            min: 29,
+            max: 690
+          },
+          {
+            min: 23,
+            max: 690
+          },
+          {
+            min: 18,
+            max: 690
+          },
+          {
+            min: 12,
+            max: 690
+          },
+          {
+            min: 35,
+            max: 690
+          },
+          {
+            min: 29,
+            max: 690
+          },
+          {
+            min: 23,
+            max: 690
+          },
+          {
+            min: 18,
+            max: 230
+          },
+          {
+            min: 12,
+            max: 229
+          }
+        ],
+        weekGuaranteedMinimum: 98,
+        weekMax: 690
       },
       {
         pattern_number: 4,
