@@ -5,7 +5,7 @@ import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { getInputs } from "../turnips/turnipsSlice";
 import { calculatePrediction } from "./predictionsSlice";
-import Predictor from "./PredictionsClass";
+import  Predictor  from "./Predictor";
 // goal: show predicted min/max
 
 export const OutputView = () => {
@@ -41,13 +41,13 @@ export const OutputView = () => {
 
     const predictor = new Predictor(prices, first_buy, previous_pattern);
 
-    const analyzedPossibilities = predictor
+    const analyzedPossibilities = predictor.analyze_possibilities();
     console.log(
       `analyzedPossibilities.length: ${analyzedPossibilities.length}`
     );
     console.log(`analyzedPossibilities:`);
     console.log(JSON.stringify(analyzedPossibilities, null, 2));
-    
+
     console.log(`***************************`);
     console.log(`***************************`);
     setPossibilities(analyzedPossibilities);

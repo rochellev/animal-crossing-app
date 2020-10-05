@@ -1,41 +1,78 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-community/async-storage";
 import { useAsyncStorage } from "@react-native-community/async-storage";
-import Predictor from "./PredictionsClass";
+import Predictor from "./Predictor";
 const { getItem, setItem } = useAsyncStorage("@data");
 
 // need to know turnips array for input to predictions
 
 const initialState = {
   data: {
-    output: {
-      monday: {
-        guaranteedMin: 20,
-        potentialMax: 899
-      },
-      tuesday: {
-        guaranteedMin: 20,
-        potentialMax: 899
-      },
-      wednesday: {
-        guaranteedMin: 20,
-        potentialMax: 899
-      },
-      thursday: {
-        guaranteedMin: 20,
-        potentialMax: 899
-      },
-      friday: {
-        guaranteedMin: 20,
-        potentialMax: 899
-      },
-      saturday: {
-        monday: {
-          guaranteedMin: 20,
-          potentialMax: 899
-        }
+    outputs: [
+      {
+        pattern_number: 4,
+        prices: [
+          {
+            min: 80,
+            max: 80
+          },
+          {
+            min: 80,
+            max: 80
+          },
+          {
+            min: 75,
+            max: 75
+          },
+          {
+            min: 65,
+            max: 65
+          },
+          {
+            min: 89,
+            max: 89
+          },
+          {
+            min: 112,
+            max: 112
+          },
+          {
+            min: 111,
+            max: 480
+          },
+          {
+            min: 111,
+            max: 160
+          },
+          {
+            min: 72,
+            max: 159
+          },
+          {
+            min: 32,
+            max: 72
+          },
+          {
+            min: 28,
+            max: 72
+          },
+          {
+            min: 24,
+            max: 72
+          },
+          {
+            min: 20,
+            max: 72
+          },
+          {
+            min: 16,
+            max: 72
+          }
+        ],
+        weekGuaranteedMinimum: 111,
+        weekMax: 480
       }
-    }
+    ]
   },
   status: "idle",
   error: null
