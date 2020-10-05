@@ -2,13 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-community/async-storage";
 import { useAsyncStorage } from "@react-native-community/async-storage";
 import Predictor from "./Predictor";
-const { getItem, setItem } = useAsyncStorage("@data");
+import { getSundayData } from "../turnips/turnipsSlice";
 
-// need to know turnips array for input to predictions
 // predictions: [65, 70, 80, 90, 95, 100, 115, 150]
 const initialState = {
   data: {
-    currentOutput: 0,
+    currentIndex: 0,
     predictions: [
       {
         pattern_number: 4,
@@ -523,16 +522,25 @@ const initialState = {
 const predictionsSlice = createSlice({
   name: "predictions",
   initialState,
-  reducers: {}
+  reducers: {
+    updateCurrentIndex(state, action){
+      const {index} = action.payload
+      state.predictions.data.currentIndex = index;
+    }
+  }
 });
 
+export const {updateCurrentIndex} = predictionsSlice.actions;
 export default predictionsSlice.reducer;
 
 // export const {
 
 // } = predictionsSlice.actions;
 
-export const getData = state => Object.values(state.predictions.data);
+// export const getData = state => Object.values(state.predictions.data);
+export const getThisPrediction = (state, index)=> {
+  Object.values(state.predictions.data.predictions[index])
+}
 
 // sell prices array [Sun, MondayAM, MondayPM, TuesdayAM, ...]
 
@@ -546,3 +554,31 @@ export const calculatePrediction = (
   let analyzedPossibilities = predictor.analyze_possibilities();
   return analyzedPossibilities;
 };
+
+export const getOutput = (state) => {
+  const sunday = getSundayData(state)
+  const index = calculateIndex(sunday)
+  return Object.values(state.predictions.data.predictions[index])
+}
+
+// predictions: [65, 70, 80, 90, 95, 100, 115, 150]
+const calculateIndex = (sundayPrice) => {
+  if(sundayPrice <= 65){
+    return 0;
+  } else if(sundayPrice <= 70){
+    return 1
+  } else if(sundayPrice <= 80){
+    return 2
+  }else if(sundayPrice <= 90){
+    return 3
+  }else if(sundayPrice <= 95){
+    return 4
+  }else if (sundayPrice <= 100){
+    return 5
+  }else if(sundayPrice <= 115){
+    return 6
+  }else{
+    return 7
+  }  
+  
+}

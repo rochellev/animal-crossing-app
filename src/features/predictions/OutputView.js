@@ -3,68 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
-import { getInputs } from "../turnips/turnipsSlice";
-import { calculatePrediction } from "./predictionsSlice";
-import  Predictor  from "./Predictor";
-// goal: show predicted min/max
+import { getSundayData } from "../turnips/turnipsSlice";
+import { getOutput, calculatePrediction } from "./predictionsSlice";
+import Predictor from "./Predictor";
+
 
 export const OutputView = () => {
-  //  probably need to to object.values i think
-  const userInputs = useSelector(state => getInputs(state));
-  // const predictions = useSelector(state =>
-  //   calculatePrediction(
-  //     state,
-  //     Object.values(userInputs.sellPrices),
-  //     userInputs.firstBuy,
-  //     userInputs.previousPattern
-  //   )
-  // );
-
-  // const [sellPrices, setSellPrices] = useState(userInputs.sellPrices)
-  // const [first]
-
-  const [possibilities, setPossibilities] = useState([]);
-  const prices = userInputs.sellPrices;
-  const first_buy = userInputs.firstBuy;
-  const previous_pattern = userInputs.previousPattern;
-
-  // function using PredictionClass -- see calculate output
-  const calculateOutput = () => {
-    // console.log(`***************************`);
-    // console.log(`******`);
-    // console.log(`***************************`);
-    // console.log(`calculateOutput arguments:`);
-    // console.log(`prices.length: ${prices.length}`);
-    // console.log(`first_buy: ${first_buy}`);
-    // console.log(`previous_pattern: ${previous_pattern}`);
-    // console.log(`prices: ${JSON.stringify(prices, null, 2)}`);
-
-    const predictor = new Predictor(prices, first_buy, previous_pattern);
-
-    const analyzedPossibilities = predictor.analyze_possibilities();
-    console.log(
-      `analyzedPossibilities.length: ${analyzedPossibilities.length}`
-    );
-    console.log(`analyzedPossibilities:`);
-    console.log(JSON.stringify(analyzedPossibilities, null, 2));
-
-    console.log(`***************************`);
-    console.log(`***************************`);
-    setPossibilities(analyzedPossibilities);
+  // const sunday = useSelector(getSundayData(state))
+  const output = useSelector(state => getOutput(state));
+  const handlePrediction = () => {
+    console.log(JSON.stringify(output, null, 2));
   };
 
   return (
     <View style={styles.outputContainer}>
       <Text>This is output View</Text>
-      <Text>{JSON.stringify(possibilities[0], null, 2)}</Text>
-      {/* <Text>{JSON.stringify(sellPrices[0])}</Text> */}
+
       <Button
         title="Predict!"
         type="outline"
         raised
         containerStyle={{ flex: 1, width: 200, alignSelf: "center" }}
         buttonStyle={{ width: "100%" }}
-        onPress={calculateOutput}
+        onPress={handlePrediction}
       />
     </View>
   );
@@ -80,3 +41,40 @@ const styles = StyleSheet.create({
     padding: 10
   }
 });
+
+// const userInputs = useSelector(state => getInputs(state));
+
+// const [possibilities, setPossibilities] = useState([]);
+// const prices = userInputs.sellPrices;
+// const first_buy = userInputs.firstBuy;
+// const previous_pattern = userInputs.previousPattern;
+
+// const [possibilities, setPossibilities] = useState([]);
+// const prices = Object.values(userInputs.sellPrices);
+// const first_buy = Object.values(userInputs.firstBuy);
+// const previous_pattern = Object.values(userInputs.previousPattern);
+
+// function using PredictionClass -- see calculate output
+// const calculateOutput = () => {
+//   // console.log(`***************************`);
+//   // console.log(`******`);
+//   // console.log(`***************************`);
+//   // console.log(`calculateOutput arguments:`);
+//   // console.log(`prices.length: ${prices.length}`);
+//   // console.log(`first_buy: ${first_buy}`);
+//   // console.log(`previous_pattern: ${previous_pattern}`);
+//   // console.log(`prices: ${JSON.stringify(prices, null, 2)}`);
+
+//   const predictor = new Predictor(prices, first_buy, previous_pattern);
+
+//   const analyzedPossibilities = predictor.analyze_possibilities();
+//   console.log(
+//     `analyzedPossibilities.length: ${analyzedPossibilities.length}`
+//   );
+//   console.log(`analyzedPossibilities:`);
+//   console.log(JSON.stringify(analyzedPossibilities, null, 2));
+
+//   console.log(`***************************`);
+//   console.log(`***************************`);
+//   setPossibilities(analyzedPossibilities);
+// };
