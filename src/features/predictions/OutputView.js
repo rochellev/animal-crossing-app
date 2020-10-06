@@ -4,8 +4,13 @@ import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { getSundayData } from "../turnips/turnipsSlice";
-import { getOutput, getThisPrediction, calculateIndex } from "./predictionsSlice";
+import {
+  getOutput,
+  getThisPrediction,
+  calculateIndex
+} from "./predictionsSlice";
 import Predictor from "./Predictor";
+import { PredictionChart } from "./PredictionChart";
 
 export const OutputView = () => {
   // const sunday = useSelector(getSundayData(state))
@@ -24,10 +29,7 @@ export const OutputView = () => {
 
   return (
     <View style={styles.outputContainer}>
-      <Text>This is output View</Text>
-      {/* <Text>MAx day to sell is {JSON.stringify(p,null, 2)}</Text> */}
-<Text>predictions</Text>
-{/* <Text>{JSON.stringify(prediction, null, 2)}</Text> */}
+<PredictionChart />
       <Button
         title="Predict!"
         type="outline"
