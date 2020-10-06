@@ -12,6 +12,7 @@ import {
   previousPatternUpdated
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
+import {OutputView} from '../predictions/OutputView'
 
 // Picker itemStyle does not work for android, but can do it here
 // https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
@@ -23,7 +24,8 @@ export const TurnipView = () => {
   const [pattern, setPattern] = useState(previousPattern);
   const dispatch = useDispatch();
 
-  const handleToggle = value => {
+  const handleBuyerStatus = value => {
+    setFirstTimeBuyer(value);
     dispatch(firstTimeBuyerUpdated({ value }));
   };
 
@@ -75,37 +77,53 @@ export const TurnipView = () => {
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
-      <View style={{ alignSelf: "center", backgroundColor: "white" }}>
-        <Text style={AppStyles.dayName}>
-          redux previousPattern: {previousPattern}
-        </Text>
-      </View>
+
       <View style={styles.inputSection}>
+        <Text>redux buyer state: {buyerStatus.toString()}</Text>
         <View style={styles.buyerStatusContainer}>
           <Text style={AppStyles.dayName}>First Time buyer? </Text>
-          <Switch
-            trackColor={{ false: "red", true: "green" }}
-            thumbColor={firstTimeBuyer ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onChange={() => setFirstTimeBuyer(previous => !previous)}
-            onValueChange={value => handleToggle(value)}
-            value={firstTimeBuyer}
-            style={{ alignSelf: "center" }}
-          />
-        </View>
-        <View style={styles.patternsContainer}>
-          <Picker
-            default
-            selectedValue={pattern}
-            style={styles.pickerBox}
-            itemStyle={styles.pickerItem}
-            onValueChange={itemValue => handlePatternOptions(itemValue)}
-            mode="dropdown"
-          >
-            {pickerItems}
-          </Picker>
+
+          <View style={[styles.pickerContainer, AppStyles.shadows] }>
+            <Picker
+              default
+              selectedValue={firstTimeBuyer}
+              style={styles.pickerBox}
+              itemStyle={styles.pickerItem}
+              onValueChange={itemValue => handleBuyerStatus(itemValue)}
+              mode="dropdown"
+            >
+              <Picker.Item label="Yes!" value={true} />
+              <Picker.Item label="No" value={false} />
+            </Picker>
+          </View>
         </View>
 
+        <View style={styles.optionsContainer}>
+          <View style={styles.patternText}>
+            <Text style={[AppStyles.text, { fontSize: 18 }]}>
+              Previous Pattern
+            </Text>
+            {/* <Text style={[AppStyles.text, { fontSize: 14 }]}>
+              (Last week's pattern
+            </Text>
+            <Text style={[AppStyles.text, { fontSize: 14 }]}>
+              affects your predictions)
+            </Text> */}
+          </View>
+          <View style={[styles.pickerContainer, AppStyles.shadows] }>
+            <Picker
+              default
+              selectedValue={pattern}
+              style={styles.pickerBox}
+              itemStyle={styles.pickerItem}
+              onValueChange={itemValue => handlePatternOptions(itemValue)}
+              mode="dropdown"
+            >
+              {pickerItems}
+            </Picker>
+          </View>
+        </View>
+          <OutputView />
         <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>
@@ -142,16 +160,19 @@ const styles = StyleSheet.create({
   },
   buyerStatusContainer: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    width: "70%",
+    marginBottom: 5
+    
   },
-  patternsContainer: {
+  pickerContainer: {
     flex: 1,
     marginHorizontal: 5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.platinum,
+    backgroundColor: Colors.oldLace,
     height: 50,
-    width: 160,
+    width: 130,
     borderRadius: 10
   },
   pickerBox: {
@@ -161,5 +182,15 @@ const styles = StyleSheet.create({
   pickerItem: {
     fontFamily: "Montserrat_400Regular",
     fontSize: 18
+  },
+  optionsContainer: {
+    flex: 1,
+    flexDirection: "row",
+    width: "75%"
+  },
+  patternText: {
+    alignSelf: "center",
+    justifyContent: "center"
   }
 });
+

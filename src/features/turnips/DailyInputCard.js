@@ -8,9 +8,6 @@ import {
   afternoonPriceUpdated,
   morningPriceUpdated
 } from "./turnipsSlice";
-// const [name, morning, afternoon] = useSelector(state =>
-//   Object.values(state.turnips.data[day])
-// );
 
 export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
@@ -40,8 +37,8 @@ export const DailyInputCard = ({ day }) => {
       <View style={styles.inputSection}>
         <View style={[{ marginRight: 5 }, AppStyles.shadows, styles.cardInput]}>
           <Text style={AppStyles.dayName}>
-            <Text>AM </Text>
-            <Text>{morningPrice}</Text>
+            <Text>AM    </Text>
+            {morningPrice ? <Text>{morningPrice}</Text> : <Text>...</Text>}
           </Text>
           <Slider
             style={AppStyles.slider}
@@ -55,8 +52,8 @@ export const DailyInputCard = ({ day }) => {
         </View>
         <View style={[AppStyles.shadows, styles.cardInput]}>
           <Text style={AppStyles.dayName}>
-            <Text>PM </Text>
-            <Text>{afternoonPrice}</Text>
+            <Text>PM    </Text>
+            {afternoonPrice ? <Text>{afternoonPrice}</Text> : <Text>...</Text>}
           </Text>
           <Slider
             style={AppStyles.slider}

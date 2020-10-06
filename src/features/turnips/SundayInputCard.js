@@ -18,23 +18,17 @@ export const SundayInputCard = () => {
   return (
     <View style={styles.container}>
       <View style={[AppStyles.shadows, styles.day]}>
-        <Text
-          style={{
-            fontFamily: "Montserrat_400Regular",
-            fontSize: 25,
-            paddingBottom: 3
-          }}
-        >
+        <Text style={[AppStyles.text, { paddingBottom: 3, fontSize: 25 }]}>
           Sunday
         </Text>
-        <Text style={{ fontFamily: "Montserrat_400Regular", fontSize: 15 }}>
-          Selling Price {sundayPrice.toString()}
+        <Text style={[AppStyles.text, { fontSize: 15 }]}>
+          Selling Price 
         </Text>
       </View>
       <View style={[AppStyles.shadows, styles.priceSlider]}>
-        <Text style={[{ alignSelf: "center" }, AppStyles.dayName]}>
-          {value}
-        </Text>
+        {value  ? (
+          <Text style={[{ alignSelf: "center", paddingBottom: 5 }, AppStyles.dayName]}>{value}</Text>
+        ):(<Text style={[{ alignSelf: "center", paddingBottom: 5 }, AppStyles.dayName]} >...</Text>)}
         <Slider
           style={AppStyles.slider}
           value={value}

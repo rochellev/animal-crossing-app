@@ -4,45 +4,86 @@ import { useAsyncStorage } from "@react-native-community/async-storage";
 import { exp } from "react-native-reanimated";
 const { getItem, setItem } = useAsyncStorage("@data");
 // state = {turnips, status, error}
+
 const initialState = {
   data: {
-    firstTimeBuyer: true,
+    firstTimeBuyer: false,
     previousPattern: "large-spike",
-    sunday: 90,
+    sunday: 80,
     monday: {
       day: "Monday",
-      morning: 30,
-      afternoon: 40
+      morning: 98,
+      afternoon: 100
     },
     tuesday: {
       day: "Tuesday",
-      morning: 50,
-      afternoon: 60
+      morning: null,
+      afternoon: null
     },
     wednesday: {
       day: "Wednesday",
-      morning: 60,
-      afternoon: 65
+      morning: null,
+      afternoon: null
     },
     thursday: {
       day: "Thursday",
-      morning: 70,
-      afternoon: 90
+      morning: null,
+      afternoon: null
     },
     friday: {
       day: "Friday",
-      morning: 99,
-      afternoon: 200
+      morning: null,
+      afternoon: null
     },
     saturday: {
       day: "Saturday",
-      morning: 100,
-      afternoon: 69
+      morning: null,
+      afternoon: null
     }
   },
   status: "idle",
   error: null
 };
+
+// const initialState = {
+//   data: {
+//     firstTimeBuyer: false,
+//     previousPattern: "fluctuating",
+//     sunday: 90,
+//     monday: {
+//       day: "Monday",
+//       morning: 37,
+//       afternoon: 100
+//     },
+//     tuesday: {
+//       day: "Tuesday",
+//       morning: 120,
+//       afternoon: 145
+//     },
+//     wednesday: {
+//       day: "Wednesday",
+//       morning: 172,
+//       afternoon: 130
+//     },
+//     thursday: {
+//       day: "Thursday",
+//       morning: 36,
+//       afternoon: 34
+//     },
+//     friday: {
+//       day: "Friday",
+//       morning: null,
+//       afternoon: null
+//     },
+//     saturday: {
+//       day: "Saturday",
+//       morning: null,
+//       afternoon: null
+//     }
+//   },
+//   status: "idle",
+//   error: null
+// };
 const turnipsSlice = createSlice({
   name: "turnips",
   initialState,
@@ -86,6 +127,46 @@ export const getBuyerStatus = state => state.turnips.data.firstTimeBuyer;
 
 export const getPreviousPattern = state => state.turnips.data.previousPattern;
 export const getSundayData = state => state.turnips.data.sunday;
+
+// returns object with input array [sunday, mondayAM, MondayPM...] and first time buyer T/F and previous pattern
+export const getInputs = state => {
+  const sellingDays = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ];
+
+  var inputArray = [];
+  inputArray.push(state.turnips.data.sunday);
+  inputArray.push(state.turnips.data.sunday);
+  for (const day of sellingDays) {
+    inputArray.push(state.turnips.data[day].morning);
+    inputArray.push(state.turnips.data[day].afternoon);
+  }
+let previous_pattern = state.turnips.data.previousPattern
+let pattern = null;
+if (previous_pattern == "0" || previous_pattern == "fluctuating") {
+  pattern = 0;
+} else if (previous_pattern == "1" || previous_pattern == "large-spike") {
+  pattern = 1;
+} else if (previous_pattern == "2" || previous_pattern == "decreasing") {
+  pattern = 2;
+} else if (previous_pattern == "3" || previous_pattern == "small-spike") {
+  pattern = 3;
+} else {
+  pattern = -1;
+}
+  
+  const inputObject = {
+    sellPrices: inputArray,
+    previousPattern: pattern,
+    firstBuy: state.turnips.data.firstTimeBuyer
+  };
+  return inputObject;
+};
 
 export const storeData = async value => {
   try {
