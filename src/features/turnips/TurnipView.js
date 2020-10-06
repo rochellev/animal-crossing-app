@@ -123,20 +123,16 @@ export const TurnipView = () => {
             </Picker>
           </View>
         </View>
-          <OutputView />
+          
         <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>
 
         <View style={{ flex: 1 }}>{renderedDailyInputCards}</View>
       </View>
-      <Button
-        title="Predict Best Day to Sell!"
-        type="outline"
-        raised
-        containerStyle={{ flex: 1, width: 200, alignSelf: "center" }}
-        buttonStyle={{ width: "100%" }}
-      />
+      <View style={{ flex: 1 }}>
+      <OutputView />
+      </View>
     </View>
   );
 };
