@@ -5,10 +5,13 @@ import Predictor from "./Predictor";
 import { getSundayData } from "../turnips/turnipsSlice";
 
 // predictions: [65, 70, 80, 90, 95, 100, 115, 150]
+//  prices: [S,S,Mon_am,Mon_pm, Tes_am,Tues_pm,Wed_am,Wed_pm,Thurs_am,Thurs_pm,Fri_am,Fri_pm,Fri_am,Fri_pm,]
 const initialState = {
   data: {
+    bestDay: "monday",
+    bestTime: "morning",
     currentIndex: 0,
-    predictions: [
+    possibilities: [
       {
         pattern_number: 4,
         prices: [
@@ -523,14 +526,14 @@ const predictionsSlice = createSlice({
   name: "predictions",
   initialState,
   reducers: {
-    updateCurrentIndex(state, action){
-      const {index} = action.payload
+    updateCurrentIndex(state, action) {
+      const { index } = action.payload;
       state.predictions.data.currentIndex = index;
     }
   }
 });
 
-export const {updateCurrentIndex} = predictionsSlice.actions;
+export const { updateCurrentIndex } = predictionsSlice.actions;
 export default predictionsSlice.reducer;
 
 // export const {
@@ -538,47 +541,47 @@ export default predictionsSlice.reducer;
 // } = predictionsSlice.actions;
 
 // export const getData = state => Object.values(state.predictions.data);
-export const getThisPrediction = (state, index)=> {
-  Object.values(state.predictions.data.predictions[index])
-}
-
-// sell prices array [Sun, MondayAM, MondayPM, TuesdayAM, ...]
-
-export const calculatePrediction = (
-  state,
-  sellPrices,
-  firstBuy,
-  previousPattern
-) => {
-  let predictor = new Predictor(sellPrices, firstBuy, previousPattern);
-  let analyzedPossibilities = predictor.analyze_possibilities();
-  return analyzedPossibilities;
+export const getThisPrediction = (state, index) => {
+  Object.values(state.predictions.data.possibilities[index]);
 };
 
 export const getOutput = (state) => {
-  const sunday = getSundayData(state)
-  const index = calculateIndex(sunday)
-  return Object.values(state.predictions.data.predictions[index])
-}
+  const price = getSundayData(state);
+  // console.log(`price: ${price}`)
+  const index = calculateIndex(price);
+  return state.predictions.data.possibilities[index];
+};
 
 // predictions: [65, 70, 80, 90, 95, 100, 115, 150]
-const calculateIndex = (sundayPrice) => {
-  if(sundayPrice <= 65){
+export const calculateIndex = sundayPrice => {
+  if (sundayPrice <= 65) {
     return 0;
-  } else if(sundayPrice <= 70){
-    return 1
-  } else if(sundayPrice <= 80){
-    return 2
-  }else if(sundayPrice <= 90){
-    return 3
-  }else if(sundayPrice <= 95){
-    return 4
-  }else if (sundayPrice <= 100){
-    return 5
-  }else if(sundayPrice <= 115){
-    return 6
-  }else{
-    return 7
-  }  
-  
-}
+  } else if (sundayPrice <= 70) {
+    return 1;
+  } else if (sundayPrice <= 80) {
+    return 2;
+  } else if (sundayPrice <= 90) {
+    return 3;
+  } else if (sundayPrice <= 95) {
+    return 4;
+  } else if (sundayPrice <= 100) {
+    return 5;
+  } else if (sundayPrice <= 115) {
+    return 6;
+  } else {
+    return 7;
+  }
+};
+
+// sell prices array [Sun, MondayAM, MondayPM, TuesdayAM, ...]
+
+// export const calculatePrediction = (
+//   state,
+//   sellPrices,
+//   firstBuy,
+//   previousPattern
+// ) => {
+//   let predictor = new Predictor(sellPrices, firstBuy, previousPattern);
+//   let analyzedPossibilities = predictor.analyze_possibilities();
+//   return analyzedPossibilities;
+// };

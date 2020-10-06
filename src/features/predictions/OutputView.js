@@ -4,21 +4,30 @@ import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { getSundayData } from "../turnips/turnipsSlice";
-import { getOutput, calculatePrediction } from "./predictionsSlice";
+import { getOutput, getThisPrediction, calculateIndex } from "./predictionsSlice";
 import Predictor from "./Predictor";
-
 
 export const OutputView = () => {
   // const sunday = useSelector(getSundayData(state))
   const output = useSelector(state => getOutput(state));
+  const dispatch = useDispatch();
+  const [prediction, setPrediction] = useState(output);
+  const [bestDay, setBestDay] = useState("");
+  const [bestTime, setBestTime] = useState("");
+  // const [weekMax, setWeekMax] = useState(output.weekMax);
   const handlePrediction = () => {
-    console.log(JSON.stringify(output, null, 2));
+    // console.log(`**********`)
+    // console.log(`output:`)
+    // console.log(JSON.stringify(output.prices[2], null, 2))
+    // console.log(`**********`)
   };
 
   return (
     <View style={styles.outputContainer}>
       <Text>This is output View</Text>
-
+      {/* <Text>MAx day to sell is {JSON.stringify(p,null, 2)}</Text> */}
+<Text>predictions</Text>
+{/* <Text>{JSON.stringify(prediction, null, 2)}</Text> */}
       <Button
         title="Predict!"
         type="outline"
