@@ -9,7 +9,8 @@ const initialState = {
   data: {
     firstTimeBuyer: false,
     previousPattern: "large-spike",
-    sunday: 80,
+    currentIndex: 0,
+    sunday: 95,
     monday: {
       day: "Monday",
       morning: 98,

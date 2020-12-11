@@ -527,8 +527,8 @@ const predictionsSlice = createSlice({
   initialState,
   reducers: {
     updateCurrentIndex(state, action) {
-      const { index } = action.payload;
-      state.predictions.data.currentIndex = index;
+      const { value } = action.payload;
+      state.predictions.data.currentIndex = value;
     }
   }
 });
@@ -551,6 +551,13 @@ export const getOutput = (state) => {
   const index = calculateIndex(price);
   return state.predictions.data.possibilities[index];
 };
+
+export const getCurrentIndex = (state) => {
+  return state.predictions.data.currentIndex;
+}
+export const getMaxData = (state) => {
+
+}
 
 // predictions: [65, 70, 80, 90, 95, 100, 115, 150]
 export const calculateIndex = sundayPrice => {
