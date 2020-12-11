@@ -17,42 +17,33 @@ import { PredictionChart } from "./PredictionChart";
 
 export const OutputView = () => {
   // const sunday = useSelector(getSundayData(state))
-  const sunday = useSelector(state => getSundayData(state))
+  const sunday = useSelector(state => getSundayData(state));
   const output = useSelector(state => getOutput(state));
   const maxData = useSelector(state => getMaxData(state));
-  const predictionsIndex = useSelector(state => getCurrentIndex(state))
-  
+  const predictionsIndex = useSelector(state => getCurrentIndex(state));
+
   const dispatch = useDispatch();
 
   const [prediction, setPrediction] = useState(output);
-  const [currentIndex, setCurrentIndex] = useState(predictionsIndex)
+  const [currentIndex, setCurrentIndex] = useState(predictionsIndex);
   const [bestDay, setBestDay] = useState("");
   const [bestTime, setBestTime] = useState("");
   // const [weekMax, setWeekMax] = useState(output.weekMax);
 
-
-  
-  const handlePrediction = () => {
-    console.log(`**********`)
+  // want to show the chart
+  const handlePrediction = value => {
+    console.log(`**********`);
     // console.log(`output:`)
     // console.log(JSON.stringify(output.prices[2], null, 2))
-    console.log(`currentIndex: ${currentIndex}`)
+    console.log(`currentIndex: ${currentIndex}`);
+    console.log(`predictionsIndex: ${predictionsIndex}`);
 
-    
-    
-    
-    
-  setCurrentIndex(value)
-  // dispatch(updateCurrentIndex({currentIndex}));
-
-   
+    setCurrentIndex(value);
+    // dispatch(updateCurrentIndex({currentIndex}));
   };
 
   return (
     <View style={styles.outputContainer}>
-      <Text>predictionsIndex: {predictionsIndex}</Text>
-      <Text>currentIndex: {currentIndex}</Text>
-<PredictionChart  />
       <Button
         title="Predict!"
         type="outline"
@@ -61,6 +52,7 @@ export const OutputView = () => {
         buttonStyle={{ width: "100%" }}
         onPress={handlePrediction}
       />
+      <PredictionChart />
     </View>
   );
 };
