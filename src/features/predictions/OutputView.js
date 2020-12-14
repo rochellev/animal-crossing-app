@@ -4,30 +4,46 @@ import { View, Text, Image, Switch, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { getSundayData } from "../turnips/turnipsSlice";
-import { getOutput, getThisPrediction, calculateIndex } from "./predictionsSlice";
+import {
+  getOutput,
+  getMaxData,
+  getThisPrediction,
+  calculateIndex,
+  getCurrentIndex,
+  updateCurrentIndex
+} from "./predictionsSlice";
 import Predictor from "./Predictor";
+import { PredictionChart } from "./PredictionChart";
 
 export const OutputView = () => {
   // const sunday = useSelector(getSundayData(state))
+  const sunday = useSelector(state => getSundayData(state));
   const output = useSelector(state => getOutput(state));
+  const maxData = useSelector(state => getMaxData(state));
+  const predictionsIndex = useSelector(state => getCurrentIndex(state));
+
   const dispatch = useDispatch();
+
   const [prediction, setPrediction] = useState(output);
+  const [currentIndex, setCurrentIndex] = useState(predictionsIndex);
   const [bestDay, setBestDay] = useState("");
   const [bestTime, setBestTime] = useState("");
   // const [weekMax, setWeekMax] = useState(output.weekMax);
-  const handlePrediction = () => {
-    // console.log(`**********`)
+
+  // want to show the chart
+  const handlePrediction = value => {
+    console.log(`**********`);
     // console.log(`output:`)
     // console.log(JSON.stringify(output.prices[2], null, 2))
-    // console.log(`**********`)
+    console.log(`currentIndex: ${currentIndex}`);
+    console.log(`predictionsIndex: ${predictionsIndex}`);
+
+    setCurrentIndex(value);
+    // dispatch(updateCurrentIndex({currentIndex}));
   };
 
   return (
     <View style={styles.outputContainer}>
-      <Text>This is output View</Text>
-      {/* <Text>MAx day to sell is {JSON.stringify(p,null, 2)}</Text> */}
-<Text>predictions</Text>
-{/* <Text>{JSON.stringify(prediction, null, 2)}</Text> */}
       <Button
         title="Predict!"
         type="outline"
@@ -36,6 +52,7 @@ export const OutputView = () => {
         buttonStyle={{ width: "100%" }}
         onPress={handlePrediction}
       />
+      <PredictionChart />
     </View>
   );
 };

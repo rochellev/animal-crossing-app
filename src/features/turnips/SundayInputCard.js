@@ -33,7 +33,7 @@ export const SundayInputCard = () => {
           style={AppStyles.slider}
           value={value}
           minimumValue={1}
-          maximumValue={1000}
+          maximumValue={300}
           step={1}
           onValueChange={value => setValue(value)}
           onSlidingComplete={value => handleSlideComplete(value)}
