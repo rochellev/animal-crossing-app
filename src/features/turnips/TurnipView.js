@@ -12,7 +12,7 @@ import {
   previousPatternUpdated
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
-import {OutputView} from '../predictions/OutputView'
+import { OutputView } from "../predictions/OutputView";
 
 // Picker itemStyle does not work for android, but can do it here
 // https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
@@ -79,11 +79,10 @@ export const TurnipView = () => {
       </View>
 
       <View style={styles.inputSection}>
-        <Text>redux buyer state: {buyerStatus.toString()}</Text>
         <View style={styles.buyerStatusContainer}>
           <Text style={AppStyles.dayName}>First Time buyer? </Text>
 
-          <View style={[styles.pickerContainer, AppStyles.shadows] }>
+          <View style={[styles.pickerContainer, AppStyles.shadows]}>
             <Picker
               default
               selectedValue={firstTimeBuyer}
@@ -110,7 +109,7 @@ export const TurnipView = () => {
               affects your predictions)
             </Text> */}
           </View>
-          <View style={[styles.pickerContainer, AppStyles.shadows] }>
+          <View style={[styles.pickerContainer, AppStyles.shadows]}>
             <Picker
               default
               selectedValue={pattern}
@@ -123,7 +122,7 @@ export const TurnipView = () => {
             </Picker>
           </View>
         </View>
-          
+
         <View style={{ flex: 1 }}>
           <SundayInputCard key={"sunday"} />
         </View>
@@ -131,7 +130,7 @@ export const TurnipView = () => {
         <View style={{ flex: 1 }}>{renderedDailyInputCards}</View>
       </View>
       <View style={{ flex: 1 }}>
-      <OutputView />
+        <OutputView />
       </View>
     </View>
   );
@@ -159,7 +158,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "70%",
     marginBottom: 5
-    
   },
   pickerContainer: {
     flex: 1,
@@ -189,4 +187,3 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
-
