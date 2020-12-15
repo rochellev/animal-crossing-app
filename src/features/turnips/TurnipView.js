@@ -13,15 +13,53 @@ import {
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
 import { OutputView } from "../predictions/OutputView";
+// import { PredictionChart } from "../predictions/PredictionChart";
+import { LineChart } from "react-native-chart-kit";
+import { Dimensions } from "react-native";
 
 // Picker itemStyle does not work for android, but can do it here
 // https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
+
+const random = [
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100
+];
+
+const labels = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+const chartConfig = {
+  backgroundColor: "#e26a00",
+  backgroundGradientFrom: "#D9D9D9",
+  backgroundGradientTo: "#FFF",
+  decimalPlaces: 0, // optional, defaults to 2dp
+  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  style: { borderRadius: 16, paddingVertical: 5 },
+  propsForDots: { r: "6", strokeWidth: "2", stroke: "#ffa726" }
+};
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
   const previousPattern = useSelector(state => getPreviousPattern(state));
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
   const [pattern, setPattern] = useState(previousPattern);
+  const [showGraph, setShowGraph] = useState(false);
+
+  const [data, setData] = useState(random);
+
   const dispatch = useDispatch();
 
   const handleBuyerStatus = value => {
@@ -32,6 +70,10 @@ export const TurnipView = () => {
   const handlePatternOptions = value => {
     setPattern(value);
     dispatch(previousPatternUpdated({ value }));
+  };
+  const handlePrediction = value => {
+    setData(random);
+    setShowGraph(!showGraph);
   };
   const patternOptions = [
     {
@@ -102,12 +144,6 @@ export const TurnipView = () => {
             <Text style={[AppStyles.text, { fontSize: 18 }]}>
               Previous Pattern
             </Text>
-            {/* <Text style={[AppStyles.text, { fontSize: 14 }]}>
-              (Last week's pattern
-            </Text>
-            <Text style={[AppStyles.text, { fontSize: 14 }]}>
-              affects your predictions)
-            </Text> */}
           </View>
           <View style={[styles.pickerContainer, AppStyles.shadows]}>
             <Picker
@@ -130,11 +166,40 @@ export const TurnipView = () => {
         <View style={{ flex: 1 }}>{renderedDailyInputCards}</View>
       </View>
       <View style={{ flex: 1 }}>
-        <OutputView />
+        <Button
+          title="Predict!"
+          type="outline"
+          raised
+          containerStyle={{ flex: 1, width: 200, alignSelf: "center" }}
+          buttonStyle={{ width: "100%" }}
+          onPress={handlePrediction}
+        />
+        {showGraph && (
+          <LineChart
+            data={{
+              labels: labels,
+              datasets: [
+                {
+                  data: data,
+                  color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
+                  strokeWidth: 2
+                }
+              ]
+            }}
+            width={Dimensions.get("window").width - 15}
+            height={300}
+            chartConfig={chartConfig}
+            style={{ marginVertical: 15, borderRadius: 15, paddingTop: 15 }}
+            verticalLabelRotation={25}
+            bezier
+          />
+        )}
       </View>
     </View>
   );
 };
+
+// data={{ labels: labels, datasets: [{ data: data }] }}
 
 const styles = StyleSheet.create({
   container: {
