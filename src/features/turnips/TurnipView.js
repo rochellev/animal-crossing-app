@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, Switch, StyleSheet } from "react-native";
+import { View, ScrollView, Text, Image, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
@@ -19,6 +19,8 @@ import { Dimensions } from "react-native";
 
 // Picker itemStyle does not work for android, but can do it here
 // https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
+
+// https://medium.com/@ayushi.nig/autoscroll-in-react-native-451601ac3ca8
 
 const random = [
   Math.random() * 100,
@@ -59,7 +61,8 @@ export const TurnipView = () => {
   const [showGraph, setShowGraph] = useState(false);
 
   const [data, setData] = useState(random);
-
+  const scrollViewRef = useRef(null);
+  const graphRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleBuyerStatus = value => {
@@ -73,7 +76,8 @@ export const TurnipView = () => {
   };
   const handlePrediction = value => {
     setData(random);
-    setShowGraph(!showGraph);
+    setShowGraph(true);
+    // graphRef.current.focus();
   };
   const patternOptions = [
     {
@@ -115,7 +119,7 @@ export const TurnipView = () => {
   ));
 
   return (
-    <View style={styles.container}>
+    <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
@@ -174,7 +178,7 @@ export const TurnipView = () => {
           buttonStyle={{ width: "100%" }}
           onPress={handlePrediction}
         />
-        {showGraph && (
+        <View style={{ flex: 1 }}>
           <LineChart
             data={{
               labels: labels,
@@ -193,9 +197,9 @@ export const TurnipView = () => {
             verticalLabelRotation={25}
             bezier
           />
-        )}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -235,10 +239,12 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   pickerBox: {
+    flex: 1,
     height: "100%",
     width: "100%"
   },
   pickerItem: {
+    flex: 1,
     fontFamily: "Montserrat_400Regular",
     fontSize: 18
   },
@@ -248,6 +254,7 @@ const styles = StyleSheet.create({
     width: "75%"
   },
   patternText: {
+    flex: 1,
     alignSelf: "center",
     justifyContent: "center"
   }
