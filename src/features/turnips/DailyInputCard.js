@@ -31,45 +31,39 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={[styles.container, AppStyles.shadows]}>
-        <Text style={[AppStyles.text, styles.cardTitle]}>{name}</Text>
-        <View style={styles.inputSection}>
-          <View
-            style={[{ marginRight: 5 }, AppStyles.shadows, styles.cardInput]}
-          >
-            <Text style={AppStyles.dayName}>
-              <Text>AM </Text>
-              {morningPrice ? <Text>{morningPrice}</Text> : <Text>...</Text>}
-            </Text>
-            <Slider
-              style={AppStyles.slider}
-              value={morningPrice}
-              minimumValue={1}
-              maximumValue={1000}
-              step={1}
-              onValueChange={value => setMorningPrice(value)}
-              onSlidingComplete={value => handleMorningSlideComplete(value)}
-            />
-          </View>
-          <View style={[AppStyles.shadows, styles.cardInput]}>
-            <Text style={AppStyles.dayName}>
-              <Text>PM </Text>
-              {afternoonPrice ? (
-                <Text>{afternoonPrice}</Text>
-              ) : (
-                <Text>...</Text>
-              )}
-            </Text>
-            <Slider
-              style={AppStyles.slider}
-              value={afternoonPrice}
-              minimumValue={1}
-              maximumValue={1000}
-              step={1}
-              onValueChange={value => setAfternoonPrice(value)}
-              onSlidingComplete={value => handleAfternoonSlideComplete(value)}
-            />
-          </View>
+      <Text style={[AppStyles.text, styles.cardTitle]}>{name}</Text>
+      <View style={styles.inputSection}>
+        <View style={[styles.cardInput]}>
+          <Text style={[AppStyles.text, styles.timeTitle]}>
+            <Text>AM </Text>
+            {morningPrice ? <Text>{morningPrice}</Text> : <Text>...</Text>}
+          </Text>
+          <Slider
+            style={AppStyles.slider}
+            value={morningPrice}
+            minimumValue={1}
+            maximumValue={1000}
+            step={1}
+            onValueChange={value => setMorningPrice(value)}
+            onSlidingComplete={value => handleMorningSlideComplete(value)}
+          />
         </View>
+        <View style={[styles.cardInput]}>
+          <Text style={[AppStyles.text, styles.timeTitle]}>
+            <Text>PM </Text>
+            {afternoonPrice ? <Text>{afternoonPrice}</Text> : <Text>...</Text>}
+          </Text>
+          <Slider
+            style={AppStyles.slider}
+            value={afternoonPrice}
+            minimumValue={1}
+            maximumValue={1000}
+            step={1}
+            onValueChange={value => setAfternoonPrice(value)}
+            onSlidingComplete={value => handleAfternoonSlideComplete(value)}
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -90,6 +84,11 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 22,
+    paddingVertical: 10,
+    alignSelf: "center"
+  },
+  timeTitle: {
+    fontSize: 18,
     paddingVertical: 5,
     alignSelf: "center"
   },
@@ -113,13 +112,14 @@ const styles = StyleSheet.create({
   },
   inputSection: {
     flexDirection: "row",
-    flex: 2,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    marginRight: 5
+    flex: 1,
+    // alignItems: "center",
+    
+    backgroundColor: Colors.cultured
+    // marginRight: 5
   },
   cardInput: {
-    padding: 8,
+    // padding: 8,
     backgroundColor: Colors.oldLace,
     borderRadius: 10
   }
