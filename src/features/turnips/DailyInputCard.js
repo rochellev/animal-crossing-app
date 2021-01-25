@@ -31,7 +31,9 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={[styles.container, AppStyles.shadows]}>
-      <Text style={[AppStyles.text, styles.cardTitle]}>{name}</Text>
+      <View style={styles.dayHeader}>
+        <Text style={[AppStyles.text, styles.cardTitle]}>{name}</Text>
+      </View>
       <View style={styles.inputSection}>
         <View style={[styles.cardInput]}>
           <Text style={[AppStyles.text, styles.timeTitle]}>
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 22,
-    paddingVertical: 10,
+    
     alignSelf: "center"
   },
   timeTitle: {
@@ -108,13 +110,15 @@ const styles = StyleSheet.create({
   },
   dayHeader: {
     flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
     backgroundColor: Colors.lavenderGrey
   },
   inputSection: {
     flexDirection: "row",
     flex: 1,
     // alignItems: "center",
-    
+
     backgroundColor: Colors.cultured
     // marginRight: 5
   },
