@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
+// TODO: Alignment on sunday is off, less space on left side
 
 export const SundayInputCard = () => {
   const sundayPrice = useSelector(state => getSundayData(state));
