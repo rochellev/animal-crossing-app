@@ -10,6 +10,17 @@ import {
 } from "./turnipsSlice";
 import { Dimensions } from "react-native";
 
+// const TurnipText = () =>{
+//   return(
+//     <Text></Text>
+//   )
+// }
+const AMPMText =({ampm}) => {
+  return(
+    <Text style={[AppStyles.text, { fontSize: 18 }]}>{ampm}</Text>
+  )
+}
+
 export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
     getDayData(state, day)
@@ -32,13 +43,19 @@ export const DailyInputCard = ({ day }) => {
   return (
     <View style={[styles.container, AppStyles.shadows]}>
       <View style={styles.cardHeader}>
-        <Text style={[AppStyles.text, styles.cardTitle]}>{name}</Text>
+        <Text style={[AppStyles.text, { fontSize: 25 }]}>{name}</Text>
       </View>
       <View style={styles.cardBody}>
         <View style={[styles.cardInput]}>
-          <Text style={[AppStyles.text, styles.timeTitle]}>
-            <Text>AM </Text>
-            {morningPrice ? <Text>{morningPrice}</Text> : <Text>...</Text>}
+          <Text style={[AppStyles.text, { fontSize: 18 }]}>
+            <Text>AM    </Text>
+            {morningPrice ? (
+              <Text style={{ fontSize: 22, alignSelf: "flex-end" }}>
+                {morningPrice}
+              </Text>
+            ) : (
+              <Text style={{ fontSize: 28 }}>...</Text>
+            )}
           </Text>
           <Slider
             style={AppStyles.slider}
@@ -51,7 +68,7 @@ export const DailyInputCard = ({ day }) => {
           />
         </View>
         <View style={[styles.cardInput]}>
-          <Text style={[AppStyles.text, styles.timeTitle]}>
+          <Text style={[AppStyles.text, { fontSize: 18 }]}>
             <Text>PM </Text>
             {afternoonPrice ? <Text>{afternoonPrice}</Text> : <Text>...</Text>}
           </Text>
@@ -71,64 +88,43 @@ export const DailyInputCard = ({ day }) => {
 };
 
 // backgroundColor: Colors.blanchedAlmond,
-
+const cardWidth = Dimensions.get("window").width - 50;
+const cardHeight = Math.floor(cardWidth * 0.33);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: Dimensions.get("window").width - 65,
+    width: cardWidth,
+    height: cardHeight,
     backgroundColor: Colors.oldLace,
     alignItems: "center",
     alignSelf: "center",
     flexDirection: "column",
     borderRadius: 10,
-    marginHorizontal: 5,
     marginBottom: 15
-  },
-  cardTitle: {
-    fontSize: 22,
-
-    alignSelf: "center"
-  },
-  timeTitle: {
-    fontSize: 18,
-    paddingVertical: 5,
-    alignSelf: "center"
-  },
-  day: {
-    flex: 1,
-    fontSize: 25
-    // flexDirection: "row",
-    // justifyContent: "center",
-
-    // paddingVertical: 5,
-    // height: "80%",
-    // width: "10%",
-    // paddingHorizontal: 0,
-
-    // marginLeft: 5,
-    // marginRight: 5
   },
   cardHeader: {
     flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+    marginVertical: 5,
     backgroundColor: Colors.lavenderGrey
   },
   cardBody: {
     flexDirection: "row",
-    flex: 1,
-    width: '100%',
-    marginVertical: 5,
-
-    // alignItems: "center",
+    flex: 2,
+    width: "90%",
+    // marginVertical: 5,
     justifyContent: "space-evenly"
-
-    // marginRight: 5
   },
+  timeTitle: {
+    // fontSize: 18,
+    // paddingVertical: 5,
+    // alignSelf: "center"
+  },
+
   cardInput: {
     // padding: 8,
     // marginHorizontal: 5
-    
-    backgroundColor: Colors.lavenderGrey,
+    flexDirection: "column",
+    height: "100%",
+    backgroundColor: Colors.lavenderGrey
   }
 });
