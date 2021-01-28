@@ -12,14 +12,18 @@ export const Colors = {
   platinum: "#E8E8ED",
   oldLace: "#FAF6E7",
   blanchedAlmond: "#f8e7c9",
-  lavenderGrey: "#c6c6d2"
+  lavenderGrey: "#c6c6d2",
+  lightGrayBlue: "#e6eefd",
+  lightBlue: "#E6FAFD",
+  lightPurple:"#EAE6FD"
 };
 
 export const AppStyles = StyleSheet.create({
   slider: {
     width: 110,
     height: 20,
-    backgroundColor: Colors.lavenderGrey
+    backgroundColor: Colors.lavenderGrey,
+    borderRadius: 8,
   },
   dayName: {
     fontSize: 18,

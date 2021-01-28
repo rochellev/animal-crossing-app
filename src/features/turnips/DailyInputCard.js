@@ -10,16 +10,13 @@ import {
 } from "./turnipsSlice";
 import { Dimensions } from "react-native";
 
-// const TurnipText = () =>{
-//   return(
-//     <Text></Text>
-//   )
-// }
-const AMPMText =({ampm}) => {
-  return(
-    <Text style={[AppStyles.text, { fontSize: 18 }]}>{ampm}</Text>
-  )
-}
+const TurnipText = ({ text, size, extraStyle }) => {
+  return (
+    <View style={[{}, extraStyle]}>
+      <Text style={[AppStyles.text, { fontSize: size }]}>{text}</Text>
+    </View>
+  );
+};
 
 export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
@@ -42,21 +39,14 @@ export const DailyInputCard = ({ day }) => {
 
   return (
     <View style={[styles.container, AppStyles.shadows]}>
-      <View style={styles.cardHeader}>
+      {/* <View style={styles.cardHeader}>
         <Text style={[AppStyles.text, { fontSize: 25 }]}>{name}</Text>
-      </View>
+      </View> */}
+      <TurnipText text={name} size={25} extraStyle={styles.extraTextStyle} />
       <View style={styles.cardBody}>
-        <View style={[styles.cardInput]}>
-          <Text style={[AppStyles.text, { fontSize: 18 }]}>
-            <Text>AM    </Text>
-            {morningPrice ? (
-              <Text style={{ fontSize: 22, alignSelf: "flex-end" }}>
-                {morningPrice}
-              </Text>
-            ) : (
-              <Text style={{ fontSize: 28 }}>...</Text>
-            )}
-          </Text>
+        <View style={styles.cardInput}>
+          <TurnipText text="AM" size={18}  />
+          <TurnipText text={morningPrice ? morningPrice : "..."} size={22} />
           <Slider
             style={AppStyles.slider}
             value={morningPrice}
@@ -67,11 +57,12 @@ export const DailyInputCard = ({ day }) => {
             onSlidingComplete={value => handleMorningSlideComplete(value)}
           />
         </View>
-        <View style={[styles.cardInput]}>
-          <Text style={[AppStyles.text, { fontSize: 18 }]}>
-            <Text>PM </Text>
-            {afternoonPrice ? <Text>{afternoonPrice}</Text> : <Text>...</Text>}
-          </Text>
+        <View style={styles.cardInput}>
+          <TurnipText text="PM" size={18} />
+          <TurnipText
+            text={afternoonPrice ? afternoonPrice : "..."}
+            size={22}
+          />
           <Slider
             style={AppStyles.slider}
             value={afternoonPrice}
@@ -89,12 +80,12 @@ export const DailyInputCard = ({ day }) => {
 
 // backgroundColor: Colors.blanchedAlmond,
 const cardWidth = Dimensions.get("window").width - 50;
-const cardHeight = Math.floor(cardWidth * 0.33);
+const cardHeight = Math.floor(cardWidth * 0.36);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: cardWidth,
-    height: cardHeight,
+    height: '100%',
     backgroundColor: Colors.oldLace,
     alignItems: "center",
     alignSelf: "center",
@@ -104,15 +95,15 @@ const styles = StyleSheet.create({
   },
   cardHeader: {
     flex: 1,
-    marginVertical: 5,
-    backgroundColor: Colors.lavenderGrey
+    marginBottom: 3
+    // backgroundColor: Colors.lavenderGrey
   },
   cardBody: {
     flexDirection: "row",
     flex: 2,
     width: "90%",
     // marginVertical: 5,
-    justifyContent: "space-evenly"
+    justifyContent: "space-between"
   },
   timeTitle: {
     // fontSize: 18,
@@ -121,10 +112,26 @@ const styles = StyleSheet.create({
   },
 
   cardInput: {
-    // padding: 8,
-    // marginHorizontal: 5
+    flex: 1,
     flexDirection: "column",
-    height: "100%",
-    backgroundColor: Colors.lavenderGrey
+    alignItems: "center",
+    // backgroundColor: Colors.lightGrayBlue,
+    paddingBottom: 5
+  },
+  amStyle: {
+    backgroundColor: Colors.lightPurple,
+    padding: 2,
+    
   }
 });
+
+// {/* <Text style={[AppStyles.text, { fontSize: 18 }]}>
+//           <Text>AM    </Text>
+//           {morningPrice ? (
+//             <Text style={{ fontSize: 22, alignSelf: "flex-end" }}>
+//               {morningPrice}
+//             </Text>
+//           ) : (
+//             <Text style={{ fontSize: 28 }}>...</Text>
+//           )}
+//         </Text> */}
