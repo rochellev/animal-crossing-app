@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { Text, View } from "react-native";
+import { Dimensions } from "react-native";
 
 // fontFamily: "sans-serif-light"
 // Inter_900Black
@@ -59,6 +60,9 @@ export const AppStyles = StyleSheet.create({
     fontFamily: "Montserrat_400Regular"
   }
 });
+
+export const cardWidth = Dimensions.get("window").width - 50;
+export const cardHeight = Math.floor(cardWidth * 0.36);
 
 // export const TurnipText = ({ text }) => {
 //   return (

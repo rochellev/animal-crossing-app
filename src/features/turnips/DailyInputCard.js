@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
-import { AppStyles, Colors, TurnipText } from "../styles/AppStyles";
+import { AppStyles, Colors, TurnipText, cardHeight, cardWidth } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import {
   getDayData,
   afternoonPriceUpdated,
   morningPriceUpdated
 } from "./turnipsSlice";
-import { Dimensions } from "react-native";
+
 
 export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
@@ -77,8 +77,7 @@ export const DailyInputCard = ({ day }) => {
 };
 
 // backgroundColor: Colors.blanchedAlmond,
-const cardWidth = Dimensions.get("window").width - 50;
-const cardHeight = Math.floor(cardWidth * 0.36);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
