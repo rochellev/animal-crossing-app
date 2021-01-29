@@ -22,6 +22,8 @@ import { Dimensions } from "react-native";
 
 // https://medium.com/@ayushi.nig/autoscroll-in-react-native-451601ac3ca8
 
+// TODO: the lines, the spacing is not right, touching the lower cards
+
 const random = [
   Math.random() * 100,
   Math.random() * 100,

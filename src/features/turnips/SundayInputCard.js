@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors, AppStyles, TurnipText, cardWidth } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
-// TODO: Alignment on sunday is off, less space on left side
 
 export const SundayInputCard = () => {
   const sundayPrice = useSelector(state => getSundayData(state));
@@ -19,7 +18,7 @@ export const SundayInputCard = () => {
   return (
     <View style={styles.container}>
       <TurnipText text="Sunday" size={25} />
-      <TurnipText text="Daisy Mae's Price"/>
+      <TurnipText text="Daisy Mae's Price" size={15} />
       <TurnipText text={value ? value : "..."} size={22} />
       <Slider
         style={AppStyles.slider}
@@ -40,7 +39,6 @@ export const SundayInputCard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginHorizontal: 5,
     width: cardWidth,
     height: "100%",
     backgroundColor: Colors.oldLace,
@@ -54,10 +52,6 @@ const styles = StyleSheet.create({
   priceSlider: {
     flex: 1,
     flexDirection: "column"
-    // backgroundColor: Colors.oldLace,
-    // alignItems: "center",
-    // marginRight: 12,
-    // borderRadius: 10
   },
   day: {
     flex: 1,
