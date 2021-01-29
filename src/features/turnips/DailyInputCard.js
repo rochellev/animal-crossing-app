@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
-import { AppStyles, Colors } from "../styles/AppStyles";
+import { AppStyles, Colors, TurnipText } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import {
   getDayData,
@@ -9,15 +9,6 @@ import {
   morningPriceUpdated
 } from "./turnipsSlice";
 import { Dimensions } from "react-native";
-
-
-const TurnipText = ({ text, size, extraStyle }) => {
-  return (
-    <View style={[{}, extraStyle]}>
-      <Text style={[AppStyles.text, { fontSize: size }]}>{text}</Text>
-    </View>
-  );
-};
 
 export const DailyInputCard = ({ day }) => {
   const [name, morning, afternoon] = useSelector(state =>
@@ -54,8 +45,8 @@ export const DailyInputCard = ({ day }) => {
             minimumValue={1}
             maximumValue={1000}
             minimumTrackTintColor={Colors.appleGreen}
-            maximumTrackTintColor={Colors.blanchedAlmond}
-            thumbTintColor= {Colors.armyGreen}
+            maximumTrackTintColor={Colors.timeberwolf}
+            thumbTintColor={Colors.armyGreen}
             step={1}
             onValueChange={value => setMorningPrice(value)}
             onSlidingComplete={value => handleMorningSlideComplete(value)}
@@ -73,8 +64,8 @@ export const DailyInputCard = ({ day }) => {
             minimumValue={1}
             maximumValue={1000}
             minimumTrackTintColor={Colors.appleGreen}
-            maximumTrackTintColor={Colors.blanchedAlmond}
-            thumbTintColor= {Colors.armyGreen}
+            maximumTrackTintColor={Colors.timeberwolf}
+            thumbTintColor={Colors.armyGreen}
             step={1}
             onValueChange={value => setAfternoonPrice(value)}
             onSlidingComplete={value => handleAfternoonSlideComplete(value)}

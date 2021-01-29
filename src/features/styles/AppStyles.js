@@ -4,6 +4,13 @@ import { Text, View } from "react-native";
 
 // fontFamily: "sans-serif-light"
 // Inter_900Black
+export const TurnipText = ({ text, size, extraStyle }) => {
+  return (
+    <View style={[{}, extraStyle]}>
+      <Text style={[AppStyles.text, { fontSize: size }]}>{text}</Text>
+    </View>
+  );
+};
 
 export const Colors = {
   spaceCadet: "#2B2D42",
@@ -19,7 +26,8 @@ export const Colors = {
   armyGreen: "#2C3D01",
   artichoke: '#949B82',
   appleGreen: '#80BF02',
-  maxPurple: '#7A3E7D'
+  maxPurple: '#7A3E7D',
+  timeberwolf: '#CED2C6'
 };
 
 export const AppStyles = StyleSheet.create({
