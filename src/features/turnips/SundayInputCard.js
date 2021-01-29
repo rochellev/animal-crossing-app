@@ -19,6 +19,7 @@ export const SundayInputCard = () => {
   return (
     <View style={styles.container}>
       <TurnipText text="Sunday" size={25} />
+      <TurnipText text="Daisy Mae's Price"/>
       <TurnipText text={value ? value : "..."} size={22} />
       <Slider
         style={AppStyles.slider}
