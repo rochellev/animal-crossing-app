@@ -10,6 +10,7 @@ import {
 } from "./turnipsSlice";
 import { Dimensions } from "react-native";
 
+
 const TurnipText = ({ text, size, extraStyle }) => {
   return (
     <View style={[{}, extraStyle]}>
@@ -42,16 +43,19 @@ export const DailyInputCard = ({ day }) => {
       {/* <View style={styles.cardHeader}>
         <Text style={[AppStyles.text, { fontSize: 25 }]}>{name}</Text>
       </View> */}
-      <TurnipText text={name} size={25} extraStyle={styles.extraTextStyle} />
+      <TurnipText text={name} size={25} />
       <View style={styles.cardBody}>
         <View style={styles.cardInput}>
-          <TurnipText text="AM" size={18}  />
+          <TurnipText text="AM" size={18} />
           <TurnipText text={morningPrice ? morningPrice : "..."} size={22} />
           <Slider
             style={AppStyles.slider}
             value={morningPrice}
             minimumValue={1}
             maximumValue={1000}
+            minimumTrackTintColor={Colors.appleGreen}
+            maximumTrackTintColor={Colors.blanchedAlmond}
+            thumbTintColor= {Colors.armyGreen}
             step={1}
             onValueChange={value => setMorningPrice(value)}
             onSlidingComplete={value => handleMorningSlideComplete(value)}
@@ -68,6 +72,9 @@ export const DailyInputCard = ({ day }) => {
             value={afternoonPrice}
             minimumValue={1}
             maximumValue={1000}
+            minimumTrackTintColor={Colors.appleGreen}
+            maximumTrackTintColor={Colors.blanchedAlmond}
+            thumbTintColor= {Colors.armyGreen}
             step={1}
             onValueChange={value => setAfternoonPrice(value)}
             onSlidingComplete={value => handleAfternoonSlideComplete(value)}
@@ -85,7 +92,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: cardWidth,
-    height: '100%',
+    height: "100%",
     backgroundColor: Colors.oldLace,
     alignItems: "center",
     alignSelf: "center",
@@ -120,8 +127,7 @@ const styles = StyleSheet.create({
   },
   amStyle: {
     backgroundColor: Colors.lightPurple,
-    padding: 2,
-    
+    padding: 2
   }
 });
 
