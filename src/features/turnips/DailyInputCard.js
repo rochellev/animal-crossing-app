@@ -44,7 +44,7 @@ export const DailyInputCard = ({ day }) => {
             value={morningPrice}
             minimumValue={1}
             maximumValue={1000}
-            minimumTrackTintColor={Colors.appleGreen}
+            minimumTrackTintColor={Colors.maxPurple}
             maximumTrackTintColor={Colors.timeberwolf}
             thumbTintColor={Colors.armyGreen}
             step={1}
@@ -63,7 +63,7 @@ export const DailyInputCard = ({ day }) => {
             value={afternoonPrice}
             minimumValue={1}
             maximumValue={1000}
-            minimumTrackTintColor={Colors.appleGreen}
+            minimumTrackTintColor={Colors.maxPurple}
             maximumTrackTintColor={Colors.timeberwolf}
             thumbTintColor={Colors.armyGreen}
             step={1}
