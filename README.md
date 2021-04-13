@@ -16,8 +16,8 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
 
 <div align="center">
 <span>
-<img src="./images/TurnipScreenShot1.png" />
-<img src="images/TurnipScreenShot-Graph.png" />
+<img src="./images/TurnipScreenShot1.png" width="30%"/>
+<img src="images/TurnipScreenShot-Graph.png" width="30%"/>
 </span>
 
 <p>To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. They can use this graph to better inform their moves in the Turnip Market.</p>
