@@ -23,16 +23,23 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
 <br>
 <p>To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. They can use this graph to better inform their moves in the Turnip Market.</p>
 
-## How to use
+## How to Run Turnip Stonk
 
-- QR Code available for Android (iOS update broke this Expo feature)
-  ![QR Code](./images/turnips-QR.jpg)
+### Option 1: Use Expo Client App
+
 - First, download the Expo Client App
+
   - iOS: [Client iOS](https://itunes.apple.com/app/apple-store/id982107779)
   - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
   - Web: Any web browser
 
-* To run app locally follow the steps below then scan the project's QR code using the Expo Client App
+- QR Code available for Android (iOS update no longer allows this method)
+  <div align="center">![QR Code](./images/turnips-QR.jpg)</div>
+
+
+### Option 2: Run on your machine
+
+- To run app locally follow the steps below then scan the project's QR code using the Expo Client App
 
 ```sh
 $ git clone https://github.com/rochellev/animal-crossing-app.git
@@ -53,6 +60,8 @@ $ expo start
 - React Native
 - Redux, Redux Toolkit
 - Expo
+- HTML, CSS
+- Git
 
 ## About Me
 
