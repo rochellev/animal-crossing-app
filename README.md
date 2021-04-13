@@ -9,16 +9,17 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
 Screen Shots of my app
 
 Your path to a Bellionaire starts now!
-![Stonk Meme](./stonk_meme.jpg)
+![Stonk Meme](./stonk_meme.jpg =200x150)
 
 ## How to use
-- First, download the Expo Client App 
+
+- First, download the Expo Client App
   - iOS: [Client iOS](https://itunes.apple.com/app/apple-store/id982107779)
   - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
   - Web: Any web browser
 
+* To run app locally follow the steps below then scan the project's QR code using the Expo Client App
 
-- To run app locally follow the steps below then scan the project's QR code using the Expo Client App
 ```sh
 $ git clone https://github.com/rochellev/animal-crossing-app.git
 $ cd  ./animal-crossing-app
