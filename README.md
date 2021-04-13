@@ -1,10 +1,6 @@
 # Turnip Stonk
 
-### Rochelle Crain
-
-## Description
-
-Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
+## Rochelle Roberts Crain
 
 <div align="center">
 <p>Your path to a Bellionaire starts now!</p>
@@ -12,16 +8,21 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
 	title="StonkMeme" width="460" height="300" />
 </div>
 
+## Description
+
+Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
+
 ## App Design
 
 <div align="center">
 <span>
-<img src="./images/TurnipScreenShot1.png" width="45%"/>
-<img src="images/TurnipScreenShot-Graph.png" width="45%"/>
+<img src="./images/TurnipScreenShot1.png" alt="input section" width="45%"/>
+<img src="images/TurnipScreenShot-Graph.png" alt="output section" width="45%"/>
 </span>
 </div>
 <br>
-<p>To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. They can use this graph to better inform their moves in the Turnip Market.</p>
+
+To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. They can use this graph to better inform their moves in the Turnip Market.
 
 ## How to Run Turnip Stonk
 
@@ -34,8 +35,9 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
   - Web: Any web browser
 
 - QR Code available for Android (iOS update no longer allows this method)
-  <div align="center">![QR Code](./images/turnips-QR.jpg)</div>
-
+  <div align="center">
+    <img src="./images/turnips-QR.jpg" alt="qr code"/>
+  </div>
 
 ### Option 2: Run on your machine
 
