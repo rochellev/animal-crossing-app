@@ -10,8 +10,12 @@ Screen Shots of my app
 
 Your path to a Bellionaire starts now!
 ![Stonk Meme](./stonk_meme.jpg)
-<img src="./stonk_meme.jpg" alt="stonk-meme"
+
+<div align="center">
+	<img src="./stonk_meme.jpg" alt="stonk-meme"
 	title="Stonk" width="250" height="200" />
+</div>
+
 
 ## How to use
 
