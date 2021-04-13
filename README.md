@@ -6,13 +6,22 @@
 
 Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
 
-Screen Shots of my app
+<div align="center">
+<p>Your path to a Bellionaire starts now!</p>
+	<img src="./stonk_meme.jpg" alt="stonk-meme"
+	title="StonkMeme" width="460" height="300" />
+</div>
 
-Your path to a Bellionaire starts now!
+## App Design
 
 <div align="center">
-	<img src="./stonk_meme.jpg" alt="stonk-meme"
-	title="StonkMeme" width="70%" height="400" />
+<span>
+<img src="./images/TurnipScreenShot1.png" />
+<img src="images/TurnipScreenShot-Graph.png" />
+</span>
+
+<p>To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. They can use this graph to better inform their moves in the Turnip Market.</p>
+
 </div>
 
 ## How to use
