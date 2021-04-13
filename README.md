@@ -3,16 +3,18 @@
 ## Rochelle Roberts Crain
 
 <div align="center">
-<p>Your path to a Bellionaire starts now!</p>
+<p>Your path to becoming a Bellionaire starts now!</p>
 	<img src="./stonk_meme.jpg" alt="stonk-meme"
 	title="StonkMeme" width="460" height="300" />
 </div>
 
 ## Description
 
-Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
+Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed this algorithm where given some information of past patterns and current prices, it predicts future turnip prices. Users can make use these predictions to better inform their moves in the Turnip Market to improve profit margins.
 
-## App Design
+My primary goal for developing this app was to build something fun, useful and a little silly. After completing this app, I feel more experience and comfortable with the fundamentals of React Native and Redux. Though I moved on before I published the app, I included screen shots of the app for easy viewing.
+
+## Design
 
 <div align="center">
 <span>
@@ -22,7 +24,7 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
 </div>
 <br>
 
-To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. They can use this graph to better inform their moves in the Turnip Market.
+To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Provider. `TurnipView` is then divided into two subcomponents: one to handle user inputs and one to display predictions. When a user opens the app, they first see the input section, then scrolling down the user will see a graph with predicted turnip prices. The predictions are updated as users modify or add new prices.
 
 ## How to Run Turnip Stonk
 
@@ -35,9 +37,9 @@ To set up the Redux Store, the root `App` Component wraps `TurnipView` with a Pr
   - Web: Any web browser
 
 - QR Code available for Android (iOS update no longer allows this method)
-  <div align="center">
-    <img src="./images/turnips-QR.jpg" alt="qr code"/>
-  </div>
+  <br>
+
+![QR Code](./images/turnips-QR.jpg)
 
 ### Option 2: Run on your machine
 
@@ -68,6 +70,8 @@ $ expo start
 ## About Me
 
 I am a Software Engineer with a passion for creating apps and actively seeking employment. Check out my [LinkedIn](https://www.linkedin.com/in/rochelle-roberts) and visit [rochellecrain.com](https://www.rochellecrain.com/) to see my To Do Web App in action.
+
+Thanks for stopping by!
 
 ## Credits
 
