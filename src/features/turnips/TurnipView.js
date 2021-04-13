@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, Switch, StyleSheet } from "react-native";
+import { View, ScrollView, Text, Image, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Colors, AppStyles } from "../styles/AppStyles";
 import { SundayInputCard } from "./SundayInputCard";
@@ -13,15 +13,58 @@ import {
 } from "./turnipsSlice";
 import { Picker } from "@react-native-community/picker";
 import { OutputView } from "../predictions/OutputView";
+// import { PredictionChart } from "../predictions/PredictionChart";
+import { LineChart } from "react-native-chart-kit";
+import { Dimensions } from "react-native";
 
 // Picker itemStyle does not work for android, but can do it here
 // https://stackoverflow.com/questions/38921492/how-to-style-the-standard-react-native-android-picker/39141949#39141949
+
+// https://medium.com/@ayushi.nig/autoscroll-in-react-native-451601ac3ca8
+
+// TODO: the lines, the spacing is not right, touching the lower cards
+
+const random = [
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100,
+  Math.random() * 100
+];
+
+const labels = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+const chartConfig = {
+  backgroundColor: "#e26a00",
+  backgroundGradientFrom: "#D9D9D9",
+  backgroundGradientTo: "#FFF",
+  decimalPlaces: 0, // optional, defaults to 2dp
+  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  style: { borderRadius: 16, paddingVertical: 5 },
+  propsForDots: { r: "6", strokeWidth: "2", stroke: "#ffa726" }
+};
 
 export const TurnipView = () => {
   const buyerStatus = useSelector(state => getBuyerStatus(state));
   const previousPattern = useSelector(state => getPreviousPattern(state));
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(buyerStatus);
   const [pattern, setPattern] = useState(previousPattern);
+  const [showGraph, setShowGraph] = useState(false);
+
+  const [data, setData] = useState(random);
+  const scrollViewRef = useRef(null);
+  const graphRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleBuyerStatus = value => {
@@ -32,6 +75,11 @@ export const TurnipView = () => {
   const handlePatternOptions = value => {
     setPattern(value);
     dispatch(previousPatternUpdated({ value }));
+  };
+  const handlePrediction = value => {
+    setData(random);
+    setShowGraph(true);
+    // graphRef.current.focus();
   };
   const patternOptions = [
     {
@@ -73,7 +121,7 @@ export const TurnipView = () => {
   ));
 
   return (
-    <View style={styles.container}>
+    <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
       <View style={styles.turnip}>
         <Image source={require("../../../images/Turnips_Icon.png")} />
       </View>
@@ -102,12 +150,6 @@ export const TurnipView = () => {
             <Text style={[AppStyles.text, { fontSize: 18 }]}>
               Previous Pattern
             </Text>
-            {/* <Text style={[AppStyles.text, { fontSize: 14 }]}>
-              (Last week's pattern
-            </Text>
-            <Text style={[AppStyles.text, { fontSize: 14 }]}>
-              affects your predictions)
-            </Text> */}
           </View>
           <View style={[styles.pickerContainer, AppStyles.shadows]}>
             <Picker
@@ -130,11 +172,40 @@ export const TurnipView = () => {
         <View style={{ flex: 1 }}>{renderedDailyInputCards}</View>
       </View>
       <View style={{ flex: 1 }}>
-        <OutputView />
+        <Button
+          title="Predict!"
+          type="outline"
+          raised
+          containerStyle={{ flex: 1, width: 200, alignSelf: "center" }}
+          buttonStyle={{ width: "100%" }}
+          onPress={handlePrediction}
+        />
+        <View style={{ flex: 1 }}>
+          <LineChart
+            data={{
+              labels: labels,
+              datasets: [
+                {
+                  data: data,
+                  color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
+                  strokeWidth: 2
+                }
+              ]
+            }}
+            width={Dimensions.get("window").width - 15}
+            height={300}
+            chartConfig={chartConfig}
+            style={{ marginVertical: 15, borderRadius: 15, paddingTop: 15 }}
+            verticalLabelRotation={25}
+            bezier
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
+
+// data={{ labels: labels, datasets: [{ data: data }] }}
 
 const styles = StyleSheet.create({
   container: {
@@ -167,22 +238,30 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.oldLace,
     height: 50,
     width: 130,
-    borderRadius: 10
+    borderRadius: 10,
+    borderWidth: 0
+    
   },
   pickerBox: {
-    height: "100%",
-    width: "100%"
+    flex: 1,
+    height: '90%',
+    width: '100%',
+ 
   },
   pickerItem: {
+    flex: 1,
     fontFamily: "Montserrat_400Regular",
-    fontSize: 18
+    fontSize: 18,
+ 
   },
   optionsContainer: {
     flex: 1,
     flexDirection: "row",
-    width: "75%"
+    width: "75%",
+    marginBottom: 5
   },
   patternText: {
+    flex: 1,
     alignSelf: "center",
     justifyContent: "center"
   }

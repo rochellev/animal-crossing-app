@@ -7,32 +7,32 @@ import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
 
 
-const data = {
-  labels: [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ],
-  datasets: [
-    {
-      data: [
-        Math.random() * 100,
-        Math.random() * 100,
-        Math.random() * 100,
-        Math.random() * 100,
-        Math.random() * 100,
-        Math.random() * 100,
-        Math.random() * 100
-      ],
-      color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-      strokeWidth: 2 // optional
-    }
-  ],
-};
+// const data = {
+//   labels: [
+//     "Sunday",
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday"
+//   ],
+//   datasets: [
+//     {
+//       data: [
+//         Math.random() * 100,
+//         Math.random() * 100,
+//         Math.random() * 100,
+//         Math.random() * 100,
+//         Math.random() * 100,
+//         Math.random() * 100,
+//         Math.random() * 100
+//       ],
+//       color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+//       strokeWidth: 2 // optional
+//     }
+//   ],
+// };
 
 const chartConfig = {
   backgroundColor: "#e26a00",
@@ -45,7 +45,7 @@ const chartConfig = {
   propsForDots: { r: "6", strokeWidth: "2", stroke: "#ffa726" }
 };
 
-export const PredictionChart = () => {
+export const PredictionChart = ({data}) => {
   return (
     <LineChart
       data={data}

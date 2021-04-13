@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { Colors, AppStyles } from "../styles/AppStyles";
+import { Colors, AppStyles, TurnipText, cardWidth } from "../styles/AppStyles";
 import Slider from "@react-native-community/slider";
 import { sundayPriceUpdated, getSundayData } from "./turnipsSlice";
 
@@ -17,28 +17,21 @@ export const SundayInputCard = () => {
   };
   return (
     <View style={styles.container}>
-      <View style={[AppStyles.shadows, styles.day]}>
-        <Text style={[AppStyles.text, { paddingBottom: 3, fontSize: 25 }]}>
-          Sunday
-        </Text>
-        <Text style={[AppStyles.text, { fontSize: 15 }]}>
-          Selling Price 
-        </Text>
-      </View>
-      <View style={[AppStyles.shadows, styles.priceSlider]}>
-        {value  ? (
-          <Text style={[{ alignSelf: "center", paddingBottom: 5 }, AppStyles.dayName]}>{value}</Text>
-        ):(<Text style={[{ alignSelf: "center", paddingBottom: 5 }, AppStyles.dayName]} >...</Text>)}
-        <Slider
-          style={AppStyles.slider}
-          value={value}
-          minimumValue={1}
-          maximumValue={300}
-          step={1}
-          onValueChange={value => setValue(value)}
-          onSlidingComplete={value => handleSlideComplete(value)}
-        />
-      </View>
+      <TurnipText text="Sunday" size={25} />
+      <TurnipText text="Daisy Mae's Price" size={15} />
+      <TurnipText text={value ? value : "..."} size={22} />
+      <Slider
+        style={AppStyles.slider}
+        value={value}
+        minimumValue={1}
+        maximumValue={300}
+        minimumTrackTintColor={Colors.maxPurple}
+        maximumTrackTintColor={Colors.timeberwolf}
+        thumbTintColor={Colors.armyGreen}
+        step={1}
+        onValueChange={value => setValue(value)}
+        onSlidingComplete={value => handleSlideComplete(value)}
+      />
     </View>
   );
 };
@@ -46,42 +39,26 @@ export const SundayInputCard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-evenly",
-    flexDirection: "row",
-    width: "100%",
-    padding: 15,
-    marginBottom: 10,
-    marginHorizontal: 5
+    width: cardWidth,
+    height: "100%",
+    backgroundColor: Colors.oldLace,
+    alignItems: "center",
+    alignSelf: "center",
+    flexDirection: "column",
+    borderRadius: 10,
+    marginBottom: 15,
+    paddingBottom: 5
   },
   priceSlider: {
     flex: 1,
-    backgroundColor: Colors.oldLace,
-    alignItems: "center",
-    marginRight: 12,
-    borderRadius: 10
+    flexDirection: "column"
   },
   day: {
     flex: 1,
-    marginRight: 12,
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.oldLace,
 
-    paddingBottom: 5,
-    borderRadius: 10
+    backgroundColor: Colors.oldLace
   }
 });
-
-// <View style={styles.container}>
-// <Text style={CommonStyles.textStyle}>Sunday</Text>
-// <Text style={CommonStyles.textStyle}>{value}</Text>
-// <Slider
-//   style={CommonStyles.sliderStyle}
-//   value={value}
-//   minimumValue={25}
-//   maximumValue={850}
-//   step={100}
-//   onValueChange={value => setValue(value)}
-//   onSlidingComplete={value => handleSlideComplete(value)}
-// />
-// </View>
