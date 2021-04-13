@@ -3,7 +3,7 @@
 ## Rochelle Roberts Crain
 
 <div align="center">
-<p>Your path to becoming a Bellionaire starts now!</p>
+<p>Your path to becoming a Bell-ionaire starts now!</p>
 	<img src="./stonk_meme.jpg" alt="stonk-meme"
 	title="StonkMeme" width="460" height="300" />
 </div>
