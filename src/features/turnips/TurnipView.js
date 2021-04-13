@@ -238,22 +238,27 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.oldLace,
     height: 50,
     width: 130,
-    borderRadius: 10
+    borderRadius: 10,
+    borderWidth: 0
+    
   },
   pickerBox: {
     flex: 1,
-    height: "100%",
-    width: "100%"
+    height: '90%',
+    width: '100%',
+ 
   },
   pickerItem: {
     flex: 1,
     fontFamily: "Montserrat_400Regular",
-    fontSize: 18
+    fontSize: 18,
+ 
   },
   optionsContainer: {
     flex: 1,
     flexDirection: "row",
-    width: "75%"
+    width: "75%",
+    marginBottom: 5
   },
   patternText: {
     flex: 1,

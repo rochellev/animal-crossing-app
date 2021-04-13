@@ -6,6 +6,8 @@
 
 Turnip Stonk is a React Native mobile app to help users take advantage of the Turnip Stock Market in Animal Crossing New Horizons. [Turnip Prophet](https://github.com/mikebryant/ac-nh-turnip-prices) developed the algorithms used in this app.
 
+Screen Shots of my app
+
 Your path to a Bellionaire starts now!
 ![Stonk Meme](./stonk_meme.jpg)
 
@@ -15,8 +17,6 @@ Your path to a Bellionaire starts now!
   - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
   - Web: Any web browser
 
-- If you have an Android, you can scan the QR code below or visit my [expo hosted page](https://expo.io/@rochellev/animal-crossing). Unfortunately, this QR code might not work with iPhone. The work around for this is to run the app locally. <br>
-![QR Code](./images/turnips-QR.jpg)
 
 - To run app locally follow the steps below then scan the project's QR code using the Expo Client App
 ```sh
