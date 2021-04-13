@@ -9,7 +9,9 @@ Turnip Stonk is a React Native mobile app to help users take advantage of the Tu
 Screen Shots of my app
 
 Your path to a Bellionaire starts now!
-![Stonk Meme](./stonk_meme.jpg =200x150)
+![Stonk Meme](./stonk_meme.jpg)
+<img src="./stonk_meme.jpg" alt="stonk-meme"
+	title="Stonk" width="250" height="200" />
 
 ## How to use
 
