@@ -12,7 +12,7 @@ Your path to a Bellionaire starts now!
 
 <div align="center">
 	<img src="./stonk_meme.jpg" alt="stonk-meme"
-	title="StonkMeme" width="450" height="375" />
+	title="StonkMeme" width="40%" height="375" />
 </div>
 
 
